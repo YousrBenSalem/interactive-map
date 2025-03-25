@@ -1,0 +1,96 @@
+.landform-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    padding: 4px 8px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+
+  .leaflet-label, .leaflet-tooltip {
+    display: none !important;
+  }
+  
+  
+  
+  .custom-label {
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 6px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    font-size: 14px;
+  }
+
+
+  .custom-peak-icon{
+    color: #000000;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 6px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+    font-size: 18px;
+  }
+
+  .map-legend {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+  }
+  
+  .legend-item::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    background-color: inherit; /* Inherit the background color from the legend item */
+  }
+  
+  .legend {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    display: flex;  /* Align items horizontally */
+    gap: 15px; /* Space between legend items */
+    align-items: center;
+  }
+  
+  .legend-item {
+    display: flex;
+    align-items: center;
+  }
+  
+  .legend-color {
+    width: 40px;
+    height: 20px;
+    border-radius: 3px;
+    margin-right: 5px;
+  }
+  
+  .legend-label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+  }
+  
