@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from "react-router-dom";
 import { LayoutDashboard, Book, Globe } from "lucide-react";
 import { Card, CardContent } from "@mui/material";
 import "@mui/material/styles/index.js";
 import FirstCourse from "./FirstCourse.js";
 import SecondCourse from "./SecondCourse.js";
 import ThirdCourse from "./ThirdCourse.js";
-
+import FourthCourse from "./FourthCourse.js";
+import FifthCourse from "./FifthCourse.js";
 
 const Sidebar = () => {
   const [showCourses, setShowCourses] = useState(false);
@@ -62,7 +68,6 @@ const Sidebar = () => {
           >
             <Book /> <span>الدورات</span>
           </button>
-
           {/* Course List - Shows Only When Button is Clicked */}
           {showCourses && (
             <div style={dropdownStyle}>
@@ -98,6 +103,31 @@ const Sidebar = () => {
               </NavLink>
             </div>
           )}
+
+          {showCourses && (
+            <div style={dropdownStyle}>
+              <NavLink
+                to="/courses/4"
+                style={courseLinkStyle}
+                activeStyle={activeNavLinkStyle}
+              >
+                {" "}
+                درس القارات و المحيطات و الوحدات التضارسية الكبرى
+              </NavLink>
+            </div>
+          )}
+          {/* {showCourses && (
+            <div style={dropdownStyle}>
+              <NavLink
+                to="/courses/5"
+                style={courseLinkStyle}
+                activeStyle={activeNavLinkStyle}
+              >
+                {" "}
+                درس خصائص المغرب العربي الطبيعية{" "}
+              </NavLink>
+            </div>
+          )} */}
         </div>
 
         {/* Map Button */}
@@ -130,7 +160,7 @@ const navLinkStyle = {
 };
 
 const activeNavLinkStyle = {
-  backgroundColor: "#ddd"
+  backgroundColor: "#ddd",
 };
 
 const dropdownStyle = {
@@ -187,6 +217,8 @@ export default function App() {
             <Route path="/courses/1" element={<FirstCourse />} />
             <Route path="/courses/2" element={<SecondCourse />} />
             <Route path="/courses/3" element={<ThirdCourse />} />
+            <Route path="/courses/4" element={<FourthCourse />} />
+            {/* <Route path="/courses/5" element={<FifthCourse />} /> */}
           </Routes>
         </main>
       </div>
@@ -196,13 +228,23 @@ export default function App() {
 
 /* Page Components */
 const Dashboard = () => (
-  <Card><CardContent style={{ padding: "20px" }}>لوحة التحكم الرئيسية</CardContent></Card>
+  <Card>
+    <CardContent style={{ padding: "20px" }}>لوحة التحكم الرئيسية</CardContent>
+  </Card>
 );
 
 const Courses = () => (
-  <Card><CardContent style={{ padding: "20px" }}>صفحة الدورات الجغرافية</CardContent></Card>
+  <Card>
+    <CardContent style={{ padding: "20px" }}>
+      صفحة الدورات الجغرافية
+    </CardContent>
+  </Card>
 );
 
 const Map = () => (
-  <Card><CardContent style={{ padding: "20px" }}>صفحة الخريطة التفاعلية</CardContent></Card>
+  <Card>
+    <CardContent style={{ padding: "20px" }}>
+      صفحة الخريطة التفاعلية
+    </CardContent>
+  </Card>
 );

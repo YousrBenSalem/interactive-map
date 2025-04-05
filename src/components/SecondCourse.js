@@ -507,6 +507,7 @@ const Course = () => {
     <Container
       maxWidth="lg"
       sx={{
+        
         backgroundColor: "transparent", // No extra background
         position: "relative",
         display: "flex",
