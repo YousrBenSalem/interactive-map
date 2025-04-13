@@ -1,0 +1,174 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Mur Sud",
+        "type": "mur"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [10.75, 34.74],
+            [10.751, 34.74],
+            [10.751, 34.741],
+            [10.75, 34.741],
+            [10.75, 34.74]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "القصبة",
+        "type": "kasbah"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [10.752, 34.742],
+            [10.753, 34.742],
+            [10.753, 34.743],
+            [10.752, 34.743],
+            [10.752, 34.742]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "باب الجبلي",
+        "type": "portes"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.754, 34.744]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "سوق الصاغة",
+        "type": "souks"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [10.756, 34.745],
+            [10.757, 34.745],
+            [10.757, 34.746],
+            [10.756, 34.746],
+            [10.756, 34.745]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "مدرسة قرآنية",
+        "type": "schools"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.758, 34.743]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "الجامع الكبير",
+        "type": "mosques"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [10.759, 34.742],
+            [10.76, 34.742],
+            [10.76, 34.743],
+            [10.759, 34.743],
+            [10.759, 34.742]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "زاوية سيدي علي الكراي",
+        "type": "zawaya"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.761, 34.744]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "ورشة صناعة الأحذية",
+        "type": "shoes"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [10.762, 34.745],
+            [10.763, 34.745],
+            [10.763, 34.746],
+            [10.762, 34.746],
+            [10.762, 34.745]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "متجر خدمات",
+        "type": "commerce"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.764, 34.743]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "دكان حلي",
+        "type": "bijoux"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [10.765, 34.742]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "تجارة مرتبطة بالأحذية",
+        "type": "related"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [10.766, 34.744],
+            [10.767, 34.744],
+            [10.767, 34.745],
+            [10.766, 34.745],
+            [10.766, 34.744]
+          ]
+        ]
+      }
+    }
+  ]
+}

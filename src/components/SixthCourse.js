@@ -42,6 +42,8 @@ import PrecipitationTable from "./PrecipitationTable.js";
 import VegetationMap from "./VegetationMap.js";
 import NaturalVegetationTable from "./NaturalVegetationTable.js";
 import CountriesTable from "./CountriesTable.js";
+import InteractiveCountryTable from "./InteractiveCountryTable.js";
+import PaysMaghrebMap from "./PaysMaghrebMap.js";
 
 {
   /*
@@ -149,51 +151,62 @@ const TextToSpeech = () => {
 }
 
 const Course = () => {
-  const [showInputs, setShowInputs] = useState(false);
+    const [showInputs, setShowInputs] = useState(false);
+    
+      const [userAnswers, setUserAnswers] = useState(["", "", ""]);
 
-  const [userAnswers, setUserAnswers] = useState(["", "", ""]);
+      // Données des questions et réponses
+      const quizData = [
+        {
+          question: "تتزايد الأمطار في المغرب العربي كلما اتجهنا جنوبا",
+          correctAnswer: "خطا",
+          correction:
+            "تتزايد الأمطار في المغرب العربي كلما اتجهنا شمالا / تقل الأمطار في المغرب العربي كلما اتجهنا جنوبا",
+        },
+        {
+          question: "الأمطار بالمغرب العربي غير منتظمة فصليا وسنويا",
+          correctAnswer: "صواب",
+        },
+        {
+          question:
+            "يتسم الغطاء النباتي في جنوب المغرب العربي بالتنوع والكثافة",
+          correctAnswer: "خطأ",
+          correction:
+            "يتسم الغطاء النباتي في شمال المغرب العربي بالتنوع والكثافة",
+        },
+      ];
 
-  // Données des questions et réponses
-  const quizData = [
-    {
-      question: "تتزايد الأمطار في المغرب العربي كلما اتجهنا جنوبا",
-      correctAnswer: "خطا",
-      correction:
-        "تتزايد الأمطار في المغرب العربي كلما اتجهنا شمالا / تقل الأمطار في المغرب العربي كلما اتجهنا جنوبا",
-    },
-    {
-      question: "الأمطار بالمغرب العربي غير منتظمة فصليا وسنويا",
-      correctAnswer: "صواب",
-    },
-    {
-      question: "يتسم الغطاء النباتي في جنوب المغرب العربي بالتنوع والكثافة",
-      correctAnswer: "خطأ",
-      correction: "يتسم الغطاء النباتي في شمال المغرب العربي بالتنوع والكثافة",
-    },
-  ];
+      const toggleAnswers = () => {
+        setShowAnswers(!showAnswers);
+      };
 
-  const toggleAnswers = () => {
-    setShowAnswers(!showAnswers);
-  };
+      const resetAll1 = () => {
+        setShowAnswers(false);
+        setUserAnswers(["", "", ""]);
+      };
 
-  const resetAll1 = () => {
-    setShowAnswers(false);
-    setUserAnswers(["", "", ""]);
-  };
+      const handleAnswerChange = (index, value) => {
+        const newAnswers = [...userAnswers];
+        newAnswers[index] = value;
+        setUserAnswers(newAnswers);
+      };
+const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
 
-  const handleAnswerChange = (index, value) => {
-    const newAnswers = [...userAnswers];
-    newAnswers[index] = value;
-    setUserAnswers(newAnswers);
-  };
-  const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
+    const toggleInputs = () => {
+      setShowInputs(true);
+    };
+        const toggleInputsReset = () => {
+          setShowInputs(false);
+        };
+          const [showCorrections, setShowCorrections] = useState(false);
 
-  const toggleInputs = () => {
-    setShowInputs(true);
-  };
-  const toggleInputsReset = () => {
-    setShowInputs(false);
-  };
+          const handleCorrection = () => {
+            setShowCorrections(true);
+          };
+
+          const handleReset = () => {
+            setShowCorrections(false);
+          };
   const questions1 = [
     {
       question: "ما هي النسبة التقريبية لمساحة القسم اليابس من سطح الأرض؟",
@@ -252,22 +265,27 @@ const Course = () => {
   };
   // Données pour les trois colonnes
   const columns = [
-    ["الهيملايا", "جبل الأنب", "جبل الأطلس"],
+    ["تونس", " الجزائر", " المغرب الأقصى", "ليبيا", "موريطانيا"],
 
-    ["أوروبا", "آسيا", "إفريقيا"],
-    ["طوبقال", "إيفرست", "الجبل الأبيض"],
+    ["الرباط", "تونس", "طرابلس", "الجزائر", "نواكشوط"],
+    ["1962", "1952", "1956", "1960"],
   ];
 
   // Configuration des flèches (startY, angle, length)
   const arrowsConfig1 = [
-    { startY: "40%", angle: 130, length: 200 },
-    { startY: "54%", angle: 180, length: 160 },
-    { startY: "66%", angle: 220, length: 210 },
+    { startY: "23%", angle: 130, length: 220 },
+     { startY: "40%", angle: 150, length: 200 },
+     { startY: "50%", angle: 190, length: 200 },
+     { startY: "60%", angle: 230, length: 220 },
+     { startY: "90%", angle: 190, length: 200 },
   ];
   const arrowsConfig2 = [
-    { startY: "40%", angle: 165, length: 200 },
-    { startY: "45%", angle: 195, length: 200 },
-    { startY: "76%", angle: 180, length: 200 },
+    { startY: "20%", angle: 162, length: 200 },
+    { startY: "40%", angle: 140, length: 220 },
+     { startY: "67%", angle: 200, length: 200 },
+     { startY: "95%", angle: 180, length: 200 },
+     { startY: "43%", angle: 220, length: 220 },
+    // { startY: "76%", angle: 180, length: 200 },
   ];
 
   // Fonction pour réinitialiser toutes les réponses
@@ -323,25 +341,29 @@ const Course = () => {
     reason7: "",
   });
   const correctAnswers1 = {
-    reason1: "  شمال   ",
-    reason2: " نصف ",
-    reason3: " وخمس  ",
-    reason4: "  القارة    ",
-    reason5: "  الافريقية    ",
-    reason6: "  شمالا    ",
-    reason7: " على  ",
-    reason8: " المحيط الأطلسي  ",
-    reason9: "   مصر والسودان     ",
-    reason10: "   التشاد ومالي     ",
-    reason11: " والسينغال  ",
+    reason1: "  آسيا   ",
+    reason2: " إفريقيا ",
+    reason3: " أوروبا  ",
+    reason4: "  أستراليا  ",
+    reason5: " أمريكا",
+    reason6: "  أنتاركتيكا    ",
   };
   const correctAnswers2 = {
-    reason1: " البحر الأصفر  ",
-    reason2: " البحر المتوسط ",
-    reason3: "  بحر الشمال ",
-    reason4: " بحر العرب  ",
-    reason5: " البحر الأحمر ",
-    reason6: "البحر الميت ",
+    reason1: "   شمال القارة الافريقية   ",
+    reason2: "  القارة الإفريقية ",
+    reason3: "   تونس ",
+    reason4: "  الجزائر  ",
+    reason5: "  موريطانيا ",
+    reason6: " الشمال  ",
+
+    reason7: "الجنوب التشاد ",
+    reason8: "  والنيجر ومالي ",
+    reason9: "   والسنغال ",
+    reason10: "  الشرق   ",
+    reason11: "  المحيط  ",
+    reason12: " الأطلسي  ",
+    reason13: "   استراتيجي هام  ",
+    reason14: " الجزائر   ",
   };
   const correctAnswers3 = {
     reason1: " بتباينه  ",
@@ -364,7 +386,7 @@ const Course = () => {
     reason1: "السهول",
     reason2: " وهي الأقل انتشارا في المغرب العربي وهي نوعان ",
     reason3: " سهول ساحلية: ضيقة كسهول الساحل وسهل الجفارة بالبلاد التونسية",
-
+    
     reason5:
       "الجبال في المغرب العربي سلسلتان جبليتان متوازيتان تخترقانه من الغرب الى الشرق:",
     reason6:
@@ -372,6 +394,7 @@ const Course = () => {
     reason7:
       "سلسلة الأطلس الصحراوي: على قمم هذه السلسلة هو جبل طوبقال بالمغرب 4165 م، جبل الأوراس في الجزائر 2328 م وجبل الشعانبي في تونس 1544 م.  كما نجد في الجنوب الجزائر جبال الهوجار والتي تبلغ أعلى قمة بها جبل الأحجار 2918م",
     reason8: " الصحاري ",
+    
   };
 
   // Toggle correct answers for a specific question
@@ -641,14 +664,13 @@ const Course = () => {
   });
 
   const correctFillInTheBlanks = {
-    blank1: "كثافة سكانية مرتفعة جدّا ",
-    blank2: "كثافة سكانية مرتفعة",
-    blank3: "كثافة سكانية ضعيفة ",
-    blank4: "باختلاف الأقطار.",
-    blank5: "كثافة سكانية مرتفعة",
-    blank6: "كثافة سكانية مرتفعة",
-    blank7: "الموارد الطّاقيّة",
-    blank8: "كثافة سكانية ضعيفة ",
+    blank1: " شمال  ",
+    blank2: "الإفريقية  ",
+    blank3: "البحر الأبيض المتوسط   ",
+    blank4: " المحيط الأطلسي ",
+    blank5: " مصر والسودان  ",
+    blank6: "  .مالي والتشاد والنيجر والسنغال ",
+  
   };
 
   const handleFillChange = (event, key) => {
@@ -696,7 +718,13 @@ const Course = () => {
     blank211: "الشمال الشرقي ",
     blank311: "منخفضة ",
   };
-
+  const cities = [
+    { name: "الجزائر", flag: "/assets/sixthcourse/mauritania.jpg" },
+    { name: "نواكشوط", flag: "/assets/sixthcourse/libya.jpg" },
+    { name: "تونس", flag: "/assets/sixthcourse/algeria.jpg" },
+    { name: "الرباط", flag: "/assets/sixthcourse/morocco.jpg" },
+    { name: "طرابلس", flag: "/assets/sixthcourse/tunisia.jpg" },
+  ];
   return (
     <Container
       maxWidth="lg"
@@ -724,7 +752,7 @@ const Course = () => {
         >
           <h2 style={{ fontSize: "20px", fontWeight: "600" }}>
             {" "}
-            الدرس الخامس : خصائص المغرب العربي الطبيعية{" "}
+            الدرس السادس : المغرب العربي: الموقع والمساحة والتقسيم السياسي{" "}
           </h2>
         </header>
       }
@@ -875,7 +903,7 @@ const Course = () => {
           direction: "rtl",
         }}
       >
-        تعهد المكتسبات:{" "}
+        تعهد المكتسبات السابقة:{" "}
       </Typography>
       <Typography
         variant="h6"
@@ -887,9 +915,10 @@ const Course = () => {
           direction: "rtl",
         }}
       >
-        درستم يا أطفال في الحصة الفارطة درس المغرب العربي الموقع والمساحة
-        والتقسيم السياسي. هيا حاولوا تعمير الخارطة الذهنية التالية استنادا الى
-        مكتسباتكم السابقة:
+        درستم يا أطفال في السنة الفارطة درس القارات والمحيطات والوحدات
+        التضاريسية الكبرى. فهل لكم تذكيري إعادة تذكيري بأسماء قارات العالم:
+        <br />
+        أساعد معلمتي عبر تعمير الخارطة الذهنية التالية:
       </Typography>
       <Box
         sx={{
@@ -902,25 +931,516 @@ const Course = () => {
         }}
       >
         <img
-          src="/assets/fifthcourse/Maghreb.jpg"
+          src="/assets/sixthcourse/karate.jpg"
           alt="    المغرب العربي"
           style={{ width: "100%", height: "auto" }}
         />
 
         {Object.keys(correctAnswers1).map((key, index) => {
           const positions = {
-            reason1: { top: "22%", right: "14%" },
-            reason2: { top: "12%", right: "80%" },
-            reason3: { top: "20%", right: "80%" },
-            reason4: { top: "20%", right: "95%" },
-            reason5: { top: "28%", right: "83%" },
-            reason6: { top: "72%", right: "14%" },
-            reason7: { top: "80%", right: "28%" },
-            reason8: { top: "88%", right: "17%" },
+            reason1: { top: "17%", right: "51%" },
+            reason2: { top: "38%", right: "85%" },
+            reason3: { top: "71%", right: "82%" },
+            reason4: { top: "88%", right: "49%" },
+            reason6: { top: "26%", right: "14%" },
+            reason5: { top: "69%", right: "14%" },
+          };
 
-            reason9: { top: "70%", right: "87%" },
-            reason10: { top: "79%", right: "85%" },
-            reason11: { top: "87%", right: "81%" },
+          return (
+            <Box
+              key={index}
+              sx={{
+                position: "absolute",
+                top: positions[key].top,
+                right: positions[key].right,
+                transform: "translate(50%, -50%)",
+                color: "green",
+                fontSize: "26px",
+                fontWeight: "bold",
+                textAlign: "center",
+                maxWidth: "120px",
+                lineHeight: "1.4",
+              }}
+            >
+              {showAnswers ? (
+                <Typography
+                  sx={{
+                    color: "green",
+                    fontSize: "30px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    maxWidth: "120px",
+                    lineHeight: "1.2",
+                  }}
+                >
+                  {correctAnswers1[key]}
+                </Typography>
+              ) : (
+                <TextField
+                  name={key}
+                  variant="standard"
+                  placeholder="............."
+                  value={studentAnswers1[key]}
+                  onChange={(e) =>
+                    setStudentAnswers1({
+                      ...studentAnswers1,
+                      [key]: e.target.value,
+                    })
+                  }
+                  InputProps={{
+                    disableUnderline: true,
+                  }}
+                  inputProps={{
+                    style: { textAlign: "right" },
+                    dir: "rtl",
+                  }}
+                  sx={{
+                    width: "90px",
+                    height: "1px",
+                    textAlign: "right",
+                  }}
+                />
+              )}
+            </Box>
+          );
+        })}
+      </Box>
+      {/* Single Buttons for the Entire Exercise */}
+      <Box
+        sx={{
+          display: "flex",
+          gap: 3,
+          marginLeft: "700px",
+          textAlign: "right",
+        }}
+      >
+        <Button
+          sx={{
+            fontSize: "17px",
+            padding: "12px 24px",
+            backgroundColor: "#F6D339",
+          }}
+          variant="contained"
+          onClick={resetAllInputs}
+        >
+          إعادة المحاولة
+        </Button>
+        <Button
+          sx={{
+            fontSize: "18px",
+            padding: "12px 24px",
+            backgroundColor: "#60B463",
+          }}
+          variant="contained"
+          onClick={toggleAllAnswers}
+        >
+          الإصلاح
+        </Button>
+      </Box>
+      <Typography
+        variant="h6"
+        sx={{
+          textAlign: "right",
+          fontWeight: "bold",
+          mt: 3,
+          marginRight: "30px",
+          direction: "rtl",
+        }}
+      >
+        هل يمكنكم تذكيري بموقع البلاد التونسية؟
+      </Typography>
+      <Typography
+        variant="h4"
+        sx={{
+          textAlign: "right",
+          fontWeight: "bold",
+          mt: 3,
+          marginRight: "30px",
+          color: "red",
+          direction: "rtl",
+        }}
+      >
+        الوضعية الاستكشافية:{" "}
+      </Typography>
+      <Typography
+        variant="h6"
+        sx={{
+          textAlign: "right",
+          fontWeight: "bold",
+          mt: 3,
+          marginRight: "30px",
+          direction: "rtl",
+        }}
+      >
+        في أحد أيام العطلة جلست صحبة اخيك الأصغر تشاهدون فلما وثائقيا عن قارة
+        افريقيا وفي أحد المشاهد، لاحت أمامكم خريطة هذه القارة وقد كانت بلدان
+        شمالها ملونة باللون الأخضر ما عدى مصر وسمعتم المعلّق وهو يقول ان هذه هي
+        بلدان المغرب العربي وهي ذات تاريخ عريق وحضارات مجيدة.
+      </Typography>
+      <Box
+        sx={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "65%",
+          margin: "0 auto", // Centre le Box horizontalement
+          textAlign: "center",
+        }}
+      >
+        <img
+          src="/assets/fifthcourse/image1.jpg"
+          alt="المغرب العربي"
+          style={{ width: "100%", height: "auto" }}
+        />
+      </Box>
+      <Typography
+        variant="h6"
+        sx={{
+          textAlign: "right",
+          fontWeight: "bold",
+          mt: 3,
+          marginRight: "30px",
+          direction: "rtl", // Active la direction droite à gauche
+        }}
+      >
+        فسألك أخوك بفضول: ماهي بلدان المغربي العربي؟ وهل تونس منتمية إليها؟
+      </Typography>
+      <Typography
+        variant="h4"
+        sx={{
+          textAlign: "right",
+          fontWeight: "bold",
+          mt: 3,
+          marginRight: "30px",
+          color: "red",
+          direction: "rtl",
+        }}
+      >
+        مرحلة رصد التصورات:{" "}
+      </Typography>
+      <Typography
+        variant="h6"
+        sx={{
+          textAlign: "right",
+          fontWeight: "bold",
+          mt: 3,
+          marginRight: "30px",
+          direction: "rtl", // Active la direction droite à gauche
+        }}
+      >
+        فأجبته قائلا:
+        ....................................................................
+      </Typography>
+      <Typography
+        variant="h4"
+        sx={{
+          textAlign: "right",
+          fontWeight: "bold",
+          mt: 3,
+          marginRight: "30px",
+          color: "red",
+          direction: "rtl",
+        }}
+      >
+        التعلم المنهجي:{" "}
+      </Typography>
+      <Typography
+        variant="h6"
+        sx={{
+          textAlign: "right",
+          fontWeight: "bold",
+          mt: 3,
+          marginRight: "30px",
+          direction: "rtl", // Active la direction droite à gauche
+        }}
+      >
+        أتأمل الخريطة التفاعلية المقدّمة وأبدي ملاحظاتي:
+      </Typography>
+      <div>
+        {" "}
+        <PaysMaghrebMap />
+      </div>
+      <Typography
+        variant="h6"
+        sx={{
+          marginTop: "30px",
+
+          textAlign: "right",
+          fontWeight: "bold",
+          color: "#9AC8EB",
+          marginRight: "30px",
+          direction: "rtl", // Active la direction droite à gauche
+        }}
+      >
+        نشاط 1: أكمل تعمير الفقرة التالية مستأنسا بالخريطة التفاعلية المقدّمة
+        سابقا
+      </Typography>
+      <Typography
+        sx={{
+          textAlign: "right",
+          marginTop: "10px",
+          fontSize: "18px",
+
+          fontWeight: "bold",
+          marginRight: "30px",
+          direction: "rtl", // Active la direction droite à gauche
+        }}
+      >
+        يقع المغرب العربي في{" "}
+        <span>
+          {showAnswers ? (
+            <span style={{ color: "green", fontWeight: "bold" }}>
+              {correctFillInTheBlanks.blank1}
+            </span>
+          ) : (
+            <TextField
+              variant="standard"
+              placeholder="....................................."
+              value={fillInTheBlanks.blank1}
+              onChange={(e) => handleFillChange(e, "blank1")}
+              InputProps={{
+                disableUnderline: true, // Removes the underline
+              }}
+            />
+          )}
+        </span>{" "}
+        القارة{" "}
+        <span>
+          {showAnswers ? (
+            <span style={{ color: "green", fontWeight: "bold" }}>
+              {correctFillInTheBlanks.blank2}
+            </span>
+          ) : (
+            <TextField
+              variant="standard"
+              placeholder="....................................."
+              value={fillInTheBlanks.blank2}
+              onChange={(e) => handleFillChange(e, "blank2")}
+              InputProps={{
+                disableUnderline: true, // Removes the underline
+              }}
+            />
+          )}
+        </span>{" "}
+        ، يحدّه من الشمال{" "}
+        <span>
+          {showAnswers ? (
+            <span style={{ color: "green", fontWeight: "bold" }}>
+              {correctFillInTheBlanks.blank3}
+            </span>
+          ) : (
+            <TextField
+              variant="standard"
+              placeholder="....................................."
+              value={fillInTheBlanks.blank3}
+              onChange={(e) => handleFillChange(e, "blank3")}
+              InputProps={{
+                disableUnderline: true, // Removes the underline
+              }}
+            />
+          )}
+        </span>{" "}
+        ومن الغرب{" "}
+        <span>
+          {showAnswers ? (
+            <span style={{ color: "green", fontWeight: "bold" }}>
+              {correctFillInTheBlanks.blank4}
+            </span>
+          ) : (
+            <TextField
+              variant="standard"
+              placeholder="....................................."
+              value={fillInTheBlanks.blank4}
+              onChange={(e) => handleFillChange(e, "blank4")}
+              InputProps={{
+                disableUnderline: true, // Removes the underline
+              }}
+            />
+          )}
+        </span>
+        <br />
+        ومن الشرق{" "}
+        <span>
+          {showAnswers ? (
+            <span style={{ color: "green", fontWeight: "bold" }}>
+              {correctFillInTheBlanks.blank5}
+            </span>
+          ) : (
+            <TextField
+              variant="standard"
+              placeholder="....................................."
+              value={fillInTheBlanks.blank5}
+              onChange={(e) => handleFillChange(e, "blank5")}
+              InputProps={{
+                disableUnderline: true, // Removes the underline
+              }}
+            />
+          )}
+        </span>{" "}
+        ومن الجنوب
+        <span>
+          {showAnswers ? (
+            <span style={{ color: "green", fontWeight: "bold" }}>
+              {correctFillInTheBlanks.blank6}
+            </span>
+          ) : (
+            <TextField
+              variant="standard"
+              placeholder="....................................."
+              value={fillInTheBlanks.blank6}
+              onChange={(e) => handleFillChange(e, "blank6")}
+              InputProps={{
+                disableUnderline: true, // Removes the underline
+              }}
+            />
+          )}
+        </span>
+      </Typography>
+      {/* Buttons for الاستنتاج Section */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          gap: "16px",
+          marginTop: "16px",
+        }}
+      >
+        <Button
+          sx={{
+            fontSize: "17px",
+            padding: "12px 24px",
+            backgroundColor: "#F6D339",
+          }}
+          variant="contained"
+          onClick={resetAllInputs}
+        >
+          إعادة المحاولة
+        </Button>
+        <Button
+          sx={{
+            fontSize: "18px",
+            padding: "12px 24px",
+            backgroundColor: "#60B463",
+            marginLeft: "10px",
+          }}
+          variant="contained"
+          onClick={toggleAllAnswers}
+        >
+          {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+        </Button>
+      </div>
+      <Typography
+        variant="h6"
+        sx={{
+          marginTop: "30px",
+
+          textAlign: "right",
+          fontWeight: "bold",
+          color: "#9AC8EB",
+          marginRight: "30px",
+          direction: "rtl", // Active la direction droite à gauche
+        }}
+      >
+        نشاط 2: أضع لكل بلد مقدم في الجدول عاصمته وعلمه:
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 3,
+          padding: 2,
+          direction: "rtl",
+        }}
+      >
+        {cities.map((city, index) => (
+          <Box
+            key={index}
+            elevation={3}
+            sx={{
+              padding: 1.5,
+              minWidth: 100,
+              textAlign: "center",
+              color: "white",
+            }}
+          >
+            {/* Cadre vert pour la ville */}
+            <Paper
+              elevation={3}
+              sx={{
+                padding: 1.5,
+                minWidth: 100,
+                textAlign: "center",
+                color: "black",
+              }}
+            >
+              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                {city.name}
+              </Typography>
+            </Paper>
+
+            {/* Cadre sans bordure pour le drapeau */}
+            <Box
+              component="img"
+              src={city.flag}
+              alt={`Drapeau ${city.name}`}
+              sx={{
+                width: 120,
+                height: 80,
+                marginTop: 3,
+                objectFit: "cover",
+              }}
+            />
+          </Box>
+        ))}
+      </Box>
+      <InteractiveCountryTable />
+      <Typography
+        variant="h4"
+        sx={{
+          textAlign: "right",
+          fontWeight: "bold",
+          mt: 3,
+          marginRight: "30px",
+          color: "red",
+          direction: "rtl",
+        }}
+      >
+        الاستنتاج:{" "}
+      </Typography>
+      <Box
+        sx={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          width: "65%",
+          marginLeft: "auto",
+        }}
+      >
+        <img
+          src="/assets/sixthcourse/maghreb.jpg"
+          alt="    المغرب العربي"
+          style={{ width: "100%", height: "auto" }}
+        />
+
+        {Object.keys(correctAnswers2).map((key, index) => {
+          const positions = {
+            reason1: { top: "27%", right: "26%" },
+            reason2: { top: "43%", right: "34%" },
+            reason3: { top: "33%", right: "63%" },
+            reason4: { top: "33%", right: "70%" },
+            reason5: { top: "38%", right: "73%" },
+            reason6: { top: "62%", right: "16%" },
+
+            reason7: { top: "62%", right: "39%" },
+            reason8: { top: "66%", right: "37%" },
+            reason9: { top: "71%", right: "37%" },
+            reason10: { top: "87.5%", right: "13.5%" },
+            reason11: { top: "87.5%", right: "40%" },
+            reason12: { top: "92%", right: "35%" },
+            reason13: { top: "64%", right: "62%" },
+            reason14: { top: "67%", right: "80%" },
           };
 
           return (
@@ -935,7 +1455,7 @@ const Course = () => {
                 fontSize: "16px",
                 fontWeight: "bold",
                 textAlign: "center",
-                maxWidth: "120px",
+                maxWidth: "250px",
                 lineHeight: "1.4",
               }}
             >
@@ -943,14 +1463,14 @@ const Course = () => {
                 <Typography
                   sx={{
                     color: "green",
-                    fontSize: "15px",
+                    fontSize: "18px",
                     fontWeight: "bold",
                     textAlign: "center",
-                    maxWidth: "120px",
+                    maxWidth: "250px",
                     lineHeight: "1.2",
                   }}
                 >
-                  {correctAnswers1[key]}
+                  {correctAnswers2[key]}
                 </Typography>
               ) : (
                 <TextField
@@ -1025,783 +1545,6 @@ const Course = () => {
           direction: "rtl",
         }}
       >
-        الوضعية الاستكشافية:{" "}
-      </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          direction: "rtl",
-        }}
-      >
-        في أحد أيام العطلة جلست صحبة اخيك الأصغر أحمد تشاهدون برنامجا وثائقيا عن
-        قارة افريقيا يدعى "افريقيا: مهد الحضارات العريقة". في أحد المشاهد، لاحت
-        أمامكم خريطة هذه القارة وقد كانت بلدان المغرب العربي ملونة باللون الأخضر
-        وسمعتم المعلّق وهو يقول ان هذه هي بلدان المغرب العربي وهي ذات{" "}
-        <span style={{ color: "purple" }}>خصائص طبيعية متنوعة </span>.
-        <br />
-        فتبادرت الى ذهن اخيك عدّة تساؤلات، طرحها عليك بكل فضول:
-        <br />
-        ماهي أنواع التضاريس؟
-        <br />
-        بما يتميز مناخ دول المغرب العربي؟
-        <br />
-        هل تغطي الغابات كامل المغرب العربي؟
-        <br />
-        حاول الإجابة عن تساؤلات أخيك الأصغر:
-        <br />
-        ..................................................................................................................................................................................................
-      </Typography>
-      <Box
-        sx={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          width: "65%",
-          margin: "0 auto", // Centre le Box horizontalement
-          textAlign: "center",
-        }}
-      >
-        <img
-          src="/assets/fifthcourse/image1.jpg"
-          alt="المغرب العربي"
-          style={{ width: "100%", height: "auto" }}
-        />
-      </Box>
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          color: "red",
-          direction: "rtl",
-        }}
-      >
-        التعلم المنهجي:
-      </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
-        حتى تتأكد من صحة اجابتك وتثري معلوماتك الجغرافية، أبحرت في الشبكة
-        العنكبوتية فتفاجأت بموقع يدعي اكاديمية الجغرافيا التفاعلية يحتوي جميع
-        المعلومات التي تبحث عنها مرفقة بخرائط تفاعلية وتمارين مشوقة.
-        <br />
-        اتأمل الخريطة التفاعلية التالية وأبدي ملاحظاتي:{" "}
-      </Typography>
-      <div>
-        {" "}
-        <MaghrebMap />
-      </div>
-      <Typography
-        variant="h6"
-        sx={{
-          marginTop: "30px",
-
-          textAlign: "right",
-          fontWeight: "bold",
-          color: "#9AC8EB",
-          marginRight: "30px",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
-        نشاط 1: أكمل تعمير الجدول انطلاقا من المعلومات التي اكتشفتها في الخريطة
-        التفاعلية:
-      </Typography>
-      <MontagneTable />
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          direction: "rtl",
-          color: "#9AC8EB",
-          marginRight: "30px",
-          marginTop: "40px",
-          // Active la direction droite à gauche
-        }}
-      >
-        نشاط2: ألاحظ الصور التالية وأحاول تعريف كل من العرق، الحمادة، الهضبة في
-        البطاقات المقدّمة:
-      </Typography>
-      <div style={{ padding: "20px" }}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-          }}
-        >
-          {/* Ligne 1 */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              border: "1px solid #ddd",
-              padding: "10px",
-              borderRadius: "5px",
-            }}
-          >
-            <div style={{ width: "30%" }}>
-              {!showInputs ? (
-                <input
-                  type="text"
-                  placeholder="أدخل إجابتك هنا"
-                  style={{
-                    width: "100%",
-                    color: "green",
-                    padding: "8px",
-                    borderRadius: "4px",
-                    border: "1px solid #ddd",
-                  }}
-                />
-              ) : (
-                <p
-                  style={{
-                    color: "green",
-                    textAlign: "right",
-                    fontWeight: "bold",
-                    direction: "rtl",
-                  }}
-                >
-                  عبارة عن كثبان رملية منبسطة
-                </p>
-              )}
-            </div>
-            <div style={{ width: "30%" }}>
-              <p
-                style={{
-                  textAlign: "right",
-                  fontWeight: "bold",
-                  direction: "rtl",
-                }}
-              >
-                العرق
-              </p>
-            </div>
-            <div style={{ width: "30%" }}>
-              {/* Image pour العرق */}
-              <img
-                src="/assets/fifthcourse/ere9.jpg"
-                alt="العرق"
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
-          </div>
-
-          {/* Ligne 2 */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              border: "1px solid #ddd",
-              padding: "10px",
-              borderRadius: "5px",
-            }}
-          >
-            <div style={{ width: "30%" }}>
-              {!showInputs ? (
-                <input
-                  type="text"
-                  placeholder="أدخل إجابتك هنا"
-                  style={{
-                    width: "100%",
-                    padding: "8px",
-                    borderRadius: "4px",
-                    border: "1px solid #ddd",
-                  }}
-                />
-              ) : (
-                <p
-                  style={{
-                    color: "green",
-                    textAlign: "right",
-                    fontWeight: "bold",
-                    direction: "rtl",
-                  }}
-                >
-                  عبارة عن أسطح مرتفعة أحيانا ومنبسطة أخرى وتتميز بملمسها الصخري
-                </p>
-              )}
-            </div>
-            <div style={{ width: "30%" }}>
-              <p
-                style={{
-                  textAlign: "right",
-                  fontWeight: "bold",
-                  direction: "rtl",
-                }}
-              >
-                الحمادة
-              </p>
-            </div>
-            <div style={{ width: "30%" }}>
-              {/* Image pour الحمادة */}
-              <img
-                src="/assets/fifthcourse/hmeda.jpg"
-                alt="الحمادة"
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
-          </div>
-
-          {/* Ligne 3 */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              border: "1px solid #ddd",
-              padding: "10px",
-              borderRadius: "5px",
-            }}
-          >
-            <div style={{ width: "30%" }}>
-              {!showInputs ? (
-                <input
-                  type="text"
-                  placeholder="أدخل إجابتك هنا"
-                  style={{
-                    width: "100%",
-                    padding: "8px",
-                    borderRadius: "4px",
-                    border: "1px solid #ddd",
-                  }}
-                />
-              ) : (
-                <p
-                  style={{
-                    color: "green",
-                    textAlign: "right",
-                    fontWeight: "bold",
-                    direction: "rtl",
-                  }}
-                >
-                  تضاريس مرتفعة بعض الشيء عن سطح الأرض تمدد الى أن تصل الى تنتهي
-                  بقمم جبال او تلال ويتخللها بعض الأودية التي تكون في الغالب
-                  جافة
-                </p>
-              )}
-            </div>
-
-            <div style={{ width: "30%" }}>
-              <p
-                style={{
-                  textAlign: "right",
-                  fontWeight: "bold",
-                  direction: "rtl",
-                }}
-              >
-                الهضبة
-              </p>
-            </div>
-            <div style={{ width: "30%" }}>
-              {/* Image pour الهضبة */}
-              <img
-                src="/assets/fifthcourse/hadhba.jpg"
-                alt="الهضبة"
-                style={{ width: "100%", height: "auto" }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "20px",
-          marginTop: "20px",
-        }}
-      >
-        <Button
-          sx={{
-            fontSize: "17px",
-            padding: "12px 24px",
-            backgroundColor: "#F6D339",
-            "&:hover": { backgroundColor: "#e6c233" },
-          }}
-          variant="contained"
-          onClick={toggleInputsReset}
-        >
-          إعادة المحاولة
-        </Button>
-        <Button
-          sx={{
-            fontSize: "18px",
-            padding: "12px 24px",
-            backgroundColor: "#60B463",
-            "&:hover": { backgroundColor: "#4fa352" },
-          }}
-          variant="contained"
-          onClick={toggleInputs}
-        >
-          الإصلاح
-        </Button>
-      </div>
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          color: "red",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
-        الاستنتاج :{" "}
-      </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          color: "#9AC8EB",
-          marginRight: "30px",
-          marginTop: "30px",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
-        أواصل تعمير الخارطة الذهنية التالية استنادا الى المعلومات التي تعرفت
-        عليها:
-      </Typography>
-      <Box
-        sx={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          width: "65%",
-          marginLeft: "auto",
-          marginTop: "20px",
-        }}
-      >
-        <img
-          src="/assets/fifthcourse/tadharyse.jpg"
-          alt="  التضاريس في المغرب العربي   "
-          style={{ width: "100%", height: "auto" }}
-        />
-
-        {Object.keys(correctAnswers4).map((key, index) => {
-          const positions = {
-            reason1: { top: "19%", right: "10%" },
-            reason2: { top: "41%", right: "10%" },
-            reason3: { top: "75%", right: "9%" },
-
-            reason5: { top: "43%", right: "63%" },
-            reason6: { top: "80%", right: "49%" },
-            reason7: { top: "84%", right: "80%" },
-
-            reason8: { top: "20%", right: "89%" },
-          };
-
-          return (
-            <Box
-              key={index}
-              sx={{
-                position: "absolute",
-                top: positions[key].top,
-                right: positions[key].right,
-                transform: "translate(50%, -50%)",
-                color: "green",
-                fontSize: "16px",
-                fontWeight: "bold",
-                textAlign: "center",
-                maxWidth: "130px",
-                lineHeight: "1.4",
-              }}
-            >
-              {showAnswers ? (
-                <Typography
-                  sx={{
-                    color: "green",
-                    fontSize: "15px",
-                    fontWeight: "bold",
-                    textAlign: "center",
-                    maxWidth: "150px",
-                    lineHeight: "1.2",
-                  }}
-                >
-                  {correctAnswers4[key]}
-                </Typography>
-              ) : (
-                <TextField
-                  name={key}
-                  variant="standard"
-                  placeholder="............."
-                  value={studentAnswers1[key]}
-                  onChange={(e) =>
-                    setStudentAnswers1({
-                      ...studentAnswers1,
-                      [key]: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    disableUnderline: true,
-                  }}
-                  inputProps={{
-                    style: { textAlign: "right" },
-                    dir: "rtl",
-                  }}
-                  sx={{
-                    width: "90px",
-                    height: "1px",
-                    textAlign: "right",
-                  }}
-                />
-              )}
-            </Box>
-          );
-        })}
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          gap: 3,
-          marginLeft: "700px",
-          textAlign: "right",
-        }}
-      >
-        <Button
-          sx={{
-            fontSize: "17px",
-            padding: "12px 24px",
-            backgroundColor: "#F6D339",
-          }}
-          variant="contained"
-          onClick={resetAllInputs}
-        >
-          إعادة المحاولة
-        </Button>
-        <Button
-          sx={{
-            fontSize: "18px",
-            padding: "12px 24px",
-            backgroundColor: "#60B463",
-          }}
-          variant="contained"
-          onClick={toggleAllAnswers}
-        >
-          الإصلاح
-        </Button>
-      </Box>
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          color: "red",
-          direction: "rtl",
-        }}
-      >
-        الوضعية الاستكشافية:{" "}
-      </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          direction: "rtl",
-        }}
-      >
-        نال برنامج " افريقيا مهد الحضارات العريقة" إعجابك أنت واخوك فدعوتم كل
-        أفراد العائلة لمشاهدته. وقد كانت الحلقة الثانية منه مواصلة للحلقة الأولى
-        لكن تناولت هذه المرة الخصائص المناخية لمنطقة المغرب العربي وتأثيراتها
-        على الغطاء النباتي.
-        <br />
-        فصاح أخوك أحمد متعجبا:{" "}
-        <span style={{ color: "purple" }}>
-          {" "}
-          هل يختلف المناخ من منطقة الى أخرى في المغرب العربي وكيف يؤثر ذلك في
-          الغطاء النباتي يا ترى؟{" "}
-        </span>
-        <br />
-        فقلت:
-        ..................................................................................................{" "}
-      </Typography>
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          color: "red",
-          direction: "rtl",
-        }}
-      >
-        مرحلة رصد التصورات:{" "}
-      </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          direction: "rtl",
-        }}
-      >
-        قم بمساعدة أحمد من خلال الإجابة عن الأسئلة التالية:
-        <br />
-        بما تتميز كميات الأمطار ببلدان المغرب العربي؟
-        <br />
-        كيف يمكن أن يؤثر ذلك على الغطاء النباتي؟
-      </Typography>
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          color: "red",
-          direction: "rtl",
-        }}
-      >
-        التعلم المنهجي:{" "}
-      </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          direction: "rtl",
-        }}
-      >
-        أتـأمل الخريطة التفاعلية التالية ثم أعطي ملاحظاتي:
-      </Typography>
-      <PrecipitationMap />
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          color: "#9AC8EB",
-          marginRight: "30px",
-          marginTop: "100px",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
-        نشاط: أكمل تعمير الجدول التالي بالرجوع الى الخريطة التفاعلية:{" "}
-      </Typography>
-      <PrecipitationTable />
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          marginRight: "30px",
-          marginTop: "30px",
-          direction: "rtl", // Active la direction droite à gauche
-          marginBottom: "10px",
-        }}
-      >
-        ألاحظ خريطة الغطاء النباتي بالمغرب العربي. أعطي ملاحظاتي:
-      </Typography>
-      <VegetationMap />
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          color: "#9AC8EB",
-          marginRight: "30px",
-          marginTop: "30px",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
-        نشاط: أملأ الفراغات بما يناسب
-      </Typography>
-      <NaturalVegetationTable />
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          color: "red",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
-        الاستنتاج:{" "}
-      </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          marginRight: "30px",
-          marginTop: "30px",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
-        أكمل الخريطة الذهنية التالية:
-      </Typography>
-      <Box
-        sx={{
-          position: "relative",
-          display: "flex",
-          justifyContent: "flex-end",
-          alignItems: "center",
-          width: "65%",
-          marginLeft: "auto",
-          marginTop: "20px",
-        }}
-      >
-        <img
-          src="/assets/fifthcourse/ta9es.jpg"
-          alt="   المناخ في المغرب العربي  "
-          style={{ width: "100%", height: "auto" }}
-        />
-
-        {Object.keys(correctAnswers3).map((key, index) => {
-          const positions = {
-            reason1: { top: "9%", right: "61%" },
-            reason2: { top: "15%", right: "58%" },
-            reason3: { top: "56%", right: "16%" },
-            reason4: { top: "66%", right: "7%" },
-
-            reason5: { top: "75%", right: "13%" },
-            reason6: { top: "57%", right: "34%" },
-            reason7: { top: "69%", right: "33%" },
-
-            reason8: { top: "69%", right: "33%" },
-            reason9: { top: "89%", right: "35%" },
-            reason10: { top: "58%", right: "66%" },
-            reason11: { top: "67%", right: "55%" },
-
-            reason12: { top: "66%", right: "91%" },
-            reason13: { top: "70%", right: "83%" },
-            reason14: { top: "70%", right: "91%" },
-
-            reason15: { top: "75%", right: "82%" },
-            reason16: { top: "75%", right: "91%" },
-          };
-
-          return (
-            <Box
-              key={index}
-              sx={{
-                position: "absolute",
-                top: positions[key].top,
-                right: positions[key].right,
-                transform: "translate(50%, -50%)",
-                color: "green",
-                fontSize: "16px",
-                fontWeight: "bold",
-                textAlign: "center",
-                maxWidth: "130px",
-                lineHeight: "1.4",
-              }}
-            >
-              {showAnswers ? (
-                <Typography
-                  sx={{
-                    color: "green",
-                    fontSize: "15px",
-                    fontWeight: "bold",
-                    textAlign: "center",
-                    maxWidth: "150px",
-                    lineHeight: "1.2",
-                  }}
-                >
-                  {correctAnswers3[key]}
-                </Typography>
-              ) : (
-                <TextField
-                  name={key}
-                  variant="standard"
-                  placeholder="............."
-                  value={studentAnswers1[key]}
-                  onChange={(e) =>
-                    setStudentAnswers1({
-                      ...studentAnswers1,
-                      [key]: e.target.value,
-                    })
-                  }
-                  InputProps={{
-                    disableUnderline: true,
-                  }}
-                  inputProps={{
-                    style: { textAlign: "right" },
-                    dir: "rtl",
-                  }}
-                  sx={{
-                    width: "90px",
-                    height: "1px",
-                    textAlign: "right",
-                  }}
-                />
-              )}
-            </Box>
-          );
-        })}
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          gap: 3,
-          marginLeft: "700px",
-          textAlign: "right",
-        }}
-      >
-        <Button
-          sx={{
-            fontSize: "17px",
-            padding: "12px 24px",
-            backgroundColor: "#F6D339",
-          }}
-          variant="contained"
-          onClick={resetAllInputs}
-        >
-          إعادة المحاولة
-        </Button>
-        <Button
-          sx={{
-            fontSize: "18px",
-            padding: "12px 24px",
-            backgroundColor: "#60B463",
-          }}
-          variant="contained"
-          onClick={toggleAllAnswers}
-        >
-          الإصلاح
-        </Button>
-      </Box>
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          mt: 3,
-          marginRight: "30px",
-          color: "red",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
         التدريب:{" "}
       </Typography>
       <Typography
@@ -1809,173 +1552,281 @@ const Course = () => {
         sx={{
           textAlign: "right",
           fontWeight: "bold",
-          marginRight: "30px",
-          marginTop: "30px",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
-        أضع كل قمة جبل في البلد المنتمية اليه:{" "}
-      </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          marginRight: "30px",
-          marginTop: "30px",
-          direction: "rtl",
-          display: "flex",
-          gap: "10px", // espace entre les cadres
-          flexWrap: "wrap", // permet de passer à la ligne si nécessaire
-          justifyContent: "flex-start", // aligne les éléments à droite
-        }}
-      >
-        {words.map((word, index) => (
-          <Box
-            key={index}
-            sx={{
-              border: "2px solid red",
-              padding: "5px 10px",
-              borderRadius: "8px",
-              display: "inline-block",
-            }}
-          >
-            {word}
-          </Box>
-        ))}
-      </Typography>
-      <CountriesTable />
-      <Typography
-        variant="h4"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
           mt: 3,
           marginRight: "30px",
-          color: "red",
           direction: "rtl", // Active la direction droite à gauche
         }}
       >
-        التقييم{" "}
+        أشطب الخطأ:
       </Typography>
-      <Typography
-        variant="h6"
-        sx={{
-          textAlign: "right",
-          fontWeight: "bold",
-          marginRight: "30px",
-          marginTop: "30px",
-          direction: "rtl", // Active la direction droite à gauche
-        }}
-      >
-        اجيب بصواب أو خطأ و أصلح اخطأ ان وجد:
-      </Typography>
-      <div
-        style={{
-          direction: "rtl",
-          fontFamily: "Arial, sans-serif",
-          margin: "20px",
-        }}
-      >
-        <div style={{ marginBottom: "30px" }}>
-          {quizData.map((item, index) => (
-            <div key={index} style={{ marginBottom: "25px" }}>
-              <div
-                style={{
-                  backgroundColor: "#f5f5f5",
-                  padding: "15px",
-                  borderRadius: "5px",
-                  marginBottom: "10px",
-                  fontWeight: "bold",
-                }}
-              >
-                {item.question}
-              </div>
-
-              {showAnswers ? (
-                <div>
-                  <div
-                    style={{
-                      color: "#60B463",
-                      fontWeight: "bold",
-                      margin: "10px 0",
-                    }}
-                  >
-                    الإجابة الصحيحة: {item.correctAnswer}
-                  </div>
-                  {item.correction && (
-                    <div
-                      style={{
-                        color: "#60B463",
-                        fontStyle: "italic",
-                        marginBottom: "15px",
-                      }}
-                    >
-                      {item.correction}
-                    </div>
-                  )}
-                </div>
-              ) : (
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <input
-                    type="text"
-                    value={userAnswers[index]}
-                    onChange={(e) => handleAnswerChange(index, e.target.value)}
-                    style={{
-                      width: "100px",
-                      padding: "10px",
-                      border: "1px solid #ddd",
-                      borderRadius: "4px",
-                      textAlign: "center",
-                      fontSize: "16px",
-                    }}
-                    placeholder="................"
-                  />
-                  <span style={{ fontSize: "14px", color: "#666" }}>
-                    (صواب/خطا)
-                  </span>
-                </div>
-              )}
-            </div>
-          ))}
-        </div>
-
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: "20px",
-            marginTop: "20px",
+      <Box sx={{ direction: "rtl", p: 3 }}>
+        <Typography
+          variant="h6"
+          sx={{
+            textAlign: "right",
+            fontWeight: "bold",
+            marginRight: "30px",
+            lineHeight: 2,
           }}
         >
+          {/* Première phrase */}
+          <span
+            style={{
+              backgroundColor: showCorrections ? "red" : "transparent",
+              padding: "2px 5px",
+              borderRadius: "3px",
+            }}
+          >
+            يوجد المغرب العربي في جنوب افريقيا
+          </span>
+          <br />
+          {/* Deuxième phrase (toujours normale) */}
+          يوجد المغرب العربي غرب الوطن العربي
+          <br />
+          {/* Troisième phrase */}
+          <span
+            style={{
+              backgroundColor: showCorrections ? "red" : "transparent",
+              padding: "2px 5px",
+              borderRadius: "3px",
+            }}
+          >
+            مساحة المغرب العربي تساوي نصف مساحة افريقيا
+          </span>
+        </Typography>
+
+        <Box sx={{ display: "flex", justifyContent: "center", gap: 2, mt: 3 }}>
           <Button
+            variant="contained"
+            onClick={handleReset}
             sx={{
               fontSize: "17px",
               padding: "12px 24px",
               backgroundColor: "#F6D339",
-              "&:hover": { backgroundColor: "#e6c233" },
             }}
-            variant="contained"
-            onClick={resetAll1}
           >
             إعادة المحاولة
           </Button>
           <Button
+            variant="contained"
+            onClick={handleCorrection}
             sx={{
               fontSize: "18px",
               padding: "12px 24px",
               backgroundColor: "#60B463",
-              "&:hover": { backgroundColor: "#4fa352" },
             }}
-            variant="contained"
-            onClick={toggleAnswers}
           >
             الإصلاح
           </Button>
-        </div>
-      </div>
+        </Box>
+      </Box>
+      <div
+              style={{
+                maxWidth: "1000px",
+                direction: "rtl",
+                fontFamily: "Arial, sans-serif",
+                margin: "0 auto",
+                padding: "20px",
+                position: "relative",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  position: "relative",
+                  minHeight: "300px",
+                  gap: "100px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <div
+                  style={{
+                    width: "200px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  {columns[0].map((item, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        padding: "15px",
+                        margin: "10px 0",
+                        backgroundColor: "#f8f9fa",
+                        borderRadius: "8px",
+                        textAlign: "center",
+                        width: "100%",
+                      }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+      
+                <div
+                  style={{
+                    width: "200px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  {columns[1].map((item, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        padding: "15px",
+                        margin: "10px 0",
+                        backgroundColor: "#f8f9fa",
+                        borderRadius: "8px",
+                        textAlign: "center",
+                        width: "100%",
+                      }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+      
+                <div
+                  style={{
+                    width: "200px",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  {columns[2].map((item, index) => (
+                    <div
+                      key={index}
+                      style={{
+                        padding: "15px",
+                        margin: "10px 0",
+                        backgroundColor: "#f8f9fa",
+                        borderRadius: "8px",
+                        textAlign: "center",
+                        width: "100%",
+                      }}
+                    >
+                      {item}
+                    </div>
+                  ))}
+                </div>
+      
+                <AnimatePresence>
+                  {showArrows && (
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        pointerEvents: "none",
+                      }}
+                    >
+                      {arrowsConfig1.map((arrow, index) => (
+                        <motion.svg
+                          key={`arrow1-${index}`}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          style={{
+                            position: "absolute",
+                            left: "35%",
+                            top: arrow.startY,
+                            transform: `translate(-50%, -50%) rotate(${arrow.angle}deg)`,
+                            overflow: "visible",
+                          }}
+                          width="100"
+                          height="20"
+                          viewBox="0 0 100 20"
+                        >
+                          <path
+                            d={`M0,20 L${arrow.length - 30},20 L${
+                              arrow.length - 40
+                            },5 L${arrow.length},20 L${arrow.length - 40},35 L${
+                              arrow.length - 30
+                            },20`}
+                            fill="#60B463"
+                            stroke="#4a8a4d"
+                            strokeWidth="1"
+                          />
+                        </motion.svg>
+                      ))}
+      
+                      {arrowsConfig2.map((arrow, index) => (
+                        <motion.svg
+                          key={`arrow2-${index}`}
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          style={{
+                            position: "absolute",
+                            left: "75%",
+                            top: arrow.startY,
+                            transform: `translate(-50%, -50%) rotate(${arrow.angle}deg)`,
+                            overflow: "visible",
+                          }}
+                          width="100"
+                          height="20"
+                          viewBox="0 0 100 20"
+                        >
+                          <path
+                            d={`M0,20 L${arrow.length - 30},20 L${
+                              arrow.length - 40
+                            },5 L${arrow.length},20 L${arrow.length - 40},35 L${
+                              arrow.length - 30
+                            },20`}
+                            fill="#60B463"
+                            stroke="#4a8a4d"
+                            strokeWidth="1"
+                          />
+                        </motion.svg>
+                      ))}
+                    </div>
+                  )}
+                </AnimatePresence>
+              </div>
+      
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: "20px",
+                  marginTop: "30px",
+                }}
+              >
+                <Button
+                  sx={{
+                    fontSize: "17px",
+                    padding: "12px 24px",
+                    backgroundColor: "#F6D339",
+                    "&:hover": { backgroundColor: "#e6c233" },
+                    fontWeight: "bold",
+                  }}
+                  variant="contained"
+                  onClick={() => setShowArrows(false)}
+                >
+                  إعادة المحاولة
+                </Button>
+                <Button
+                  sx={{
+                    fontSize: "18px",
+                    padding: "12px 24px",
+                    backgroundColor: "#60B463",
+                    "&:hover": { backgroundColor: "#4fa352" },
+                    fontWeight: "bold",
+                  }}
+                  variant="contained"
+                  onClick={() => setShowArrows(true)}
+                >
+                  الإصلاح
+                </Button>
+              </div>
+            </div>
     </Container>
   );
 };

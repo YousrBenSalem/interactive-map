@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  NavLink,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import { LayoutDashboard, Book, Globe } from "lucide-react";
 import { Card, CardContent } from "@mui/material";
 import "@mui/material/styles/index.js";
@@ -13,6 +8,10 @@ import SecondCourse from "./SecondCourse.js";
 import ThirdCourse from "./ThirdCourse.js";
 import FourthCourse from "./FourthCourse.js";
 import FifthCourse from "./FifthCourse.js";
+import SixthCourse from "./SixthCourse.js";
+import SeventhCourse from "./SeventhCourse.js"
+
+
 
 const Sidebar = () => {
   const [showCourses, setShowCourses] = useState(false);
@@ -116,7 +115,7 @@ const Sidebar = () => {
               </NavLink>
             </div>
           )}
-          {/* {showCourses && (
+          {showCourses && (
             <div style={dropdownStyle}>
               <NavLink
                 to="/courses/5"
@@ -127,7 +126,31 @@ const Sidebar = () => {
                 درس خصائص المغرب العربي الطبيعية{" "}
               </NavLink>
             </div>
-          )} */}
+          )}
+          {showCourses && (
+            <div style={dropdownStyle}>
+              <NavLink
+                to="/courses/6"
+                style={courseLinkStyle}
+                activeStyle={activeNavLinkStyle}
+              >
+                {" "}
+                درس المغرب العربي: الموقع والمساحة والتقسيم السياسي{" "}
+              </NavLink>
+            </div>
+          )}
+          {showCourses && (
+            <div style={dropdownStyle}>
+              <NavLink
+                to="/courses/7"
+                style={courseLinkStyle}
+                activeStyle={activeNavLinkStyle}
+              >
+                {" "}
+                درس تصميم المدينة {" "}
+              </NavLink>
+            </div>
+          )}
         </div>
 
         {/* Map Button */}
@@ -160,7 +183,7 @@ const navLinkStyle = {
 };
 
 const activeNavLinkStyle = {
-  backgroundColor: "#ddd",
+  backgroundColor: "#ddd"
 };
 
 const dropdownStyle = {
@@ -218,7 +241,9 @@ export default function App() {
             <Route path="/courses/2" element={<SecondCourse />} />
             <Route path="/courses/3" element={<ThirdCourse />} />
             <Route path="/courses/4" element={<FourthCourse />} />
-            {/* <Route path="/courses/5" element={<FifthCourse />} /> */}
+            <Route path="/courses/5" element={<FifthCourse />} />
+            <Route path="/courses/6" element={<SixthCourse />} />
+            <Route path="/courses/7" element={<SeventhCourse />} />
           </Routes>
         </main>
       </div>
@@ -228,23 +253,13 @@ export default function App() {
 
 /* Page Components */
 const Dashboard = () => (
-  <Card>
-    <CardContent style={{ padding: "20px" }}>لوحة التحكم الرئيسية</CardContent>
-  </Card>
+  <Card><CardContent style={{ padding: "20px" }}>لوحة التحكم الرئيسية</CardContent></Card>
 );
 
 const Courses = () => (
-  <Card>
-    <CardContent style={{ padding: "20px" }}>
-      صفحة الدورات الجغرافية
-    </CardContent>
-  </Card>
+  <Card><CardContent style={{ padding: "20px" }}>صفحة الدورات الجغرافية</CardContent></Card>
 );
 
 const Map = () => (
-  <Card>
-    <CardContent style={{ padding: "20px" }}>
-      صفحة الخريطة التفاعلية
-    </CardContent>
-  </Card>
+  <Card><CardContent style={{ padding: "20px" }}>صفحة الخريطة التفاعلية</CardContent></Card>
 );
