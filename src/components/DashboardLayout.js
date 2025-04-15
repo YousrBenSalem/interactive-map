@@ -15,6 +15,7 @@ import SeventhCourse from "./SeventhCourse.js"
 
 const Sidebar = () => {
   const [showCourses, setShowCourses] = useState(false);
+  const [showCourses1, setShowCourses1] = useState(false);
 
   return (
     <div
@@ -54,6 +55,49 @@ const Sidebar = () => {
         {/* Courses Button with Toggle List */}
         <div style={{ width: "100%" }}>
           <button
+            onClick={() => setShowCourses1(!showCourses1)}
+            style={{
+              ...navLinkStyle,
+              backgroundColor: "#dce3de",
+              border: "1px solid #ccc",
+              cursor: "pointer",
+              display: "flex",
+              justifyContent: "right",
+              width: "100%",
+            }}
+          >
+            <Book /> <span>دورات السنة الخامسة</span>
+          </button>
+          {/* Course List - Shows Only When Button is Clicked */}
+
+          {showCourses1 && (
+            <div style={dropdownStyle}>
+              <NavLink
+                to="/courses/4"
+                style={courseLinkStyle}
+                activeStyle={activeNavLinkStyle}
+              >
+                {" "}
+                درس القارات و المحيطات و الوحدات التضارسية الكبرى
+              </NavLink>
+            </div>
+          )}
+
+          {showCourses1 && (
+            <div style={dropdownStyle}>
+              <NavLink
+                to="/courses/7"
+                style={courseLinkStyle}
+                activeStyle={activeNavLinkStyle}
+              >
+                {" "}
+                درس تصميم المدينة{" "}
+              </NavLink>
+            </div>
+          )}
+        </div>
+        <div style={{ width: "100%" }}>
+          <button
             onClick={() => setShowCourses(!showCourses)}
             style={{
               ...navLinkStyle,
@@ -65,7 +109,7 @@ const Sidebar = () => {
               width: "100%",
             }}
           >
-            <Book /> <span>الدورات</span>
+            <Book /> <span>دورات السنة السادسة</span>
           </button>
           {/* Course List - Shows Only When Button is Clicked */}
           {showCourses && (
@@ -103,18 +147,7 @@ const Sidebar = () => {
             </div>
           )}
 
-          {showCourses && (
-            <div style={dropdownStyle}>
-              <NavLink
-                to="/courses/4"
-                style={courseLinkStyle}
-                activeStyle={activeNavLinkStyle}
-              >
-                {" "}
-                درس القارات و المحيطات و الوحدات التضارسية الكبرى
-              </NavLink>
-            </div>
-          )}
+      
           {showCourses && (
             <div style={dropdownStyle}>
               <NavLink
@@ -139,18 +172,7 @@ const Sidebar = () => {
               </NavLink>
             </div>
           )}
-          {showCourses && (
-            <div style={dropdownStyle}>
-              <NavLink
-                to="/courses/7"
-                style={courseLinkStyle}
-                activeStyle={activeNavLinkStyle}
-              >
-                {" "}
-                درس تصميم المدينة {" "}
-              </NavLink>
-            </div>
-          )}
+    
         </div>
 
         {/* Map Button */}
