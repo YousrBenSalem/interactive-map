@@ -191,6 +191,9 @@ const Course = () => {
   };
 
   const [showAnswers, setShowAnswers] = useState({});
+  const [showAnswersImage1, setShowAnswersImage1] = useState(false);
+    const [showAnswersImage2, setShowAnswersImage2] = useState(false);
+    
   const [showArrows, setShowArrows] = useState(false);
   // État pour suivre quelles réponses sont visibles
   const [visibleAnswers, setVisibleAnswers] = useState({});
@@ -282,18 +285,20 @@ const Course = () => {
     reason7: "",
   });
   const correctAnswers1 = {
-    reason1: "  المحيط المتجمد الشمالي أو المحيط الأركتيكي    ",
-    reason2: "  المحيط الأطلسي     ",
-    reason3: "  المحيط الهندي   ",
-    reason4: " المحيط الهادي   ",
+    reason1: "باب الديوان",
+    reason2: " باب القصبة ",
+    reason3: "باب الجبلي ",
+    reason4: "  باب الغربي   ",
+    reason5: "باب الشرقي",
+    reason6: "باب الجلولي",
+    reason7: "مدخل القصر ",
+    reason8: "مدخل برج النار ",
   };
   const correctAnswers2 = {
-    reason1: " البحر الأصفر  ",
-    reason2: " البحر المتوسط ",
-    reason3: "  بحر الشمال ",
-    reason4: " بحر العرب  ",
-    reason5: " البحر الأحمر ",
-    reason6: "البحر الميت ",
+    reason1: "المعالم التاريخية: القصبة و المدرسة العباسية",
+    reason2: " معالم سكنية: المنازل ",
+    reason3: " معالم اقتصادية: الأسواق",
+    reason4: " معالم دينية : جوامع و زوايا    ",
   };
   const correctAnswers3 = {
     reason1: " إفريقيا  ",
@@ -350,7 +355,12 @@ const Course = () => {
   const toggleAllAnswers = () => {
     setShowAnswers((prev) => !prev);
   };
-
+    const toggleAllAnswersImage1 = () => {
+      setShowAnswersImage1((prev) => !prev);
+    };
+    const toggleAllAnswersImage2 = () => {
+      setShowAnswersImage2((prev) => !prev);
+    };
   // Reset all inputs and hide answers
   const resetAllInputs = () => {
     setStudentAnswers({
@@ -371,7 +381,45 @@ const Course = () => {
     });
     setShowAnswers(false);
   };
-
+    const resetAllInputsImage1 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswersImage1(false);
+    };
+    const resetAllInputsImage2 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswersImage2(false);
+    };
+    
   const toggleAnswer = (questionName) => {
     setShowAnswers((prev) => ({
       ...prev,
@@ -1940,77 +1988,128 @@ const Course = () => {
       >
         سؤال عدد 3 :ما هي المداخل التي توجد في سور المدينة العتيقة؟ اذكرها :
       </Typography>
-      <div className="MuiBox-root css-1c2mhw6">
-        <Box
-          sx={{
-            textAlign: "right",
-            marginTop: "10px",
-            fontSize: "18px",
-            direction: "rtl",
-          }}
-        >
-          <span>
-            {showAnswers ? (
-              <Box
-                sx={{
-                  position: "relative",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  margin: "0 auto",
-                  textAlign: "center",
-                }}
-              >
-                <img
-                  src="/assets/seventhcourse/port.jpg"
-                  alt=" أبواب"
-                  style={{
-                    maxWidth: "100%", // pour éviter le débordement
-                    height: "auto",
-                    display: "block",
+
+      <Box
+        sx={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          width: "65%",
+          marginLeft: "auto",
+        }}
+      >
+        <img
+          src="/assets/seventhcourse/port.jpg"
+          alt=" أبواب"
+          style={{ width: "100%", height: "auto" }}
+        />
+
+        {Object.keys(correctAnswers1).map((key, index) => {
+          const positions = {
+            reason1: { top: "72%", right: "9%" },
+            reason2: { top: "72%", right: "21%" },
+            reason3: { top: "72%", right: "32%" },
+
+            reason4: { top: "72%", right: "44%" },
+            reason5: { top: "72%", right: "56%" },
+            reason6: { top: "72%", right: "68%" },
+            reason7: { top: "72%", right: "80%" },
+
+            reason8: { top: "72%", right: "92%" },
+          };
+
+          return (
+            <Box
+              key={index}
+              sx={{
+                position: "absolute",
+                top: positions[key].top,
+                right: positions[key].right,
+                transform: "translate(50%, -50%)",
+                color: "green",
+                fontSize: "16px",
+                fontWeight: "bold",
+                textAlign: "center",
+                maxWidth: "120px",
+                lineHeight: "1.4",
+              }}
+            >
+              {showAnswersImage1 ? (
+                <Typography
+                  sx={{
+                    color: "green",
+                    fontSize: "15px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    maxWidth: "120px",
+                    lineHeight: "1.2",
+                  }}
+                >
+                  {correctAnswers1[key]}
+                </Typography>
+              ) : (
+                <TextField
+                  name={key}
+                  variant="standard"
+                  placeholder="............."
+                  value={studentAnswers1[key]}
+                  onChange={(e) =>
+                    setStudentAnswers1({
+                      ...studentAnswers1,
+                      [key]: e.target.value,
+                    })
+                  }
+                  InputProps={{
+                    disableUnderline: true,
+                  }}
+                  inputProps={{
+                    style: { textAlign: "right" },
+                    dir: "rtl",
+                  }}
+                  sx={{
+                    width: "90px",
+                    height: "1px",
+                    textAlign: "right",
                   }}
                 />
-              </Box>
-            ) : (
-              <div></div>
-            )}
-          </span>
-
-          {/* Buttons for الاستنتاج Section */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "16px",
-              marginTop: "16px",
-            }}
-          >
-            <Button
-              sx={{
-                fontSize: "17px",
-                padding: "12px 24px",
-                backgroundColor: "#F6D339",
-              }}
-              variant="contained"
-              onClick={resetAllInputs}
-            >
-              إعادة المحاولة
-            </Button>
-            <Button
-              sx={{
-                fontSize: "18px",
-                padding: "12px 24px",
-                backgroundColor: "#60B463",
-                marginLeft: "10px",
-              }}
-              variant="contained"
-              onClick={toggleAllAnswers}
-            >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
-            </Button>
-          </div>
-        </Box>
-      </div>
+              )}
+            </Box>
+          );
+        })}
+      </Box>
+      {/* Single Buttons for the Entire Exercise */}
+      <Box
+        sx={{
+          display: "flex",
+          gap: 3,
+          marginLeft: "700px",
+          textAlign: "right",
+        }}
+      >
+        <Button
+          sx={{
+            fontSize: "17px",
+            padding: "12px 24px",
+            backgroundColor: "#F6D339",
+          }}
+          variant="contained"
+          onClick={resetAllInputsImage1}
+        >
+          إعادة المحاولة
+        </Button>
+        <Button
+          sx={{
+            fontSize: "18px",
+            padding: "12px 24px",
+            backgroundColor: "#60B463",
+          }}
+          variant="contained"
+          onClick={toggleAllAnswersImage1}
+        >
+          الإصلاح
+        </Button>
+      </Box>
 
       <Typography
         variant="h6"
@@ -2026,77 +2125,125 @@ const Course = () => {
       >
         سؤال عدد 4 : ما هي أبرز المعالم الموجودة في مدينة صفاقس العتيقة ؟
       </Typography>
-      <div className="MuiBox-root css-1c2mhw6">
-        <Box
-          sx={{
-            textAlign: "right",
-            marginTop: "10px",
-            fontSize: "18px",
-            direction: "rtl",
-          }}
-        >
-          <span>
-            {showAnswers ? (
-              <Box
-                sx={{
-                  position: "relative",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  margin: "0 auto",
-                  textAlign: "center",
-                }}
-              >
-                <img
-                  src="/assets/seventhcourse/ma3alem.jpg"
-                  alt=" المعالم "
-                  style={{
-                    maxWidth: "100%", // pour éviter le débordement
-                    height: "auto",
-                    display: "block",
+
+      {/* Image with Overlay */}
+      <Box
+        sx={{
+          position: "relative",
+          display: "flex",
+          justifyContent: "flex-end",
+          alignItems: "center",
+          width: "65%",
+          marginLeft: "auto",
+          marginTop: "25px",
+        }}
+      >
+        <img
+          src="/assets/seventhcourse/ma3alem.jpg"
+          alt=" المعالم "
+          style={{ width: "100%", height: "auto" }}
+        />
+
+        {Object.keys(correctAnswers2).map((key, index) => {
+          const positions = {
+            reason1: { top: "65%", right: "16%" },
+            reason2: { top: "65%", right: "39%" },
+            reason3: { top: "65%", right: "60%" },
+            reason4: { top: "65%", right: "84%" },
+          
+          };
+
+          return (
+            <Box
+              key={index}
+              sx={{
+                position: "absolute",
+                top: positions[key].top,
+                right: positions[key].right,
+                transform: "translate(50%, -50%)",
+                color: "green",
+                fontSize: "16px",
+                fontWeight: "bold",
+                textAlign: "center",
+                maxWidth: "120px",
+                lineHeight: "1.4",
+              }}
+            >
+              {showAnswersImage2 ? (
+                <Typography
+                  sx={{
+                    color: "green",
+                    fontSize: "15px",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    maxWidth: "120px",
+                    lineHeight: "1.2",
+                  }}
+                >
+                  {correctAnswers2[key]}
+                </Typography>
+              ) : (
+                <TextField
+                  name={key}
+                  variant="standard"
+                  placeholder="............."
+                  value={studentAnswers1[key]}
+                  onChange={(e) =>
+                    setStudentAnswers1({
+                      ...studentAnswers1,
+                      [key]: e.target.value,
+                    })
+                  }
+                  InputProps={{
+                    disableUnderline: true,
+                  }}
+                  inputProps={{
+                    style: { textAlign: "right" },
+                    dir: "rtl",
+                  }}
+                  sx={{
+                    width: "90px",
+                    height: "1px",
+                    textAlign: "right",
                   }}
                 />
-              </Box>
-            ) : (
-              <div></div>
-            )}
-          </span>
-
-          {/* Buttons for الاستنتاج Section */}
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              gap: "16px",
-              marginTop: "16px",
-            }}
-          >
-            <Button
-              sx={{
-                fontSize: "17px",
-                padding: "12px 24px",
-                backgroundColor: "#F6D339",
-              }}
-              variant="contained"
-              onClick={resetAllInputs}
-            >
-              إعادة المحاولة
-            </Button>
-            <Button
-              sx={{
-                fontSize: "18px",
-                padding: "12px 24px",
-                backgroundColor: "#60B463",
-                marginLeft: "10px",
-              }}
-              variant="contained"
-              onClick={toggleAllAnswers}
-            >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
-            </Button>
-          </div>
-        </Box>
-      </div>
+              )}
+            </Box>
+          );
+        })}
+      </Box>
+      {/* Single Buttons for the Entire Exercise */}
+      <Box
+        sx={{
+          display: "flex",
+          gap: 3,
+          marginLeft: "700px",
+          textAlign: "right",
+        }}
+      >
+        <Button
+          sx={{
+            fontSize: "17px",
+            padding: "12px 24px",
+            backgroundColor: "#F6D339",
+          }}
+          variant="contained"
+          onClick={resetAllInputsImage2}
+        >
+          إعادة المحاولة
+        </Button>
+        <Button
+          sx={{
+            fontSize: "18px",
+            padding: "12px 24px",
+            backgroundColor: "#60B463",
+          }}
+          variant="contained"
+          onClick={toggleAllAnswersImage2}
+        >
+          الإصلاح
+        </Button>
+      </Box>
       <Typography
         variant="h4"
         sx={{

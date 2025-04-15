@@ -6,6 +6,7 @@ import {
   Popup,
   Marker,
   Rectangle,
+  Polyline,
 } from "react-leaflet";
 import { Button, Paper, Typography, Box } from "@mui/material";
 import "leaflet/dist/leaflet.css";
@@ -35,13 +36,33 @@ const rainIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/4150/4150904.png",
   iconSize: [50, 50],
 });
+// Création des icônes de flèches
+const createRotatedArrowIcon = (color, rotation = 0,length = 30) => {
+  return new L.DivIcon({
+    className: "arrow-icon",
+    html: `
+      <div style="transform: rotate(${rotation}deg); transform-origin: center;">
+        <svg width="50" height="100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 4L12 20M12 20L18 14M12 20L6 14" stroke="${color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    `,
+    iconSize: [30, 30],
+    iconAnchor: [15, 15],
+  });
+};
+
+
+
 const PrecipitationMap = () => {
   const [activeLayers, setActiveLayers] = useState({
     precipitationHigh: false,
     precipitationMedium: false,
     precipitationLow: false,
-    temperatureJuly: false,
-    temperatureJanuary: false,
+    temperature: false, // Modifié ici
+    cherguiWind: false, // رياح الشهيلي (rouge)
+    northwestWind: false, // الرياح الشمالية الغربية (bleu ciel)
+    coldCurrent: false, // تيار بحري بارد (bleu clair)
   });
   const weatherMarkers = {
     low: [
@@ -68,6 +89,62 @@ const PrecipitationMap = () => {
       { position: [16.0, -12.5], icon: rainIcon, country: "Mauritanie" },
     ],
   };
+  // Données pour les flèches
+ const windData = {
+   chergui: [
+     {
+       position: [32.5, -3.0],
+       icon: createRotatedArrowIcon("#FF0000",160),
+       label: "رياح الشهيلي",
+     },
+     {
+       position: [33.0, 4.0],
+       icon: createRotatedArrowIcon("#FF0000", 180),
+       label: "رياح الشهيلي",
+     },
+     {
+       position: [33.0, 9.0],
+       icon: createRotatedArrowIcon("#FF0000", 200),
+       label: "رياح الشهيلي",
+     },
+     {
+       position: [32.0, 14.0],
+       icon: createRotatedArrowIcon("#FF0000", 160),
+       label: "رياح الشهيلي",
+     },
+   ],
+   northwest: [
+     {
+       position: [37.0, -7.0],
+       icon: createRotatedArrowIcon("#00BFFF", -45),
+       label: "الرياح الشمالية الغربية",
+     },
+     {
+       position: [39.5, 9.5],
+       icon: createRotatedArrowIcon("#00BFFF", -30),
+       label: "الرياح الشمالية الغربية",
+     },
+     {
+       position: [39.0, 2.5],
+       icon: createRotatedArrowIcon("#00BFFF", -15),
+       label: "الرياح الشمالية الغربية",
+     },
+     {
+       position: [35.5, 13.0],
+       icon: createRotatedArrowIcon("#00BFFF", -40),
+       label: "الرياح الشمالية الغربية",
+     },
+   ],
+   coldCurrent: [
+     {
+       position: [29.0, -14.0],
+       icon: createRotatedArrowIcon("#1E90FF", 50),
+       label: "تيار بحري بارد",
+     },
+   ],
+ };
+
+
   // Modifier les données de précipitations dans countryData
   const countryData = {
     maroc: {
@@ -1331,24 +1408,45 @@ const PrecipitationMap = () => {
     showJuly,
     showJanuary,
   }) => {
-      if (!position || isNaN(position[0]) || isNaN(position[1])) {
-        console.error("Position invalide :", position);
-        return null; // N'affiche rien si la position est invalide
-      }
-    const barWidth = 0.2;
-    const maxBarHeight = 2; // Hauteur maximale en degrés
+    // Validation des positions
+    if (!position || isNaN(position[0]) || isNaN(position[1])) {
+      console.error("Position invalide :", position);
+      return null;
+    }
 
-    // Normalisation des hauteurs (entre 0 et 1)
-    const julyHeight = maxBarHeight;
-    const januaryHeight = maxBarHeight * (januaryTemp.value / julyTemp.value);
+    // Extraction des valeurs numériques des températures
+    const extractTempValue = (tempStr) => {
+      const match = tempStr.match(/(-?\d+)/);
+      return match ? parseFloat(match[1]) : 0;
+    };
+
+    const julyValue = extractTempValue(julyTemp.value);
+    const januaryValue = extractTempValue(januaryTemp.value);
+
+    // Validation des températures
+    if (isNaN(julyValue) || isNaN(januaryValue)) {
+      console.error("Température invalide", { julyTemp, januaryTemp });
+      return null;
+    }
+
+    const barWidth = 0.3; // Augmentation de la largeur des barres
+    const gapWidth = 0.3; // Espace entre les deux barres
+    const maxBarHeight = 2.0; // Augmentation de la hauteur maximale
+
+    // Calcul des hauteurs normalisées
+    const julyHeight = (julyValue / 50) * maxBarHeight;
+    const januaryHeight = (januaryValue / 50) * maxBarHeight;
 
     return (
       <>
         {showJuly && (
           <Rectangle
             bounds={[
-              [position[0] - julyHeight / 2, position[1] - barWidth],
-              [position[0] + julyHeight / 2, position[1]],
+              [
+                position[0] - julyHeight / 2,
+                position[1] - barWidth - gapWidth / 2,
+              ],
+              [position[0] + julyHeight / 2, position[1] - gapWidth / 2],
             ]}
             pathOptions={{ color: "#E53935", fillOpacity: 0.7 }}
           >
@@ -1356,7 +1454,7 @@ const PrecipitationMap = () => {
               <div style={{ textAlign: "center", direction: "rtl" }}>
                 <strong>{city}</strong>
                 <br />
-                <strong>جويلية:</strong> {julyTemp.value}°C ({julyTemp.percent})
+                <strong>جويلية:</strong> {julyTemp.value} ({julyTemp.percent})
               </div>
             </Popup>
           </Rectangle>
@@ -1365,8 +1463,11 @@ const PrecipitationMap = () => {
         {showJanuary && (
           <Rectangle
             bounds={[
-              [position[0] - januaryHeight / 2, position[1]],
-              [position[0] + januaryHeight / 2, position[1] + barWidth],
+              [position[0] - januaryHeight / 2, position[1] + gapWidth / 2],
+              [
+                position[0] + januaryHeight / 2,
+                position[1] + barWidth + gapWidth / 2,
+              ],
             ]}
             pathOptions={{ color: "#1E88E5", fillOpacity: 0.7 }}
           >
@@ -1374,7 +1475,7 @@ const PrecipitationMap = () => {
               <div style={{ textAlign: "center", direction: "rtl" }}>
                 <strong>{city}</strong>
                 <br />
-                <strong>جانفي:</strong> {januaryTemp.value}°C (
+                <strong>جانفي:</strong> {januaryTemp.value} (
                 {januaryTemp.percent})
               </div>
             </Popup>
@@ -1384,38 +1485,45 @@ const PrecipitationMap = () => {
     );
   };
 
-const temperatureData = [
-  {
-    position: [31.6, 2.2],
-    city: "بسكرة",
-    julyTemp: { value: "42°C", percent: "100%" },
-    januaryTemp: { value: "10°C", percent: "25%" },
-  },
-  {
-    position: [36.2, 1.5],
-    city: "الجزائر",
-    julyTemp: { value: "38°C", percent: "90%" },
-    januaryTemp: { value: "12°C", percent: "30%" },
-  },
-  {
-    position: [32.0, -6.8],
-    city: "الرباط",
-    julyTemp: { value: "38°C", percent: "90%" },
-    januaryTemp: { value: "12°C", percent: "30%" },
-  },
-  {
-    position: [36.5, 9.4],
-    city: "تونس",
-    julyTemp: { value: "35°C", percent: "85%" },
-    januaryTemp: { value: "15°C", percent: "35%" },
-  },
-  {
-    position: [29.0, -8.0],
-    city: "ورزازات",
-    julyTemp: { value: "40°C", percent: "95%" },
-    januaryTemp: { value: "11°C", percent: "28%" },
-  },
-];
+  const temperatureData = [
+    {
+      position: [31.6, 2.2],
+      city: "بسكرة",
+      julyTemp: { value: "42°C", percent: "100%" },
+      januaryTemp: { value: "10°C", percent: "25%" },
+    },
+    {
+      position: [36.2, 1.5],
+      city: "الجزائر",
+      julyTemp: { value: "38°C", percent: "90%" },
+      januaryTemp: { value: "12°C", percent: "30%" },
+    },
+    {
+      position: [32.0, -6.8],
+      city: "الرباط",
+      julyTemp: { value: "38°C", percent: "90%" },
+      januaryTemp: { value: "12°C", percent: "30%" },
+    },
+    {
+      position: [36.5, 9.4],
+      city: "تونس",
+      julyTemp: { value: "35°C", percent: "85%" },
+      januaryTemp: { value: "15°C", percent: "35%" },
+    },
+    {
+      position: [29.0, -8.0],
+      city: "ورزازات",
+      julyTemp: { value: "40°C", percent: "95%" },
+      januaryTemp: { value: "11°C", percent: "28%" },
+    },
+  ].filter(
+    (item) =>
+      item.position &&
+      !isNaN(item.position[0]) &&
+      !isNaN(item.position[1]) &&
+      item.julyTemp.value &&
+      item.januaryTemp.value
+  );
   const toggleLayer = (layer) => {
     setActiveLayers((prev) => ({ ...prev, [layer]: !prev[layer] }));
   };
@@ -1425,8 +1533,10 @@ const temperatureData = [
       precipitationHigh: false,
       precipitationMedium: false,
       precipitationLow: false,
-      temperatureJuly: false,
-      temperatureJanuary: false,
+      temperature: false,
+      cherguiWind: false,
+      northwestWind: false,
+      coldCurrent: false,
     });
   };
 
@@ -1447,7 +1557,17 @@ const temperatureData = [
         return {};
     }
   };
-
+  // Style CSS pour les flèches
+  const arrowStyle = `
+    .arrow-icon {
+      background: transparent;
+      border: none;
+    }
+    .arrow-icon svg {
+      transform: rotate(var(--rotation)) translate(-50%, -50%);
+      transform-origin: center;
+    }
+  `;
   return (
     <div
       style={{
@@ -1502,27 +1622,46 @@ const temperatureData = [
           </Button>
 
           <Button
-            variant={activeLayers.temperatureJuly ? "contained" : "outlined"}
+            variant={activeLayers.temperature ? "contained" : "outlined"}
             style={{
-              backgroundColor: activeLayers.temperatureJuly
-                ? "#E53935"
-                : "white",
+              backgroundColor: activeLayers.temperature ? "#6a1b9a" : "white",
+              color: activeLayers.temperature ? "white" : "inherit",
             }}
-            onClick={() => toggleLayer("temperatureJuly")}
+            onClick={() => toggleLayer("temperature")}
           >
-            معدل الحرارة في جويلية
+            معدل الحرارة
+          </Button>
+          <Button
+            variant={activeLayers.cherguiWind ? "contained" : "outlined"}
+            style={{
+              backgroundColor: activeLayers.cherguiWind ? "#FF0000" : "white",
+              color: activeLayers.cherguiWind ? "white" : "#FF0000",
+            }}
+            onClick={() => toggleLayer("cherguiWind")}
+          >
+            رياح الشهيلي
           </Button>
 
           <Button
-            variant={activeLayers.temperatureJanuary ? "contained" : "outlined"}
+            variant={activeLayers.northwestWind ? "contained" : "outlined"}
             style={{
-              backgroundColor: activeLayers.temperatureJanuary
-                ? "#1E88E5"
-                : "white",
+              backgroundColor: activeLayers.northwestWind ? "#00BFFF" : "white",
+              color: activeLayers.northwestWind ? "white" : "#00BFFF",
             }}
-            onClick={() => toggleLayer("temperatureJanuary")}
+            onClick={() => toggleLayer("northwestWind")}
           >
-            معدل الحرارة في جانفي
+            الرياح الشمالية الغربية
+          </Button>
+
+          <Button
+            variant={activeLayers.coldCurrent ? "contained" : "outlined"}
+            style={{
+              backgroundColor: activeLayers.coldCurrent ? "#1E90FF" : "white",
+              color: activeLayers.coldCurrent ? "white" : "#1E90FF",
+            }}
+            onClick={() => toggleLayer("coldCurrent")}
+          >
+            تيار بحري بارد
           </Button>
 
           <Button variant="outlined" color="error" onClick={resetMap}>
@@ -1644,30 +1783,51 @@ const temperatureData = [
               ))
             )}
 
-          {activeLayers.temperatureJuly &&
+          {activeLayers.temperature &&
             temperatureData.map((temp, i) => (
               <TemperatureBar
-                key={`july-${i}`}
+                key={`temp-${i}`}
                 position={temp.position}
                 julyTemp={temp.julyTemp}
                 januaryTemp={temp.januaryTemp}
                 city={temp.city}
                 showJuly={true}
-                showJanuary={false}
-              />
-            ))}
-
-          {activeLayers.temperatureJanuary &&
-            temperatureData.map((temp, i) => (
-              <TemperatureBar
-                key={`jan-${i}`}
-                position={temp.position}
-                julyTemp={temp.julyTemp}
-                januaryTemp={temp.januaryTemp}
-                city={temp.city}
-                showJuly={false}
                 showJanuary={true}
               />
+            ))}
+          {/* Affichage des flèches */}
+          {/* Affichage des flèches */}
+          {activeLayers.cherguiWind &&
+            windData.chergui.map((arrow, i) => (
+              <Marker
+                key={`chergui-${i}`}
+                position={arrow.position}
+                icon={arrow.icon}
+              >
+                <Popup>{arrow.label}</Popup>
+              </Marker>
+            ))}
+
+          {activeLayers.northwestWind &&
+            windData.northwest.map((arrow, i) => (
+              <Marker
+                key={`northwest-${i}`}
+                position={arrow.position}
+                icon={arrow.icon}
+              >
+                <Popup>{arrow.label}</Popup>
+              </Marker>
+            ))}
+
+          {activeLayers.coldCurrent &&
+            windData.coldCurrent.map((arrow, i) => (
+              <Marker
+                key={`current-${i}`}
+                position={arrow.position}
+                icon={arrow.icon}
+              >
+                <Popup>{arrow.label}</Popup>
+              </Marker>
             ))}
         </MapContainer>
       </div>

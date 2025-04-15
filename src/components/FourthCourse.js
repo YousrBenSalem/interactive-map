@@ -190,6 +190,13 @@ const Course = () => {
 
   const [showAnswers, setShowAnswers] = useState({});
   const [showArrows, setShowArrows] = useState(false);
+  const [showAnswersImage1, setShowAnswersImage1] = useState(false);
+  const [showAnswersImage2, setShowAnswersImage2] = useState(false);
+  const [showAnswersImage3, setShowAnswersImage3] = useState(false);
+
+  const [studentAnswersImage1, setStudentAnswersImage1] = useState({});
+  const [studentAnswersImage2, setStudentAnswersImage2] = useState({});
+  const [studentAnswersImage3, setStudentAnswersImage3] = useState({});
   // État pour suivre quelles réponses sont visibles
   const [visibleAnswers, setVisibleAnswers] = useState({});
 
@@ -341,6 +348,15 @@ const Course = () => {
   const toggleAllAnswers = () => {
     setShowAnswers((prev) => !prev);
   };
+    const toggleAllAnswersImage1 = () => {
+      setShowAnswersImage1((prev) => !prev);
+    };
+      const toggleAllAnswersImage2 = () => {
+        setShowAnswersImage2((prev) => !prev);
+      };
+        const toggleAllAnswersImage3 = () => {
+          setShowAnswersImage3((prev) => !prev);
+        };
 
   // Reset all inputs and hide answers
   const resetAllInputs = () => {
@@ -362,6 +378,65 @@ const Course = () => {
     });
     setShowAnswers(false);
   };
+    const resetAllInputsImage1 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswersImage1(false);
+    };
+        const resetAllInputsImage2 = () => {
+          setStudentAnswers({
+            reason1: "",
+            reason2: "",
+            reason3: "",
+            reason4: "",
+            reason5: "",
+            reason6: "",
+          });
+          setStudentAnswers1({
+            reason1: "",
+            reason2: "",
+            reason3: "",
+            reason4: "",
+            reason5: "",
+            reason6: "",
+          });
+          setShowAnswersImage2(false);
+        };
+            const resetAllInputsImage3 = () => {
+              setStudentAnswers({
+                reason1: "",
+                reason2: "",
+                reason3: "",
+                reason4: "",
+                reason5: "",
+                reason6: "",
+              });
+              setStudentAnswers1({
+                reason1: "",
+                reason2: "",
+                reason3: "",
+                reason4: "",
+                reason5: "",
+                reason6: "",
+              });
+              setShowAnswersImage3(false);
+            };
+  
+  
 
   const toggleAnswer = (questionName) => {
     setShowAnswers((prev) => ({
@@ -939,7 +1014,7 @@ const Course = () => {
         <br />
         ابدأ اكتشافك الآن!
       </Typography>
-      <div >
+      <div>
         {" "}
         <WorldMap />
       </div>
@@ -948,7 +1023,6 @@ const Course = () => {
       <Typography
         variant="h6"
         sx={{
-
           textAlign: "right",
           fontWeight: "bold",
           color: "#9AC8EB",
@@ -1001,7 +1075,7 @@ const Course = () => {
                 lineHeight: "1.4",
               }}
             >
-              {showAnswers ? (
+              {showAnswersImage1 ? (
                 <Typography
                   sx={{
                     color: "green",
@@ -1060,7 +1134,7 @@ const Course = () => {
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputsImage1}
         >
           إعادة المحاولة
         </Button>
@@ -1071,7 +1145,7 @@ const Course = () => {
             backgroundColor: "#60B463",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswersImage1}
         >
           الإصلاح
         </Button>
@@ -1120,7 +1194,7 @@ const Course = () => {
                 lineHeight: "1.4",
               }}
             >
-              {showAnswers ? (
+              {showAnswersImage2 ? (
                 <Typography
                   sx={{
                     color: "green",
@@ -1179,7 +1253,7 @@ const Course = () => {
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputsImage2}
         >
           إعادة المحاولة
         </Button>
@@ -1190,7 +1264,7 @@ const Course = () => {
             backgroundColor: "#60B463",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswersImage2}
         >
           الإصلاح
         </Button>
@@ -1239,7 +1313,7 @@ const Course = () => {
                 lineHeight: "1.4",
               }}
             >
-              {showAnswers ? (
+              {showAnswersImage3 ? (
                 <Typography
                   sx={{
                     color: "green",
@@ -1298,7 +1372,7 @@ const Course = () => {
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputsImage3}
         >
           إعادة المحاولة
         </Button>
@@ -1309,7 +1383,7 @@ const Course = () => {
             backgroundColor: "#60B463",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswersImage3}
         >
           الإصلاح
         </Button>
@@ -1598,12 +1672,11 @@ const Course = () => {
         </ul>
       </Typography>
       {/* <WorldMap1 /> */}
-      <MaghrebArabeMap/>
+      <MaghrebArabeMap />
       {/* Image with Overlay */}
       <Typography
         variant="h6"
         sx={{
-
           textAlign: "right",
           fontWeight: "bold",
           mt: 3,
@@ -2037,7 +2110,7 @@ const Course = () => {
           textAlign: "right",
           fontWeight: "bold",
           marginRight: "35px",
-          direction: "rtl", // Active la direction droite à gauche
+          direction: "rtl",
         }}
       >
         {questions1.map((q, qIndex) => (
@@ -2075,20 +2148,41 @@ const Course = () => {
           </div>
         ))}
 
-        <Button
-          sx={{
-            fontSize: "18px",
-            mt: "3px",
-            padding: "12px 24px",
-            backgroundColor: "#60B463",
-            "&:hover": { backgroundColor: "#4fa352" },
-            fontWeight: "bold",
-          }}
-          variant="contained"
-          onClick={() => setShowCorrection(true)}
-        >
-          الإصلاح
-        </Button>
+        <Box sx={{ display: "flex", gap: 2, justifyContent: "center" }}>
+          <Button
+            sx={{
+              fontSize: "18px",
+              mt: "3px",
+              padding: "12px 24px",
+              backgroundColor: "#F6D339",
+              "&:hover": { backgroundColor: "#e6c330" },
+              fontWeight: "bold",
+            }}
+            variant="contained"
+            onClick={() => {
+              setShowCorrection(false);
+              // Réinitialiser les sélections si nécessaire
+              setSelectedAnswers({});
+            }}
+          >
+            إعادة المحاولة
+          </Button>
+
+          <Button
+            sx={{
+              fontSize: "18px",
+              mt: "3px",
+              padding: "12px 24px",
+              backgroundColor: "#60B463",
+              "&:hover": { backgroundColor: "#4fa352" },
+              fontWeight: "bold",
+            }}
+            variant="contained"
+            onClick={() => setShowCorrection(true)}
+          >
+            الإصلاح
+          </Button>
+        </Box>
       </Typography>
     </Container>
   );

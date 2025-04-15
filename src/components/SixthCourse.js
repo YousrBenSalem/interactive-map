@@ -1344,56 +1344,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
       >
         نشاط 2: أضع لكل بلد مقدم في الجدول عاصمته وعلمه:
       </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          gap: 3,
-          padding: 2,
-          direction: "rtl",
-        }}
-      >
-        {cities.map((city, index) => (
-          <Box
-            key={index}
-            elevation={3}
-            sx={{
-              padding: 1.5,
-              minWidth: 100,
-              textAlign: "center",
-              color: "white",
-            }}
-          >
-            {/* Cadre vert pour la ville */}
-            <Paper
-              elevation={3}
-              sx={{
-                padding: 1.5,
-                minWidth: 100,
-                textAlign: "center",
-                color: "black",
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                {city.name}
-              </Typography>
-            </Paper>
-
-            {/* Cadre sans bordure pour le drapeau */}
-            <Box
-              component="img"
-              src={city.flag}
-              alt={`Drapeau ${city.name}`}
-              sx={{
-                width: 120,
-                height: 80,
-                marginTop: 3,
-                objectFit: "cover",
-              }}
-            />
-          </Box>
-        ))}
-      </Box>
+    
       <InteractiveCountryTable />
       <Typography
         variant="h4"
