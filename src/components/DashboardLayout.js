@@ -10,6 +10,7 @@ import FourthCourse from "./FourthCourse.js";
 import FifthCourse from "./FifthCourse.js";
 import SixthCourse from "./SixthCourse.js";
 import SeventhCourse from "./SeventhCourse.js"
+import EighthCourse from "./EighthCourse.js"
 
 
 
@@ -147,7 +148,6 @@ const Sidebar = () => {
             </div>
           )}
 
-      
           {showCourses && (
             <div style={dropdownStyle}>
               <NavLink
@@ -172,7 +172,18 @@ const Sidebar = () => {
               </NavLink>
             </div>
           )}
-    
+
+          {showCourses && (
+            <div style={dropdownStyle}>
+              <NavLink
+                to="/courses/8"
+                style={courseLinkStyle}
+                activeStyle={activeNavLinkStyle}
+              >
+                درس  الإنتاج الفلاحي في المجال التونسي و تطوره
+              </NavLink>
+            </div>
+          )}
         </div>
 
         {/* Map Button */}
@@ -266,6 +277,7 @@ export default function App() {
             <Route path="/courses/5" element={<FifthCourse />} />
             <Route path="/courses/6" element={<SixthCourse />} />
             <Route path="/courses/7" element={<SeventhCourse />} />
+            <Route path="/courses/8" element={<EighthCourse />} />
           </Routes>
         </main>
       </div>

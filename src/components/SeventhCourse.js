@@ -732,8 +732,7 @@ const Course = () => {
           }}
         >
           <h2 style={{ fontSize: "20px", fontWeight: "600" }}>
-            {" "}
-            الدرس الرابع : القارات و المحيطات و الوحدات التضارسية الكبرى
+            الدرس الثاني : تصميم المدينة
           </h2>
         </header>
       }
@@ -2150,7 +2149,6 @@ const Course = () => {
             reason2: { top: "65%", right: "39%" },
             reason3: { top: "65%", right: "60%" },
             reason4: { top: "65%", right: "84%" },
-          
           };
 
           return (

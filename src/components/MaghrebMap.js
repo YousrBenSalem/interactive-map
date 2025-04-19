@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -213,23 +213,52 @@ const MaghrebMap = () => {
   const [selectedType, setSelectedType] = useState("");
   //const [selectedPosition, setSelectedPosition] = useState(null);
   const [selectedMontagne, setSelectedMontagne] = useState(null);
-    const [isModalVisible, setIsModalVisible] = useState(false);
-    const [modalContent, setModalContent] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [modalContent, setModalContent] = useState("");
 
-    const descriptions = {
-      سهول: `أنا السهول مناطق منبسطة، لا توجد بي ارتفاعات او انخفاضات كثيرة وانا الأقل انتشارا في المغرب العربي. أظهر في شكل نوعين هما:
+  const descriptions = {
+    سهول: `أنا السهول مناطق منبسطة، لا توجد بي ارتفاعات او انخفاضات كثيرة وانا الأقل انتشارا في المغرب العربي. أظهر في شكل نوعين هما:
 - سهول ساحلية ضيقة كسهل الساحل و سهول الجفارة بالبلاد التونسية
 - سهول داخلية مثل سهول الكاف، الجريد و نفزاوة في تونس و التي تحتوي بعض المنخفضات و الشطوط كشط الجريد.`,
 
-      هضاب: `أنا الهضاب تضاريس مرتفعة بعض الشيء عن سطح الأرض مثال هضاب الظاهر بالجنوب التونسي.`,
+    هضاب: `أنا الهضاب تضاريس مرتفعة بعض الشيء عن سطح الأرض مثال هضاب الظاهر بالجنوب التونسي.`,
 
-      جبال: `أنا الجبال أجزاء مرتفعة جدا عن سطح الأرض مقارنة بالهضاب، أتميّز عموما بجوانب شديدة الإنحدار وقمم شاهقة. وأنا نوعان:
+    جبال: `أنا الجبال أجزاء مرتفعة جدا عن سطح الأرض مقارنة بالهضاب، أتميّز عموما بجوانب شديدة الإنحدار وقمم شاهقة. وأنا نوعان:
 - سلاسل جبلية منعزلة في الشمال تمتد على كامل الجزء الشمالي للمحيط الأطلسي غربا الى غاية الوطن القبلي شرقا وينخفض ارتفاعي من الغرب الى الشرق حيث يصل ارتفاع أعلى قممها الى 4165 م في جبل طوبقال بالمغرب الأقصى و 2328 م بجبل أوراس بالجزائر و 1544م في جبل الشعانبي بتونس
 أتكون أساسا من سلسلتين جبليتين هما:
 * سلسلة جبلية شمالية: تتكون من جبال الريف في المغرب الأقصى وجبال الاطلس التلي في الجزائر وجبال خمير في تونس
 * سلسلة جبلية جنوبية: تتألف من الأطلس الكبير والأطلس المتوسط والأطلس الصغير في المغرب الاقصى والاطلس الصحراوي وجبال أوراس في الجزائر والسلسلة الظهرية في تونس.
 - الكتل الجبلية المنعزلة وهي ترتفع في قلب الصحراء الكبرى و أهمها جبال تيبستي جنوب ليبيا ( أعلى قممها 3450م ) و جبال الهقار جنوب الجزائر ( أعلى قممها 3003م ).`,
-    };
+  };
+  // Fonction pour parler en arabe
+  const speakText = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ar-SA";
+
+    const voices = window.speechSynthesis.getVoices();
+    const arabicVoice = voices.find((voice) => voice.lang.includes("ar"));
+
+    if (arabicVoice) {
+      utterance.voice = arabicVoice;
+    }
+
+    window.speechSynthesis.speak(utterance);
+  };
+  // Effet pour lire automatiquement la description quand la modale s'ouvre
+  useEffect(() => {
+    if (selectedMontagne) {
+      speakText(selectedMontagne.desc);
+    }
+  }, [selectedMontagne]);
+
+  // Effet pour lire automatiquement la description du paysage
+  useEffect(() => {
+    if (isModalVisible && modalContent) {
+      speakText(modalContent);
+    }
+  }, [isModalVisible, modalContent]);
+
+
   const showModal = (description, type) => {
     // Vérifier si le type n'est pas "صحاري"
     if (type !== "صحاري") {
@@ -240,10 +269,14 @@ const MaghrebMap = () => {
 
   const handleOk = () => {
     setIsModalVisible(false);
+        window.speechSynthesis.cancel();
+
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
+        window.speechSynthesis.cancel();
+
   };
   const markersRef = useRef([]);
 
@@ -394,8 +427,14 @@ const MaghrebMap = () => {
           <Modal
             title={selectedMontagne.name}
             visible={!!selectedMontagne}
-            onCancel={() => setSelectedMontagne(null)}
+            onCancel={() => {
+              setSelectedMontagne(null);
+              window.speechSynthesis.cancel();
+            }}
             footer={null}
+            afterOpenChange={(open) => {
+              if (!open) window.speechSynthesis.cancel();
+            }}
           >
             <p style={{ fontSize: "14px", marginTop: "5px", direction: "rtl" }}>
               {selectedMontagne.desc}

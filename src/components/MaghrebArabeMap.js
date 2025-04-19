@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -185,6 +185,27 @@ const MaghrebArabeMap = () => {
   const [selectedMontagne, setSelectedMontagne] = useState(null);
 
   const markersRef = useRef([]);
+  // Fonction pour parler en arabe
+  const speakText = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ar-SA";
+
+    const voices = window.speechSynthesis.getVoices();
+    const arabicVoice = voices.find((voice) => voice.lang.includes("ar"));
+
+    if (arabicVoice) {
+      utterance.voice = arabicVoice;
+    }
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // Effet pour lire automatiquement la description quand la modale s'ouvre
+  useEffect(() => {
+    if (selectedMontagne) {
+      speakText(selectedMontagne.desc);
+    }
+  }, [selectedMontagne]);
 
   return (
     <div style={{ position: "relative" }}>
@@ -332,8 +353,14 @@ const MaghrebArabeMap = () => {
           <Modal
             title={selectedMontagne.name}
             visible={!!selectedMontagne}
-            onCancel={() => setSelectedMontagne(null)}
+            onCancel={() => {
+              setSelectedMontagne(null);
+              window.speechSynthesis.cancel();
+            }}
             footer={null}
+            afterOpenChange={(open) => {
+              if (!open) window.speechSynthesis.cancel();
+            }}
           >
             <p style={{ fontSize: "14px", marginTop: "5px", direction: "rtl" }}>
               {selectedMontagne.desc}

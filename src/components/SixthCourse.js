@@ -752,7 +752,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
         >
           <h2 style={{ fontSize: "20px", fontWeight: "600" }}>
             {" "}
-            الدرس السادس : المغرب العربي: الموقع والمساحة والتقسيم السياسي{" "}
+            الدرس الخامس : المغرب العربي: الموقع والمساحة والتقسيم السياسي{" "}
           </h2>
         </header>
       }
@@ -1344,7 +1344,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
       >
         نشاط 2: أضع لكل بلد مقدم في الجدول عاصمته وعلمه:
       </Typography>
-    
+
       <InteractiveCountryTable />
       <Typography
         variant="h4"
@@ -1572,212 +1572,212 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
         </Box>
       </Box>
       <div
-              style={{
-                maxWidth: "1000px",
-                direction: "rtl",
-                fontFamily: "Arial, sans-serif",
-                margin: "0 auto",
-                padding: "20px",
-                position: "relative",
-              }}
-            >
+        style={{
+          maxWidth: "1000px",
+          direction: "rtl",
+          fontFamily: "Arial, sans-serif",
+          margin: "0 auto",
+          padding: "20px",
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            position: "relative",
+            minHeight: "300px",
+            gap: "100px",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              width: "200px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            {columns[0].map((item, index) => (
               <div
+                key={index}
                 style={{
-                  display: "flex",
-                  position: "relative",
-                  minHeight: "300px",
-                  gap: "100px",
-                  justifyContent: "center",
-                  alignItems: "center",
+                  padding: "15px",
+                  margin: "10px 0",
+                  backgroundColor: "#f8f9fa",
+                  borderRadius: "8px",
+                  textAlign: "center",
+                  width: "100%",
                 }}
               >
-                <div
-                  style={{
-                    width: "200px",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
-                  {columns[0].map((item, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        padding: "15px",
-                        margin: "10px 0",
-                        backgroundColor: "#f8f9fa",
-                        borderRadius: "8px",
-                        textAlign: "center",
-                        width: "100%",
-                      }}
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-      
-                <div
-                  style={{
-                    width: "200px",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
-                  {columns[1].map((item, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        padding: "15px",
-                        margin: "10px 0",
-                        backgroundColor: "#f8f9fa",
-                        borderRadius: "8px",
-                        textAlign: "center",
-                        width: "100%",
-                      }}
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-      
-                <div
-                  style={{
-                    width: "200px",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                  }}
-                >
-                  {columns[2].map((item, index) => (
-                    <div
-                      key={index}
-                      style={{
-                        padding: "15px",
-                        margin: "10px 0",
-                        backgroundColor: "#f8f9fa",
-                        borderRadius: "8px",
-                        textAlign: "center",
-                        width: "100%",
-                      }}
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-      
-                <AnimatePresence>
-                  {showArrows && (
-                    <div
-                      style={{
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        pointerEvents: "none",
-                      }}
-                    >
-                      {arrowsConfig1.map((arrow, index) => (
-                        <motion.svg
-                          key={`arrow1-${index}`}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          style={{
-                            position: "absolute",
-                            left: "35%",
-                            top: arrow.startY,
-                            transform: `translate(-50%, -50%) rotate(${arrow.angle}deg)`,
-                            overflow: "visible",
-                          }}
-                          width="100"
-                          height="20"
-                          viewBox="0 0 100 20"
-                        >
-                          <path
-                            d={`M0,20 L${arrow.length - 30},20 L${
-                              arrow.length - 40
-                            },5 L${arrow.length},20 L${arrow.length - 40},35 L${
-                              arrow.length - 30
-                            },20`}
-                            fill="#60B463"
-                            stroke="#4a8a4d"
-                            strokeWidth="1"
-                          />
-                        </motion.svg>
-                      ))}
-      
-                      {arrowsConfig2.map((arrow, index) => (
-                        <motion.svg
-                          key={`arrow2-${index}`}
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          style={{
-                            position: "absolute",
-                            left: "75%",
-                            top: arrow.startY,
-                            transform: `translate(-50%, -50%) rotate(${arrow.angle}deg)`,
-                            overflow: "visible",
-                          }}
-                          width="100"
-                          height="20"
-                          viewBox="0 0 100 20"
-                        >
-                          <path
-                            d={`M0,20 L${arrow.length - 30},20 L${
-                              arrow.length - 40
-                            },5 L${arrow.length},20 L${arrow.length - 40},35 L${
-                              arrow.length - 30
-                            },20`}
-                            fill="#60B463"
-                            stroke="#4a8a4d"
-                            strokeWidth="1"
-                          />
-                        </motion.svg>
-                      ))}
-                    </div>
-                  )}
-                </AnimatePresence>
+                {item}
               </div>
-      
+            ))}
+          </div>
+
+          <div
+            style={{
+              width: "200px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            {columns[1].map((item, index) => (
               <div
+                key={index}
                 style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: "20px",
-                  marginTop: "30px",
+                  padding: "15px",
+                  margin: "10px 0",
+                  backgroundColor: "#f8f9fa",
+                  borderRadius: "8px",
+                  textAlign: "center",
+                  width: "100%",
                 }}
               >
-                <Button
-                  sx={{
-                    fontSize: "17px",
-                    padding: "12px 24px",
-                    backgroundColor: "#F6D339",
-                    "&:hover": { backgroundColor: "#e6c233" },
-                    fontWeight: "bold",
-                  }}
-                  variant="contained"
-                  onClick={() => setShowArrows(false)}
-                >
-                  إعادة المحاولة
-                </Button>
-                <Button
-                  sx={{
-                    fontSize: "18px",
-                    padding: "12px 24px",
-                    backgroundColor: "#60B463",
-                    "&:hover": { backgroundColor: "#4fa352" },
-                    fontWeight: "bold",
-                  }}
-                  variant="contained"
-                  onClick={() => setShowArrows(true)}
-                >
-                  الإصلاح
-                </Button>
+                {item}
               </div>
-            </div>
+            ))}
+          </div>
+
+          <div
+            style={{
+              width: "200px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            {columns[2].map((item, index) => (
+              <div
+                key={index}
+                style={{
+                  padding: "15px",
+                  margin: "10px 0",
+                  backgroundColor: "#f8f9fa",
+                  borderRadius: "8px",
+                  textAlign: "center",
+                  width: "100%",
+                }}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+
+          <AnimatePresence>
+            {showArrows && (
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  pointerEvents: "none",
+                }}
+              >
+                {arrowsConfig1.map((arrow, index) => (
+                  <motion.svg
+                    key={`arrow1-${index}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    style={{
+                      position: "absolute",
+                      left: "35%",
+                      top: arrow.startY,
+                      transform: `translate(-50%, -50%) rotate(${arrow.angle}deg)`,
+                      overflow: "visible",
+                    }}
+                    width="100"
+                    height="20"
+                    viewBox="0 0 100 20"
+                  >
+                    <path
+                      d={`M0,20 L${arrow.length - 30},20 L${
+                        arrow.length - 40
+                      },5 L${arrow.length},20 L${arrow.length - 40},35 L${
+                        arrow.length - 30
+                      },20`}
+                      fill="#60B463"
+                      stroke="#4a8a4d"
+                      strokeWidth="1"
+                    />
+                  </motion.svg>
+                ))}
+
+                {arrowsConfig2.map((arrow, index) => (
+                  <motion.svg
+                    key={`arrow2-${index}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    style={{
+                      position: "absolute",
+                      left: "75%",
+                      top: arrow.startY,
+                      transform: `translate(-50%, -50%) rotate(${arrow.angle}deg)`,
+                      overflow: "visible",
+                    }}
+                    width="100"
+                    height="20"
+                    viewBox="0 0 100 20"
+                  >
+                    <path
+                      d={`M0,20 L${arrow.length - 30},20 L${
+                        arrow.length - 40
+                      },5 L${arrow.length},20 L${arrow.length - 40},35 L${
+                        arrow.length - 30
+                      },20`}
+                      fill="#60B463"
+                      stroke="#4a8a4d"
+                      strokeWidth="1"
+                    />
+                  </motion.svg>
+                ))}
+              </div>
+            )}
+          </AnimatePresence>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "20px",
+            marginTop: "30px",
+          }}
+        >
+          <Button
+            sx={{
+              fontSize: "17px",
+              padding: "12px 24px",
+              backgroundColor: "#F6D339",
+              "&:hover": { backgroundColor: "#e6c233" },
+              fontWeight: "bold",
+            }}
+            variant="contained"
+            onClick={() => setShowArrows(false)}
+          >
+            إعادة المحاولة
+          </Button>
+          <Button
+            sx={{
+              fontSize: "18px",
+              padding: "12px 24px",
+              backgroundColor: "#60B463",
+              "&:hover": { backgroundColor: "#4fa352" },
+              fontWeight: "bold",
+            }}
+            variant="contained"
+            onClick={() => setShowArrows(true)}
+          >
+            الإصلاح
+          </Button>
+        </div>
+      </div>
     </Container>
   );
 };
