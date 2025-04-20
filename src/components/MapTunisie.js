@@ -574,93 +574,103 @@ const MapTunisie = () => {
   const [activeLayers, setActiveLayers] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeFeatures, setActiveFeatures] = useState([]);
-const showAllMarkers = () => {
-  const allLayers = [
-    ...Object.entries(agricultureData).map(([layer, features]) => ({
-      category: "الزراعات المتعددة",
-      layer,
-      features,
-    })),
-    ...Object.entries(cerealesData).map(([layer, features]) => ({
-      category: "زراعة الحبوب و مردوديتها",
-      layer,
-      features,
-    })),
-    ...Object.entries(filteredHydroData).map(([layer, features]) => ({
-      category: "المظاهر الهيدروغرافي",
-      layer,
-      features,
-    })),
-    ...Object.entries(elevageData).map(([layer, features]) => ({
-      category: "تربية الماشية",
-      layer,
-      features,
-    })),
-  ];
+  const [showAll, setShowAll] = useState(false); // Nouvel état pour suivre si "عرض الكل" est activé
 
-  setActiveLayers(allLayers);
-};
-const handleButtonClick = (category, layer) => {
-  // Vérifie si la couche est déjà active
-  const layerIndex = activeLayers.findIndex((l) => l.layer === layer);
+ const showAllMarkers = () => {
+   if (showAll) {
+     // Si "عرض الكل" est déjà activé, on désactive tout
+     setActiveLayers([]);
+     setShowAll(false);
+   } else {
+     // Sinon, on active tous les marqueurs
+     const allLayers = [
+       ...Object.entries(agricultureData).map(([layer, features]) => ({
+         category: "الزراعات المتعددة",
+         layer,
+         features,
+       })),
+       ...Object.entries(cerealesData).map(([layer, features]) => ({
+         category: "زراعة الحبوب و مردوديتها",
+         layer,
+         features,
+       })),
+       ...Object.entries(filteredHydroData).map(([layer, features]) => ({
+         category: "المظاهر الهيدروغرافي",
+         layer,
+         features,
+       })),
+       ...Object.entries(elevageData).map(([layer, features]) => ({
+         category: "تربية الماشية",
+         layer,
+         features,
+       })),
+     ];
 
-  if (layerIndex >= 0) {
-    // Si la couche est déjà active, on la supprime
-    setActiveLayers((prev) => prev.filter((_, i) => i !== layerIndex));
-  } else {
-    // Sinon, on l'ajoute
-    let features = [];
-    if (category === "الزراعات المتعددة") {
-      features = agricultureData[layer] || [];
-    } else if (category === "زراعة الحبوب و مردوديتها") {
-      features = cerealesData[layer] || [];
-    } else if (category === "المظاهر الهيدروغرافي") {
-      features = filteredHydroData[layer] || [];
-    } else if (category === "تربية الماشية") {
-      features = elevageData[layer] || [];
+     setActiveLayers(allLayers);
+     setShowAll(true);
+   }
+ };
+  const handleButtonClick = (category, layer) => {
+    // Vérifie si la couche est déjà active
+    const layerIndex = activeLayers.findIndex((l) => l.layer === layer);
+
+    if (layerIndex >= 0) {
+      // Si la couche est déjà active, on la supprime
+      setActiveLayers((prev) => prev.filter((_, i) => i !== layerIndex));
+    } else {
+      // Sinon, on l'ajoute
+      let features = [];
+      if (category === "الزراعات المتعددة") {
+        features = agricultureData[layer] || [];
+      } else if (category === "زراعة الحبوب و مردوديتها") {
+        features = cerealesData[layer] || [];
+      } else if (category === "المظاهر الهيدروغرافي") {
+        features = filteredHydroData[layer] || [];
+      } else if (category === "تربية الماشية") {
+        features = elevageData[layer] || [];
+      }
+
+      setActiveLayers((prev) => [...prev, { category, layer, features }]);
     }
+  };
+  const getIconForFeature = (layer) => {
+    // Liste des couches qui doivent avoir des cercles
+    const circleLayers = [
+      "الزياتين",
+      "الخضر",
+      "الكروم",
+      "القوارص",
+      "النخيل",
+      "الغابات",
+      "زراعة الحبوب ذات مردود مرتفع وأنشطة متنوعة",
+      "زراعة الحبوب ذات مردود متوسط وغراسات متنوعة",
+      "زراعة الحبوب ذات مردود غير منتظمة و ذات مردود ضعيف",
+    ];
 
-    setActiveLayers((prev) => [...prev, { category, layer, features }]);
-  }
-};
-const getIconForFeature = (layer) => {
-  // Liste des couches qui doivent avoir des cercles
-  const circleLayers = [
-    "الزياتين",
-    "الخضر",
-    "الكروم",
-    "القوارص",
-    "النخيل",
-    "الغابات",
-    "زراعة الحبوب ذات مردود مرتفع وأنشطة متنوعة",
-    "زراعة الحبوب ذات مردود متوسط وغراسات متنوعة",
-    "زراعة الحبوب ذات مردود غير منتظمة و ذات مردود ضعيف",
-  ];
+    if (circleLayers.includes(layer)) {
+      // Taille différente pour les céréales
+      const size = layer.includes("زراعة الحبوب") ? 80 : 40;
 
-  if (circleLayers.includes(layer)) {
-    // Taille différente pour les céréales
-    const size = layer.includes("زراعة الحبوب") ? 80 : 40;
-
-    return L.divIcon({
-      html: `<div style="background-color: ${buttonColors[layer]}; 
+      return L.divIcon({
+        html: `<div style="background-color: ${buttonColors[layer]}; 
                         width: ${size}px; 
                         height: ${size}px; 
                         border-radius: 50%; 
                         border: 2px solid white"></div>`,
-      className: "custom-div-icon",
-      iconSize: [size, size],
-      iconAnchor: [size / 2, size / 2],
-    });
-  }
+        className: "custom-div-icon",
+        iconSize: [size, size],
+        iconAnchor: [size / 2, size / 2],
+      });
+    }
 
-  // Pour les autres couches, utiliser les icônes normales
-  return new L.Icon({
-    iconUrl: buttonIcons[layer],
-    iconSize: [32, 32],
-    iconAnchor: [16, 16],
-    popupAnchor: [0, -16],
-  });
-};
+    // Pour les autres couches, utiliser les icônes normales
+    return new L.Icon({
+      iconUrl: buttonIcons[layer],
+      iconSize: [32, 32],
+      iconAnchor: [16, 16],
+      popupAnchor: [0, -16],
+    });
+  };
 
   return (
     <div>
@@ -852,11 +862,11 @@ const getIconForFeature = (layer) => {
               className="map-button"
               onClick={showAllMarkers}
               style={{
-                backgroundColor: "#CDDC39",
+                backgroundColor: showAll ? "#F44336" : "#CDDC39", // Couleur différente selon l'état
                 color: "white",
               }}
             >
-              عرض الكل
+              {showAll ? "إخفاء الكل" : "عرض الكل"}
             </button>
           </div>
         </div>

@@ -294,7 +294,14 @@ const TextToSpeech = () => {
 }
 
 const Course = () => {
-  const [showAnswers, setShowAnswers] = useState({});
+  const [showAnswers, setShowAnswers] = useState(false);
+
+  const [showAnswers2, setShowAnswers2] = useState(false);
+  const [showAnswers3, setShowAnswers3] = useState(false);
+  const [showAnswers4, setShowAnswers4] = useState(false);
+    const [showAnswers5, setShowAnswers5] = useState(false);
+    const [showAnswers6, setShowAnswers6] = useState(false);
+      const [showAnswers7, setShowAnswers7] = useState(false);
   const [showArrows, setShowArrows] = useState(false);
   // État pour suivre quelles réponses sont visibles
   const [visibleAnswers, setVisibleAnswers] = useState({});
@@ -412,17 +419,17 @@ const Course = () => {
     reason2:
       " و تدعى بهجرة الأدمغة أو هجرة الكفاءات التي تؤدي إلى نقص في اليد العاملة المؤهلة داخل البلاد مما يؤثر سلبا على الاقتصاد و التطور العلمي  ",
   };
-    const correctAnswers4 = {
-      reason1: "  اكتظاظ المدن",
-      reason2: " توفير مواطن شغل للعاطلين عن العمل",
-      reason3: " كثرة البناء الفوضوي",
-      reason4: " تفاقم المشاكل الاجتماعية (كالسرقة)",
-      reason5: " التمتع بخدمات ذات جودة عالية",
-      reason6: "     هجرة الأدمغة",
-      reason7: " عائدات من العملة الصعبة  ",
-      reason8: " فقدان الروابط الاجتماعية والأسرية     ",
-      reason9: " انخفاض نسب البطالة في تونس     ",
-    };
+  const correctAnswers4 = {
+    reason1: "  اكتظاظ المدن",
+    reason2: " توفير مواطن شغل للعاطلين عن العمل",
+    reason3: " كثرة البناء الفوضوي",
+    reason4: " تفاقم المشاكل الاجتماعية (كالسرقة)",
+    reason5: " التمتع بخدمات ذات جودة عالية",
+    reason6: "     هجرة الأدمغة",
+    reason7: " عائدات من العملة الصعبة  ",
+    reason8: " فقدان الروابط الاجتماعية والأسرية     ",
+    reason9: " انخفاض نسب البطالة في تونس     ",
+  };
 
   // Toggle correct answers for a specific question
   const showCorrectAnswers = (questionId) => {
@@ -448,6 +455,12 @@ const Course = () => {
   const toggleAllAnswers = () => {
     setShowAnswers((prev) => !prev);
   };
+  const toggleAllAnswers3 = () => {
+    setShowAnswers3((prev) => !prev);
+  };
+  const toggleAllAnswers4 = () => {
+    setShowAnswers4((prev) => !prev);
+  };
 
   // Reset all inputs and hide answers
   const resetAllInputs = () => {
@@ -469,7 +482,120 @@ const Course = () => {
     });
     setShowAnswers(false);
   };
-
+  const resetAllInputs2 = () => {
+    setStudentAnswers({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setStudentAnswers1({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setShowAnswers2(false);
+  };
+  const resetAllInputs3 = () => {
+    setStudentAnswers({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setStudentAnswers1({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setShowAnswers3(false);
+  };
+    const resetAllInputs4 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswers4(false);
+    };
+    const resetAllInputs5 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswers5(false);
+    };
+        const resetAllInputs6 = () => {
+          setStudentAnswers({
+            reason1: "",
+            reason2: "",
+            reason3: "",
+            reason4: "",
+            reason5: "",
+            reason6: "",
+          });
+          setStudentAnswers1({
+            reason1: "",
+            reason2: "",
+            reason3: "",
+            reason4: "",
+            reason5: "",
+            reason6: "",
+          });
+          setShowAnswers6(false);
+        };
+            const resetAllInputs7 = () => {
+              setStudentAnswers({
+                reason1: "",
+                reason2: "",
+                reason3: "",
+                reason4: "",
+                reason5: "",
+                reason6: "",
+              });
+              setStudentAnswers1({
+                reason1: "",
+                reason2: "",
+                reason3: "",
+                reason4: "",
+                reason5: "",
+                reason6: "",
+              });
+              setShowAnswers7(false);
+            };
   const toggleAnswer = (questionName) => {
     setShowAnswers((prev) => ({
       ...prev,
@@ -630,12 +756,27 @@ const Course = () => {
   ];
 
   const [resetInputs1, setResetInputs1] = useState(false);
+  const [resetInputs2, setResetInputs2] = useState(false);
+    const [resetInputs5, setResetInputs5] = useState(false);
+      const [resetInputs6, setResetInputs6] = useState(false);
+        const [resetInputs7, setResetInputs7] = useState(false);
 
-  const toggleAllAnswers1 = () => {
-    setShowAnswers(!showAnswers);
-    setResetInputs1(false);
+  const toggleAllAnswers2 = () => {
+    setShowAnswers2(!showAnswers2);
+    setResetInputs2(false);
   };
-
+  const toggleAllAnswers5 = () => {
+    setShowAnswers5(!showAnswers5);
+    setResetInputs5(false);
+  };
+    const toggleAllAnswers6 = () => {
+      setShowAnswers6(!showAnswers6);
+      setResetInputs6(false);
+    };
+      const toggleAllAnswers7 = () => {
+        setShowAnswers7(!showAnswers7);
+        setResetInputs7(false);
+      };
   const resetAllInputs1 = () => {
     setUserInputsFrom(Array(5).fill(""));
     setUserInputsTo(Array(5).fill(""));
@@ -1234,7 +1375,7 @@ const Course = () => {
           sx={{ textAlign: "right", marginTop: "10px", fontSize: "18px" }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers2 ? (
               <span style={{ color: "green", fontWeight: "bold" }}>
                 {correctFillInTheBlanks1.blank11}
               </span>
@@ -1268,7 +1409,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs2}
             >
               إعادة المحاولة
             </Button>
@@ -1280,9 +1421,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers2}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers2["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
@@ -1543,7 +1684,7 @@ const Course = () => {
                 lineHeight: "1.4",
               }}
             >
-              {showAnswers ? (
+              {showAnswers3 ? (
                 <Typography
                   sx={{
                     color: "green",
@@ -1604,7 +1745,7 @@ const Course = () => {
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputs3}
         >
           إعادة المحاولة
         </Button>
@@ -1615,7 +1756,7 @@ const Course = () => {
             backgroundColor: "#60B463",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswers3}
         >
           الإصلاح
         </Button>
@@ -1828,7 +1969,7 @@ const Course = () => {
                 lineHeight: "1.4",
               }}
             >
-              {showAnswers ? (
+              {showAnswers4 ? (
                 <Typography
                   sx={{
                     color: "green",
@@ -1889,7 +2030,7 @@ const Course = () => {
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputs4}
         >
           إعادة المحاولة
         </Button>
@@ -1900,7 +2041,7 @@ const Course = () => {
             backgroundColor: "#60B463",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswers4}
         >
           الإصلاح
         </Button>
@@ -1962,7 +2103,7 @@ const Course = () => {
                 lineHeight: "1.4",
               }}
             >
-              {showAnswers ? (
+              {showAnswers5 ? (
                 <Typography
                   sx={{
                     color: "green",
@@ -2023,7 +2164,7 @@ const Course = () => {
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputs5}
         >
           إعادة المحاولة
         </Button>
@@ -2034,7 +2175,7 @@ const Course = () => {
             backgroundColor: "#60B463",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswers5}
         >
           الإصلاح
         </Button>
@@ -2067,7 +2208,7 @@ const Course = () => {
           sx={{ textAlign: "right", marginTop: "10px", fontSize: "18px" }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers6 ? (
               <span style={{ color: "green", fontWeight: "bold" }}>
                 {correctFillInTheBlanks14.blank11}
               </span>
@@ -2085,7 +2226,7 @@ const Course = () => {
           </span>
           <br />
           <span>
-            {showAnswers ? (
+            {showAnswers6 ? (
               <span style={{ color: "green", fontWeight: "bold" }}>
                 {correctFillInTheBlanks14.blank12}
               </span>
@@ -2103,7 +2244,7 @@ const Course = () => {
           </span>{" "}
           <br />
           <span>
-            {showAnswers ? (
+            {showAnswers6 ? (
               <span style={{ color: "green", fontWeight: "bold" }}>
                 {correctFillInTheBlanks14.blank13}
               </span>
@@ -2135,7 +2276,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs6}
             >
               إعادة المحاولة
             </Button>
@@ -2147,9 +2288,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers6}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers6["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
@@ -2187,7 +2328,7 @@ const Course = () => {
               {" "}
               <span></span> تحدث الهجرة الداخلية عندما ينتقل السكان من
               <span style={{ marginRight: "2px" }}>
-                {showAnswers ? (
+                {showAnswers7 ? (
                   <span style={{ color: "green", fontWeight: "bold" }}>
                     {correctFillInTheBlanks2.blank111}
                   </span>
@@ -2205,7 +2346,7 @@ const Course = () => {
               </span>{" "}
               إلى{" "}
               <span>
-                {showAnswers ? (
+                {showAnswers7 ? (
                   <span style={{ color: "green", fontWeight: "bold" }}>
                     {correctFillInTheBlanks2.blank211}
                   </span>
@@ -2227,7 +2368,7 @@ const Course = () => {
               {" "}
               من أبرز أسباب الهجرة الداخلية في تونس البحث عن
               <span>
-                {showAnswers ? (
+                {showAnswers7 ? (
                   <span style={{ color: "green", fontWeight: "bold" }}>
                     {correctFillInTheBlanks2.blank311}
                   </span>
@@ -2245,7 +2386,7 @@ const Course = () => {
               </span>
               وتحسين{" "}
               <span>
-                {showAnswers ? (
+                {showAnswers7 ? (
                   <span style={{ color: "green", fontWeight: "bold" }}>
                     {correctFillInTheBlanks2.blank321}
                   </span>
@@ -2266,7 +2407,7 @@ const Course = () => {
               {" "}
               الهجرة الخارجية تعني انتقال الأشخاص من تونس إلى
               <span>
-                {showAnswers ? (
+                {showAnswers7 ? (
                   <span style={{ color: "green", fontWeight: "bold" }}>
                     {correctFillInTheBlanks2.blank331}
                   </span>
@@ -2284,7 +2425,7 @@ const Course = () => {
               </span>{" "}
               مثل{" "}
               <span>
-                {showAnswers ? (
+                {showAnswers7 ? (
                   <span style={{ color: "green", fontWeight: "bold" }}>
                     {correctFillInTheBlanks2.blank341}
                   </span>
@@ -2319,7 +2460,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs7}
             >
               إعادة المحاولة
             </Button>
@@ -2331,9 +2472,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers7}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers7["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
