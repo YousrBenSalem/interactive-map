@@ -251,7 +251,10 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
     setSelectedAnswers(newAnswers);
   };
 
-  const [showAnswers, setShowAnswers] = useState({});
+  const [showAnswers, setShowAnswers] = useState(false);
+  const [showAnswers1, setShowAnswers1] = useState(false);
+  const [showAnswers2, setShowAnswers2] = useState(false);
+  const [showAnswers3, setShowAnswers3] = useState(false);
   const [showArrows, setShowArrows] = useState(false);
   // État pour suivre quelles réponses sont visibles
   const [visibleAnswers, setVisibleAnswers] = useState({});
@@ -442,6 +445,44 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
     });
     setShowAnswers(false);
   };
+    const resetAllInputs3 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswers3(false);
+    };
+        const resetAllInputs2 = () => {
+          setStudentAnswers({
+            reason1: "",
+            reason2: "",
+            reason3: "",
+            reason4: "",
+            reason5: "",
+            reason6: "",
+          });
+          setStudentAnswers1({
+            reason1: "",
+            reason2: "",
+            reason3: "",
+            reason4: "",
+            reason5: "",
+            reason6: "",
+          });
+          setShowAnswers2(false);
+        };
 
   const toggleAnswer = (questionName) => {
     setShowAnswers((prev) => ({
@@ -603,11 +644,18 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
   ];
 
   const [resetInputs1, setResetInputs1] = useState(false);
+      const [resetInputs2, setResetInputs2] = useState(false);
+    const [resetInputs3, setResetInputs3] = useState(false);
 
-  const toggleAllAnswers1 = () => {
-    setShowAnswers(!showAnswers);
-    setResetInputs1(false);
+
+  const toggleAllAnswers3 = () => {
+    setShowAnswers3(!showAnswers3);
+    setResetInputs3(false);
   };
+    const toggleAllAnswers2 = () => {
+      setShowAnswers2(!showAnswers2);
+      setResetInputs2(false);
+    };
 
   const resetAllInputs1 = () => {
     setUserInputsFrom(Array(5).fill(""));
@@ -1189,7 +1237,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
       >
         يقع المغرب العربي في{" "}
         <span>
-          {showAnswers ? (
+          {showAnswers2 ? (
             <span style={{ color: "green", fontWeight: "bold" }}>
               {correctFillInTheBlanks.blank1}
             </span>
@@ -1207,7 +1255,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
         </span>{" "}
         القارة{" "}
         <span>
-          {showAnswers ? (
+          {showAnswers2 ? (
             <span style={{ color: "green", fontWeight: "bold" }}>
               {correctFillInTheBlanks.blank2}
             </span>
@@ -1225,7 +1273,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
         </span>{" "}
         ، يحدّه من الشمال{" "}
         <span>
-          {showAnswers ? (
+          {showAnswers2 ? (
             <span style={{ color: "green", fontWeight: "bold" }}>
               {correctFillInTheBlanks.blank3}
             </span>
@@ -1243,7 +1291,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
         </span>{" "}
         ومن الغرب{" "}
         <span>
-          {showAnswers ? (
+          {showAnswers2 ? (
             <span style={{ color: "green", fontWeight: "bold" }}>
               {correctFillInTheBlanks.blank4}
             </span>
@@ -1262,7 +1310,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
         <br />
         ومن الشرق{" "}
         <span>
-          {showAnswers ? (
+          {showAnswers2 ? (
             <span style={{ color: "green", fontWeight: "bold" }}>
               {correctFillInTheBlanks.blank5}
             </span>
@@ -1280,7 +1328,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
         </span>{" "}
         ومن الجنوب
         <span>
-          {showAnswers ? (
+          {showAnswers2 ? (
             <span style={{ color: "green", fontWeight: "bold" }}>
               {correctFillInTheBlanks.blank6}
             </span>
@@ -1313,7 +1361,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputs2}
         >
           إعادة المحاولة
         </Button>
@@ -1325,9 +1373,9 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
             marginLeft: "10px",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswers2}
         >
-          {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+          {showAnswers2["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
         </Button>
       </div>
       <Typography
@@ -1410,7 +1458,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
                 lineHeight: "1.4",
               }}
             >
-              {showAnswers ? (
+              {showAnswers3 ? (
                 <Typography
                   sx={{
                     color: "green",
@@ -1469,7 +1517,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputs3}
         >
           إعادة المحاولة
         </Button>
@@ -1480,7 +1528,7 @@ const words = ["طوبقال", "خمير", "الشعانبي", "أوراس"];
             backgroundColor: "#60B463",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswers3}
         >
           الإصلاح
         </Button>

@@ -41,7 +41,7 @@
     "maplibre-gl": "^5.2.0",
     "motion": "^12.6.2",
     "node-fetch": "^3.3.2",
-    "ol": "^10.4.d0",
+    "ol": "^10.4.0",
     "plotly.js": "^3.0.1",
     "react": "^19.0.0",
     "react-app-rewired": "^2.2.1",

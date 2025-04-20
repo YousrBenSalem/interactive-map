@@ -194,19 +194,20 @@ const Course = () => {
     setSelectedAnswers(newAnswers);
   };
 
-  const [showAnswers, setShowAnswers] = useState({});
-    const [showAnswers1, setShowAnswers1] = useState({});
-      const [showAnswers2, setShowAnswers2] = useState({});
-        const [showAnswers3, setShowAnswers3] = useState({});
-              const [showAnswers4, setShowAnswers4] = useState({});
+  const [showAnswers, setShowAnswers] = useState(false);
+  const [showAnswers1, setShowAnswers1] = useState(false);
+  const [showAnswers2, setShowAnswers2] = useState(false);
+  const [showAnswers3, setShowAnswers3] = useState(false);
+  const [showAnswers4, setShowAnswers4] = useState(false);
+    const [showAnswers5, setShowAnswers5] = useState(false);
+    const [showAnswers10, setShowAnswers10] = useState(false);
   const [showAnswersImage1, setShowAnswersImage1] = useState(false);
-    const [showAnswersImage6, setShowAnswersImage6] = useState(false);
+  const [showAnswersImage6, setShowAnswersImage6] = useState(false);
   const [showAnswersImage2, setShowAnswersImage2] = useState(false);
-    const [showAnswersImage4, setShowAnswersImage4] = useState(false);
-      const [showAnswersImage5, setShowAnswersImage5] = useState(false);
-        const [showAnswersImage7, setShowAnswersImage7] = useState(false);
-            const [showAnswersImage9, setShowAnswersImage9] = useState(false);
-
+  const [showAnswersImage4, setShowAnswersImage4] = useState(false);
+  const [showAnswersImage5, setShowAnswersImage5] = useState(false);
+  const [showAnswersImage7, setShowAnswersImage7] = useState(false);
+  const [showAnswersImage9, setShowAnswersImage9] = useState(false);
 
   const [showArrows, setShowArrows] = useState(false);
   // État pour suivre quelles réponses sont visibles
@@ -216,18 +217,21 @@ const Course = () => {
   const toggleAllAnswersImage3 = () => {
     setShowAnswersImage3((prev) => !prev);
   };
-    const toggleAllAnswersImage9 = () => {
-      setShowAnswersImage9((prev) => !prev);
+  const toggleAllAnswersImage9 = () => {
+    setShowAnswersImage9((prev) => !prev);
+  };
+    const toggleAllAnswersImage10 = () => {
+      setShowAnswersImage10((prev) => !prev);
     };
-    const toggleAllAnswersImage7 = () => {
-      setShowAnswersImage7((prev) => !prev);
-    };
-    const toggleAllAnswersImage6 = () => {
-      setShowAnswersImage6((prev) => !prev);
-    };
-    const toggleAllAnswersImage4 = () => {
-      setShowAnswersImage4((prev) => !prev);
-    };
+  const toggleAllAnswersImage7 = () => {
+    setShowAnswersImage7((prev) => !prev);
+  };
+  const toggleAllAnswersImage6 = () => {
+    setShowAnswersImage6((prev) => !prev);
+  };
+  const toggleAllAnswersImage4 = () => {
+    setShowAnswersImage4((prev) => !prev);
+  };
   const toggleAnswer1 = (id) => {
     setVisibleAnswers((prev) => ({
       ...prev,
@@ -290,7 +294,7 @@ const Course = () => {
     { angle: 155, startY: "53%", length: 260 },
     { angle: 215, startY: "50%", length: 350 },
     { angle: 210, startY: "66%", length: 280 },
-    { angle: 220, startY: "76%", length:370 },
+    { angle: 220, startY: "76%", length: 370 },
   ];
 
   const [studentAnswers, setStudentAnswers] = useState({
@@ -329,82 +333,82 @@ const Course = () => {
     });
     setShowAnswersImage3(false);
   };
-    const resetAllInputsImage9 = () => {
-      setStudentAnswers({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setStudentAnswers1({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setShowAnswersImage9(false);
-    };
-    const resetAllInputsImage7 = () => {
-      setStudentAnswers({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setStudentAnswers1({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setShowAnswersImage7(false);
-    };
-    const resetAllInputsImage5 = () => {
-      setStudentAnswers({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setStudentAnswers1({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setShowAnswersImage5(false);
-    };
-    const resetAllInputsImage4 = () => {
-      setStudentAnswers({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setStudentAnswers1({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setShowAnswersImage4(false);
-    };
+  const resetAllInputsImage9 = () => {
+    setStudentAnswers({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setStudentAnswers1({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setShowAnswersImage9(false);
+  };
+  const resetAllInputsImage7 = () => {
+    setStudentAnswers({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setStudentAnswers1({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setShowAnswersImage7(false);
+  };
+  const resetAllInputsImage5 = () => {
+    setStudentAnswers({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setStudentAnswers1({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setShowAnswersImage5(false);
+  };
+  const resetAllInputsImage4 = () => {
+    setStudentAnswers({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setStudentAnswers1({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setShowAnswersImage4(false);
+  };
   const resetInput = (questionName) => {
     setInputVisible((prev) => ({
       ...prev,
@@ -446,40 +450,38 @@ const Course = () => {
     reason3: " تريتيكال ",
     reason4: " قمح لين ",
   };
-    const correctAnswers5 = {
-      reason1: " احترام  فترات الراحة البيولوجية لحماية الثروة السمكية. ",
-      reason2: "  امتداد السواحل ",
-      reason3: " امتداد الجرف القاري  ",
-      reason4: "تقديم الدعم المالي للصيادين لشراء المراكب",
-      reason5: "استخدام أساليب حديثة لتربية الأسماك في الأحواض",
-    };
+  const correctAnswers5 = {
+    reason1: " احترام  فترات الراحة البيولوجية لحماية الثروة السمكية. ",
+    reason2: "  امتداد السواحل ",
+    reason3: " امتداد الجرف القاري  ",
+    reason4: "تقديم الدعم المالي للصيادين لشراء المراكب",
+    reason5: "استخدام أساليب حديثة لتربية الأسماك في الأحواض",
+  };
 
-        const correctAnswers9 = {
-          reason1:
-            "العوامل المناخية مثل الجفاف أو الأمطار تؤثر بشكل كبير على المحاصيل. ",
-          reason2:
-            " التربة والموارد الطبيعية مثل خصوبة التربة التي تؤثر في الإنتاج.",
-          reason3: " الأساليب الزراعية والتقنيات المستخدمة في الزراعة. ",
-        
-        };
-        const correctAnswers6 = {
-          reason1:
-            " انخفض إنتاج اللحوم الحمراء من الأغنام بنسبة تراجع قدرها 3.5%.   ",
-          reason2:
-            "زيادة في إنتاج اللحوم البيضاء (الدواجن) بنسبة زيادة قدرها 9.5%. نتيجة لزيادة الطلب أو تحسين تقنيات التربية والإنتاج. ",
-          reason3:
-            "  يظهر أن إنتاج اللحوم الأخرى قد شهد زيادة طفيفة بنسبة زيادة بلغت 1.33%. هذا يشير إلى استقرار نسبي في الإنتاج ",
-        };
-                const correctAnswers7 = {
-                  reason1: "الحبوب ",
-                  reason2: "النخيل ",
-                  reason3: " الأسماك ",
-                  reason4: "السواحل ",
-                  reason5: "منطقة الوطن القبلي ",
-                  reason6: " الطماطم والفلفل ",
-                  reason7: "إنتاج اللحوم الحمراء، مثل لحوم الأغنام ",
-                  reason8: " إنتاج اللحوم البيضاء، وخاصة الدواجن. ",
-                };
+  const correctAnswers9 = {
+    reason1:
+      "العوامل المناخية مثل الجفاف أو الأمطار تؤثر بشكل كبير على المحاصيل. ",
+    reason2: " التربة والموارد الطبيعية مثل خصوبة التربة التي تؤثر في الإنتاج.",
+    reason3: " الأساليب الزراعية والتقنيات المستخدمة في الزراعة. ",
+  };
+  const correctAnswers6 = {
+    reason1:
+      " انخفض إنتاج اللحوم الحمراء من الأغنام بنسبة تراجع قدرها 3.5%.   ",
+    reason2:
+      "زيادة في إنتاج اللحوم البيضاء (الدواجن) بنسبة زيادة قدرها 9.5%. نتيجة لزيادة الطلب أو تحسين تقنيات التربية والإنتاج. ",
+    reason3:
+      "  يظهر أن إنتاج اللحوم الأخرى قد شهد زيادة طفيفة بنسبة زيادة بلغت 1.33%. هذا يشير إلى استقرار نسبي في الإنتاج ",
+  };
+  const correctAnswers7 = {
+    reason1: "الحبوب ",
+    reason2: "النخيل ",
+    reason3: " الأسماك ",
+    reason4: "السواحل ",
+    reason5: "منطقة الوطن القبلي ",
+    reason6: " الطماطم والفلفل ",
+    reason7: "إنتاج اللحوم الحمراء، مثل لحوم الأغنام ",
+    reason8: " إنتاج اللحوم البيضاء، وخاصة الدواجن. ",
+  };
 
   // Toggle correct answers for a specific question
   const showCorrectAnswers = (questionId) => {
@@ -505,14 +507,16 @@ const Course = () => {
   const toggleAllAnswers = () => {
     setShowAnswers((prev) => !prev);
   };
+    const toggleAllAnswers5 = () => {
+      setShowAnswers5((prev) => !prev);
+    };
   const toggleAllAnswersImage1 = () => {
     setShowAnswersImage1((prev) => !prev);
   };
 
-
-    const toggleAllAnswersImage5 = () => {
-      setShowAnswersImage5((prev) => !prev);
-    };
+  const toggleAllAnswersImage5 = () => {
+    setShowAnswersImage5((prev) => !prev);
+  };
   const toggleAllAnswersImage2 = () => {
     setShowAnswersImage2((prev) => !prev);
   };
@@ -536,7 +540,26 @@ const Course = () => {
     });
     setShowAnswers(false);
   };
-    const resetAllInputs4 = () => {
+  const resetAllInputs4 = () => {
+    setStudentAnswers({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setStudentAnswers1({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setShowAnswers4(false);
+  };
+    const resetAllInputs5 = () => {
       setStudentAnswers({
         reason1: "",
         reason2: "",
@@ -553,7 +576,26 @@ const Course = () => {
         reason5: "",
         reason6: "",
       });
-      setShowAnswers4(false);
+      setShowAnswers5(false);
+    };
+    const resetAllInputs10 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswers10(false);
     };
   const resetAllInputsImage1 = () => {
     setStudentAnswers({
@@ -574,25 +616,25 @@ const Course = () => {
     });
     setShowAnswersImage1(false);
   };
-    const resetAllInputsImage6 = () => {
-      setStudentAnswers({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setStudentAnswers1({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setShowAnswersImage6(false);
-    };
+  const resetAllInputsImage6 = () => {
+    setStudentAnswers({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setStudentAnswers1({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setShowAnswersImage6(false);
+  };
   const resetAllInputsImage2 = () => {
     setStudentAnswers({
       reason1: "",
@@ -612,7 +654,27 @@ const Course = () => {
     });
     setShowAnswersImage2(false);
   };
+    const resetAllInputsImage10 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswersImage10(false);
+    };
   const [showAnswersImage3, setShowAnswersImage3] = useState(false);
+    const [showAnswersImage10, setShowAnswersImage10] = useState(false);
   const toggleAnswer = (questionName) => {
     setShowAnswers((prev) => ({
       ...prev,
@@ -773,11 +835,16 @@ const Course = () => {
   ];
 
   const [resetInputs1, setResetInputs1] = useState(false);
+    const [resetInputs10, setResetInputs10] = useState(false);
 
   const toggleAllAnswers1 = () => {
     setShowAnswers1(!showAnswers1);
     setResetInputs1(false);
   };
+    const toggleAllAnswers10 = () => {
+      setShowAnswers10(!showAnswers10);
+      setResetInputs10(false);
+    };
   const toggleAllAnswers4 = () => {
     setShowAnswers4(!showAnswers4);
     setResetInputs1(false);
@@ -788,28 +855,28 @@ const Course = () => {
     setShowAnswers1(false);
     setResetInputs1(true);
   };
-    const toggleAllAnswers2 = () => {
-      setShowAnswers2(!showAnswers2);
-      setResetInputs1(false);
-    };
+  const toggleAllAnswers2 = () => {
+    setShowAnswers2(!showAnswers2);
+    setResetInputs1(false);
+  };
 
-    const resetAllInputs2 = () => {
-      setUserInputsFrom(Array(5).fill(""));
-      setUserInputsTo(Array(5).fill(""));
-      setShowAnswers2(false);
-      setResetInputs1(true);
-    };
-      const toggleAllAnswers3 = () => {
-        setShowAnswers3(!showAnswers3);
-        setResetInputs1(false);
-      };
+  const resetAllInputs2 = () => {
+    setUserInputsFrom(Array(5).fill(""));
+    setUserInputsTo(Array(5).fill(""));
+    setShowAnswers2(false);
+    setResetInputs1(true);
+  };
+  const toggleAllAnswers3 = () => {
+    setShowAnswers3(!showAnswers3);
+    setResetInputs1(false);
+  };
 
-      const resetAllInputs3 = () => {
-        setUserInputsFrom(Array(5).fill(""));
-        setUserInputsTo(Array(5).fill(""));
-        setShowAnswers3(false);
-        setResetInputs1(true);
-      };
+  const resetAllInputs3 = () => {
+    setUserInputsFrom(Array(5).fill(""));
+    setUserInputsTo(Array(5).fill(""));
+    setShowAnswers3(false);
+    setResetInputs1(true);
+  };
 
   const handleInputFromChange = (index, value) => {
     const newInputs = [...userInputsFrom];
@@ -830,22 +897,22 @@ const Course = () => {
     blank34: "",
   });
 
-const correctFillInTheBlanks1 = {
-  blank11: (
-    <span>
-      استنادا على الاحصائيات الموجودة في الجدول ، يمكن ملاحظة أن إنتاج الحبوب في
-      تونس شهد تذبذبًا من سنة إلى أخرى. ففي سنة
-      <span style={{ color: "blue" }}> 1999</span>، بلغ إجمالي الإنتاج
-      <span style={{ color: "blue" }}> 1812 طن</span>، ثم انخفض بشكل ملحوظ في
-      سنة
-      <span style={{ color: "blue" }}> 2002</span> ليصل إلى
-      <span style={{ color: "blue" }}> 513,4 طن</span>. ولكن في سنة
-      <span style={{ color: "blue" }}> 2003</span>، ارتفع الإنتاج بشكل كبير
-      ليبلغ
-      <span style={{ color: "blue" }}> 2904,1 طن</span>.
-    </span>
-  ),
-};
+  const correctFillInTheBlanks1 = {
+    blank11: (
+      <span>
+        استنادا على الاحصائيات الموجودة في الجدول ، يمكن ملاحظة أن إنتاج الحبوب
+        في تونس شهد تذبذبًا من سنة إلى أخرى. ففي سنة
+        <span style={{ color: "blue" }}> 1999</span>، بلغ إجمالي الإنتاج
+        <span style={{ color: "blue" }}> 1812 طن</span>، ثم انخفض بشكل ملحوظ في
+        سنة
+        <span style={{ color: "blue" }}> 2002</span> ليصل إلى
+        <span style={{ color: "blue" }}> 513,4 طن</span>. ولكن في سنة
+        <span style={{ color: "blue" }}> 2003</span>، ارتفع الإنتاج بشكل كبير
+        ليبلغ
+        <span style={{ color: "blue" }}> 2904,1 طن</span>.
+      </span>
+    ),
+  };
   const correctFillInTheBlanks14 = {
     blank11:
       "️ توفير فرص عمل في المناطق الداخلية: حتى لا يضطر السكان للانتقال إلى المدن الكبيرة بحثًا عن عمل",
@@ -1434,6 +1501,7 @@ const correctFillInTheBlanks1 = {
                     textAlign: "center",
                     maxWidth: "120px",
                     lineHeight: "1.2",
+                    direction: "rtl",
                   }}
                 >
                   {correctAnswers2[key]}
@@ -1986,7 +2054,7 @@ const correctFillInTheBlanks1 = {
           sx={{ textAlign: "right", marginTop: "10px", fontSize: "18px" }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers10 ? (
               <span style={{ color: "green", fontWeight: "bold" }}>
                 {correctFillInTheBlanks1.blank11}
               </span>
@@ -2020,7 +2088,7 @@ const correctFillInTheBlanks1 = {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs10}
             >
               إعادة المحاولة
             </Button>
@@ -2032,9 +2100,9 @@ const correctFillInTheBlanks1 = {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers10}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers10["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
@@ -2719,7 +2787,7 @@ const correctFillInTheBlanks1 = {
           sx={{ textAlign: "right", marginTop: "10px", fontSize: "18px" }}
         >
           <span>
-            {showAnswers4 ? (
+            {showAnswers5 ? (
               <span style={{ color: "green", fontWeight: "bold" }}>
                 {correctFillInTheBlanks.blank5}
               </span>
@@ -2753,7 +2821,7 @@ const correctFillInTheBlanks1 = {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs4}
+              onClick={resetAllInputs5}
             >
               إعادة المحاولة
             </Button>
@@ -2765,7 +2833,7 @@ const correctFillInTheBlanks1 = {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers4}
+              onClick={toggleAllAnswers5}
             >
               {showAnswers1["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
@@ -2827,7 +2895,7 @@ const correctFillInTheBlanks1 = {
                 lineHeight: "1.4",
               }}
             >
-              {showAnswersImage4 ? (
+              {showAnswersImage10 ? (
                 <Typography
                   sx={{
                     color: "green",
@@ -2887,7 +2955,7 @@ const correctFillInTheBlanks1 = {
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputsImage4}
+          onClick={resetAllInputsImage10}
         >
           إعادة المحاولة
         </Button>
@@ -2898,7 +2966,7 @@ const correctFillInTheBlanks1 = {
             backgroundColor: "#60B463",
           }}
           variant="contained"
-          onClick={toggleAllAnswersImage4}
+          onClick={toggleAllAnswersImage10}
         >
           الإصلاح
         </Button>
@@ -3271,7 +3339,7 @@ const correctFillInTheBlanks1 = {
       >
         سؤال: ضع علامة أمام الإجابة الصحيحة :
       </Typography>
-      <QuizComponent/>
+      <QuizComponent />
     </Container>
   );
 };

@@ -58,7 +58,7 @@ const PrecipitationTable = () => {
                 textAlign: "center",
               }}
             >
-              البلد
+              المنطقة
             </th>
             <th
               style={{
@@ -67,7 +67,7 @@ const PrecipitationTable = () => {
                 textAlign: "center",
               }}
             >
-              مثال لقمة جبل
+              معدل كميات الأمطار
             </th>
             <th
               style={{
@@ -76,7 +76,7 @@ const PrecipitationTable = () => {
                 textAlign: "center",
               }}
             >
-              الارتفاع بحساب المتر{" "}
+              صنف المناخ{" "}
             </th>
           </tr>
         </thead>

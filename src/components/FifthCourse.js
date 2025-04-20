@@ -175,11 +175,18 @@ const Course = () => {
   const toggleAnswers = () => {
     setShowAnswers(!showAnswers);
   };
+    const toggleAnswers3 = () => {
+      setShowAnswers3(!showAnswers3);
+    };
 
   const resetAll1 = () => {
     setShowAnswers(false);
     setUserAnswers(["", "", ""]);
   };
+    const resetAll3 = () => {
+      setShowAnswers3(false);
+      setUserAnswers(["", "", ""]);
+    };
 
   const handleAnswerChange = (index, value) => {
     const newAnswers = [...userAnswers];
@@ -238,7 +245,10 @@ const Course = () => {
     setSelectedAnswers(newAnswers);
   };
 
-  const [showAnswers, setShowAnswers] = useState({});
+  const [showAnswers, setShowAnswers] = useState(false);
+      const [showAnswers2, setShowAnswers2] = useState(false);
+    const [showAnswers3, setShowAnswers3] = useState(false);
+        const [showAnswers4, setShowAnswers4] = useState(false);
   const [showArrows, setShowArrows] = useState(false);
   // État pour suivre quelles réponses sont visibles
   const [visibleAnswers, setVisibleAnswers] = useState({});
@@ -398,7 +408,9 @@ const Course = () => {
   const toggleAllAnswers = () => {
     setShowAnswers((prev) => !prev);
   };
-
+  const toggleAllAnswers2 = () => {
+    setShowAnswers2((prev) => !prev);
+  };
   // Reset all inputs and hide answers
   const resetAllInputs = () => {
     setStudentAnswers({
@@ -419,6 +431,44 @@ const Course = () => {
     });
     setShowAnswers(false);
   };
+    const resetAllInputs2 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswers2(false);
+    };
+        const resetAllInputs4 = () => {
+          setStudentAnswers({
+            reason1: "",
+            reason2: "",
+            reason3: "",
+            reason4: "",
+            reason5: "",
+            reason6: "",
+          });
+          setStudentAnswers1({
+            reason1: "",
+            reason2: "",
+            reason3: "",
+            reason4: "",
+            reason5: "",
+            reason6: "",
+          });
+          setShowAnswers4(false);
+        };
 
   const toggleAnswer = (questionName) => {
     setShowAnswers((prev) => ({
@@ -581,8 +631,8 @@ const Course = () => {
 
   const [resetInputs1, setResetInputs1] = useState(false);
 
-  const toggleAllAnswers1 = () => {
-    setShowAnswers(!showAnswers);
+  const toggleAllAnswers4 = () => {
+    setShowAnswers4(!showAnswers4);
     setResetInputs1(false);
   };
 
@@ -939,7 +989,7 @@ const Course = () => {
                 lineHeight: "1.4",
               }}
             >
-              {showAnswers ? (
+              {showAnswers4 ? (
                 <Typography
                   sx={{
                     color: "green",
@@ -998,7 +1048,7 @@ const Course = () => {
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputs4}
         >
           إعادة المحاولة
         </Button>
@@ -1009,7 +1059,7 @@ const Course = () => {
             backgroundColor: "#60B463",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswers4}
         >
           الإصلاح
         </Button>
@@ -1717,7 +1767,7 @@ const Course = () => {
                 lineHeight: "1.4",
               }}
             >
-              {showAnswers ? (
+              {showAnswers2 ? (
                 <Typography
                   sx={{
                     color: "green",
@@ -1775,7 +1825,7 @@ const Course = () => {
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputs2}
         >
           إعادة المحاولة
         </Button>
@@ -1786,7 +1836,7 @@ const Course = () => {
             backgroundColor: "#60B463",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswers2}
         >
           الإصلاح
         </Button>
@@ -1892,7 +1942,7 @@ const Course = () => {
                 {item.question}
               </div>
 
-              {showAnswers ? (
+              {showAnswers3 ? (
                 <div>
                   <div
                     style={{
@@ -1958,7 +2008,7 @@ const Course = () => {
               "&:hover": { backgroundColor: "#e6c233" },
             }}
             variant="contained"
-            onClick={resetAll1}
+            onClick={resetAll3}
           >
             إعادة المحاولة
           </Button>
@@ -1970,7 +2020,7 @@ const Course = () => {
               "&:hover": { backgroundColor: "#4fa352" },
             }}
             variant="contained"
-            onClick={toggleAnswers}
+            onClick={toggleAnswers3}
           >
             الإصلاح
           </Button>

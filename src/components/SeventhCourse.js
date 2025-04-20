@@ -190,11 +190,29 @@ const Course = () => {
     setSelectedAnswers(newAnswers);
   };
 
-  const [showAnswers, setShowAnswers] = useState({});
+  const [showAnswers, setShowAnswers] = useState(false);
+  const [showAnswers1, setShowAnswers1] = useState(false);
+  const [showAnswers2, setShowAnswers2] = useState(false);
+  const [showAnswers3, setShowAnswers3] = useState(false);
+  const [showAnswers4, setShowAnswers4] = useState(false);
+  const [showAnswers5, setShowAnswers5] = useState(false);
+  const [showAnswers6, setShowAnswers6] = useState(false);
+  const [showAnswers7, setShowAnswers7] = useState(false);
+  const [showAnswers8, setShowAnswers8] = useState(false);
+  const [showAnswers12, setShowAnswers12] = useState(false);
+
+
+
+
+
+
+
   const [showAnswersImage1, setShowAnswersImage1] = useState(false);
     const [showAnswersImage2, setShowAnswersImage2] = useState(false);
     
   const [showArrows, setShowArrows] = useState(false);
+    const [showArrows1, setShowArrows1] = useState(false);
+
   // État pour suivre quelles réponses sont visibles
   const [visibleAnswers, setVisibleAnswers] = useState({});
 
@@ -355,6 +373,12 @@ const Course = () => {
   const toggleAllAnswers = () => {
     setShowAnswers((prev) => !prev);
   };
+    const toggleAllAnswers6 = () => {
+      setShowAnswers6((prev) => !prev);
+    };
+        const toggleAllAnswers12 = () => {
+          setShowAnswers12((prev) => !prev);
+        };
     const toggleAllAnswersImage1 = () => {
       setShowAnswersImage1((prev) => !prev);
     };
@@ -381,6 +405,177 @@ const Course = () => {
     });
     setShowAnswers(false);
   };
+  const resetAllInputs2 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswers2(false);
+    };
+      const resetAllInputs12 = () => {
+        setStudentAnswers({
+          reason1: "",
+          reason2: "",
+          reason3: "",
+          reason4: "",
+          reason5: "",
+          reason6: "",
+        });
+        setStudentAnswers1({
+          reason1: "",
+          reason2: "",
+          reason3: "",
+          reason4: "",
+          reason5: "",
+          reason6: "",
+        });
+        setShowAnswers12(false);
+      };
+  const resetAllInputs3 = () => {
+        setStudentAnswers({
+          reason1: "",
+          reason2: "",
+          reason3: "",
+          reason4: "",
+          reason5: "",
+          reason6: "",
+        });
+        setStudentAnswers1({
+          reason1: "",
+          reason2: "",
+          reason3: "",
+          reason4: "",
+          reason5: "",
+          reason6: "",
+        });
+        setShowAnswers3(false);
+      };
+const resetAllInputs4 = () => {
+          setStudentAnswers({
+            reason1: "",
+            reason2: "",
+            reason3: "",
+            reason4: "",
+            reason5: "",
+            reason6: "",
+          });
+          setStudentAnswers1({
+            reason1: "",
+            reason2: "",
+            reason3: "",
+            reason4: "",
+            reason5: "",
+            reason6: "",
+          });
+          setShowAnswers4(false);
+        };
+const resetAllInputs5 = () => {
+                setStudentAnswers({
+                  reason1: "",
+                  reason2: "",
+                  reason3: "",
+                  reason4: "",
+                  reason5: "",
+                  reason6: "",
+                });
+                setStudentAnswers1({
+                  reason1: "",
+                  reason2: "",
+                  reason3: "",
+                  reason4: "",
+                  reason5: "",
+                  reason6: "",
+                });
+                setShowAnswers5(false);
+              };
+const resetAllInputs6 = () => {
+                      setStudentAnswers({
+                        reason1: "",
+                        reason2: "",
+                        reason3: "",
+                        reason4: "",
+                        reason5: "",
+                        reason6: "",
+                      });
+                      setStudentAnswers1({
+                        reason1: "",
+                        reason2: "",
+                        reason3: "",
+                        reason4: "",
+                        reason5: "",
+                        reason6: "",
+                      });
+                      setShowAnswers6(false);
+                    };
+const resetAllInputs7 = () => {
+                      setStudentAnswers({
+                        reason1: "",
+                        reason2: "",
+                        reason3: "",
+                        reason4: "",
+                        reason5: "",
+                        reason6: "",
+                      });
+                      setStudentAnswers1({
+                        reason1: "",
+                        reason2: "",
+                        reason3: "",
+                        reason4: "",
+                        reason5: "",
+                        reason6: "",
+                      });
+                      setShowAnswers7(false);
+                    };
+                    const resetAllInputs8 = () => {
+                      setStudentAnswers({
+                        reason1: "",
+                        reason2: "",
+                        reason3: "",
+                        reason4: "",
+                        reason5: "",
+                        reason6: "",
+                      });
+                      setStudentAnswers1({
+                        reason1: "",
+                        reason2: "",
+                        reason3: "",
+                        reason4: "",
+                        reason5: "",
+                        reason6: "",
+                      });
+                      setShowAnswers8(false);
+                    };
+    const resetAllInputs10 = () => {
+      setStudentAnswers({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setStudentAnswers1({
+        reason1: "",
+        reason2: "",
+        reason3: "",
+        reason4: "",
+        reason5: "",
+        reason6: "",
+      });
+      setShowAnswers1(false);
+    };
     const resetAllInputsImage1 = () => {
       setStudentAnswers({
         reason1: "",
@@ -580,11 +775,43 @@ const Course = () => {
   ];
 
   const [resetInputs1, setResetInputs1] = useState(false);
+  const [resetInputs2, setResetInputs2] = useState(false);
+    const [resetInputs3, setResetInputs3] = useState(false);
+    const [resetInputs4, setResetInputs4] = useState(false);
+        const [resetInputs5, setResetInputs5] = useState(false);
+        const [resetInputs7, setResetInputs7] = useState(false);
+        const [resetInputs8, setResetInputs8] = useState(false);
 
-  const toggleAllAnswers1 = () => {
-    setShowAnswers(!showAnswers);
-    setResetInputs1(false);
+
+
+  const toggleAllAnswers2 = () => {
+    setShowAnswers2(!showAnswers2);
+    setResetInputs2(false);
   };
+    const toggleAllAnswers4 = () => {
+      setShowAnswers4(!showAnswers4);
+      setResetInputs4(false);
+    };
+        const toggleAllAnswers5 = () => {
+          setShowAnswers5(!showAnswers5);
+          setResetInputs5(false);
+        };
+    const toggleAllAnswers3 = () => {
+      setShowAnswers3(!showAnswers3);
+      setResetInputs3(false);
+    };
+        const toggleAllAnswers7 = () => {
+          setShowAnswers7(!showAnswers7);
+          setResetInputs7(false);
+        };
+            const toggleAllAnswers8 = () => {
+              setShowAnswers8(!showAnswers8);
+              setResetInputs8(false);
+            };
+    const toggleAllAnswers10 = () => {
+      setShowAnswers1(!showAnswers1);
+      setResetInputs1(false);
+    };
 
   const resetAllInputs1 = () => {
     setUserInputsFrom(Array(5).fill(""));
@@ -1127,7 +1354,7 @@ const Course = () => {
           }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers1 ? (
               <span
                 style={{
                   color: "green",
@@ -1167,7 +1394,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs10}
             >
               إعادة المحاولة
             </Button>
@@ -1179,9 +1406,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers10}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers1["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
@@ -1224,7 +1451,7 @@ const Course = () => {
           }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers12 ? (
               <span
                 style={{
                   color: "green",
@@ -1264,7 +1491,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs12}
             >
               إعادة المحاولة
             </Button>
@@ -1276,9 +1503,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers12}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers12["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
@@ -1309,7 +1536,7 @@ const Course = () => {
           }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers2 ? (
               <Box
                 sx={{
                   position: "relative",
@@ -1351,7 +1578,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs2}
             >
               إعادة المحاولة
             </Button>
@@ -1363,9 +1590,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers2}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers2["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Box>
@@ -1394,7 +1621,7 @@ const Course = () => {
           }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers3 ? (
               <span
                 style={{
                   color: "green",
@@ -1434,7 +1661,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs3}
             >
               إعادة المحاولة
             </Button>
@@ -1446,9 +1673,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers3}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers3["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
@@ -1478,7 +1705,7 @@ const Course = () => {
           }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers4 ? (
               <span
                 style={{
                   color: "green",
@@ -1518,7 +1745,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs4}
             >
               إعادة المحاولة
             </Button>
@@ -1530,9 +1757,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers4}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers4["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
@@ -1562,7 +1789,7 @@ const Course = () => {
           }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers5 ? (
               <span
                 style={{
                   color: "green",
@@ -1602,7 +1829,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs5}
             >
               إعادة المحاولة
             </Button>
@@ -1614,9 +1841,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers5}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers5["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
@@ -1661,7 +1888,7 @@ const Course = () => {
       >
         مفهوم التصميم: يمثل تصميم المدينة:تخطيط
         <span>
-          {showAnswers ? (
+          {showAnswers6 ? (
             <span
               style={{
                 color: "green",
@@ -1685,7 +1912,7 @@ const Course = () => {
         </span>{" "}
         وشبكة الطرقات التي تتخللها حيث تمثل طريقة لتنظيم{" "}
         <span>
-          {showAnswers ? (
+          {showAnswers6 ? (
             <span style={{ color: "green", fontWeight: "bold" }}>
               {correctFillInTheBlanks.blank2}
             </span>
@@ -1719,9 +1946,9 @@ const Course = () => {
             marginLeft: "10px",
           }}
           variant="contained"
-          onClick={toggleAllAnswers}
+          onClick={toggleAllAnswers6}
         >
-          {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+          {showAnswers6["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
         </Button>
         <Button
           sx={{
@@ -1730,7 +1957,7 @@ const Course = () => {
             backgroundColor: "#F6D339",
           }}
           variant="contained"
-          onClick={resetAllInputs}
+          onClick={resetAllInputs6}
         >
           إعادة المحاولة
         </Button>
@@ -1831,7 +2058,7 @@ const Course = () => {
           }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers7 ? (
               <span
                 style={{
                   color: "green",
@@ -1871,7 +2098,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs7}
             >
               إعادة المحاولة
             </Button>
@@ -1883,9 +2110,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers7}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers7["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
@@ -1914,7 +2141,7 @@ const Course = () => {
           }}
         >
           <span>
-            {showAnswers ? (
+            {showAnswers8 ? (
               <span
                 style={{
                   color: "green",
@@ -1954,7 +2181,7 @@ const Course = () => {
                 backgroundColor: "#F6D339",
               }}
               variant="contained"
-              onClick={resetAllInputs}
+              onClick={resetAllInputs8}
             >
               إعادة المحاولة
             </Button>
@@ -1966,9 +2193,9 @@ const Course = () => {
                 marginLeft: "10px",
               }}
               variant="contained"
-              onClick={toggleAllAnswers}
+              onClick={toggleAllAnswers8}
             >
-              {showAnswers["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
+              {showAnswers8["conclusion"] ? "إخفاء الإصلاح" : "الإصلاح"}
             </Button>
           </div>
         </Typography>
@@ -2402,7 +2629,7 @@ const Course = () => {
         }}
       >
         {" "}
-        أربط كل عنصر من المجال العمراني بالإفادة المناسبة::
+        أربط كل عنصر من المجال العمراني بالإفادة المناسبة:
       </Typography>
       <div class="MuiBox-root css-1c2mhw6">
         <div
@@ -2481,7 +2708,7 @@ const Course = () => {
 
             {/* Flèches SVG inclinées */}
             <AnimatePresence>
-              {showArrows && (
+              {showArrows1 && (
                 <div
                   style={{
                     position: "absolute",
@@ -2543,7 +2770,7 @@ const Course = () => {
                 fontWeight: "bold",
               }}
               variant="contained"
-              onClick={() => setShowArrows(false)}
+              onClick={() => setShowArrows1(false)}
             >
               إعادة المحاولة
             </Button>
@@ -2556,7 +2783,7 @@ const Course = () => {
                 fontWeight: "bold",
               }}
               variant="contained"
-              onClick={() => setShowArrows(true)}
+              onClick={() => setShowArrows1(true)}
             >
               الإصلاح
             </Button>

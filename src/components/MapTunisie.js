@@ -19,30 +19,50 @@ import fishingPortIcon from "../fishing-port.png";
 
 // Styles CSS améliorés
 const styles = `
-  .map-container {
-    height: 100vh;
+  .app-container {
+  height: 100vh;
     width: 100%;
-    position: relative;
-    font-family: 'Arial', sans-serif;
     display: flex;
+    flex-direction: column;
+    font-family: 'Arial', sans-serif;
   }
   
-  .sidebar {
-    width: 250px;
+  .header {
+    padding: 10px;
+    text-align: center;
+    color: #2c3e50;
+    font-size: 20px;
+    border-bottom: 2px solid #eee;
+    background: white;
+  }
+  
+  .controls-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
     background: rgba(255, 255, 255, 0.95);
-    padding: 15px;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-    overflow-y: auto;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     z-index: 1000;
+    direction: rtl;
+    flex-wrap: wrap;
   }
   
-  .map-content {
+  .category-column {
     flex: 1;
-    height: 100%;
+    margin: 0 5px;
+    min-width: 200px;
   }
   
-  .category {
-    margin-bottom: 20px;
+  .map-wrapper {
+    flex: 1;
+    position: relative;
+    height: calc(100vh - 150px); /* Ajustez cette valeur selon la hauteur de vos contrôles */
+  }
+  
+  .map-container {
+    height: 100%;
+    width: 100%;
+    position: absolute;
   }
   
   .category-title {
@@ -53,6 +73,7 @@ const styles = `
     padding: 5px;
     background: #f8f9fa;
     border-radius: 4px;
+    text-align: center;
   }
   
   .button-container {
@@ -105,7 +126,10 @@ const styles = `
     font-size: 13px;
     color: #555;
   }
-  
+  .custom-div-icon {
+  background: transparent;
+  border: none;
+}
   .popup-category {
     display: inline-block;
     padding: 2px 6px;
@@ -119,13 +143,13 @@ const styles = `
 const buttonColors = {
   الزياتين: "#8BC34A",
   الخضر: "#4CAF50",
-  الكروم: "#CDDC39",
+  الكروم: "#6078",
   القوارص: "#FFC107",
   النخيل: "#FF9800",
   الغابات: "#795548",
-  "زراعة الحبوب ذات مردود مرتفع وأنشطة متنوعة": "#9C27B0",
-  "زراعة الحبوب ذات مردود متوسط وغراسات متنوعة": "#673AB7",
-  "زراعة الحبوب ذات مردود غير منتظمة و ذات مردود ضعيف": "#3F51B5",
+  "زراعة الحبوب ذات مردود مرتفع وأنشطة متنوعة": "#93441A",
+  "زراعة الحبوب ذات مردود متوسط وغراسات متنوعة": "#B67332",
+  "زراعة الحبوب ذات مردود غير منتظمة و ذات مردود ضعيف": "#DAAB3A",
   "شط أو سبخة": "#00BCD4",
   واد: "#2196F3",
   "مناطق تربية الماشية": "#607D8B",
@@ -284,7 +308,7 @@ const agricultureData = {
       lng: 8.1435,
       production: "Deglet Nour",
     },
-    ,
+    
     {
       id: 32,
       name: "نخيل قفصة",
@@ -438,36 +462,7 @@ const hydroData = {
     { id: 42, name: "وادي زرقون", lat: 36.433, lng: 9.217, length: "120 km" },
     { id: 43, name: "وادي باي", lat: 36.543, lng: 8.785, length: "95 km" },
   ],
-  "مناطق تربية الماشية": [
-    {
-      id: 22,
-      name: "منطقة سيدي بوزيد",
-      lat: 35.0381,
-      lng: 9.4848,
-      livestock: "Ovins, Caprins",
-    },
-    {
-      id: 23,
-      name: "منطقة الكاف",
-      lat: 36.1822,
-      lng: 8.7148,
-      livestock: "Bovins, Ovins",
-    },
-    {
-      id: 44,
-      name: "منطقة جندوبة",
-      lat: 36.5,
-      lng: 8.783,
-      livestock: "Bovins laitiers",
-    },
-    {
-      id: 45,
-      name: "منطقة القصرين",
-      lat: 35.168,
-      lng: 8.836,
-      livestock: "Ovins, Camélidés",
-    },
-  ],
+
   "ميناء صيد بحري": [
     {
       id: 46,
@@ -511,6 +506,43 @@ const hydroData = {
     },
   ],
 };
+// Créez un nouvel objet pour les données d'élevage
+const elevageData = {
+  "مناطق تربية الماشية": [
+    {
+      id: 22,
+      name: "منطقة سيدي بوزيد",
+      lat: 35.0381,
+      lng: 9.4848,
+      livestock: "Ovins, Caprins",
+    },
+    {
+      id: 23,
+      name: "منطقة الكاف",
+      lat: 36.1822,
+      lng: 8.7148,
+      livestock: "Bovins, Ovins",
+    },
+    {
+      id: 44,
+      name: "منطقة جندوبة",
+      lat: 36.5,
+      lng: 8.783,
+      livestock: "Bovins laitiers",
+    },
+    {
+      id: 45,
+      name: "منطقة القصرين",
+      lat: 35.168,
+      lng: 8.836,
+      livestock: "Ovins, Camélidés",
+    },
+  ],
+};
+
+// Supprimez-les de hydroData
+const { "مناطق تربية الماشية": _, ...restHydroData } = hydroData;
+const filteredHydroData = restHydroData;
 
 // Création des icônes personnalisées
 const createIcon = (iconUrl, size = 32) => {
@@ -539,57 +571,190 @@ const iconMapping = {
 };
 
 const MapTunisie = () => {
-  const [activeLayer, setActiveLayer] = useState(null);
+  const [activeLayers, setActiveLayers] = useState([]);
   const [activeCategory, setActiveCategory] = useState(null);
   const [activeFeatures, setActiveFeatures] = useState([]);
+const showAllMarkers = () => {
+  const allLayers = [
+    ...Object.entries(agricultureData).map(([layer, features]) => ({
+      category: "الزراعات المتعددة",
+      layer,
+      features,
+    })),
+    ...Object.entries(cerealesData).map(([layer, features]) => ({
+      category: "زراعة الحبوب و مردوديتها",
+      layer,
+      features,
+    })),
+    ...Object.entries(filteredHydroData).map(([layer, features]) => ({
+      category: "المظاهر الهيدروغرافي",
+      layer,
+      features,
+    })),
+    ...Object.entries(elevageData).map(([layer, features]) => ({
+      category: "تربية الماشية",
+      layer,
+      features,
+    })),
+  ];
 
-  const handleButtonClick = (category, layer) => {
-    setActiveCategory(category);
-    setActiveLayer(layer);
+  setActiveLayers(allLayers);
+};
+const handleButtonClick = (category, layer) => {
+  // Vérifie si la couche est déjà active
+  const layerIndex = activeLayers.findIndex((l) => l.layer === layer);
 
+  if (layerIndex >= 0) {
+    // Si la couche est déjà active, on la supprime
+    setActiveLayers((prev) => prev.filter((_, i) => i !== layerIndex));
+  } else {
+    // Sinon, on l'ajoute
+    let features = [];
     if (category === "الزراعات المتعددة") {
-      setActiveFeatures(agricultureData[layer] || []);
+      features = agricultureData[layer] || [];
     } else if (category === "زراعة الحبوب و مردوديتها") {
-      setActiveFeatures(cerealesData[layer] || []);
+      features = cerealesData[layer] || [];
     } else if (category === "المظاهر الهيدروغرافي") {
-      setActiveFeatures(hydroData[layer] || []);
+      features = filteredHydroData[layer] || [];
+    } else if (category === "تربية الماشية") {
+      features = elevageData[layer] || [];
     }
-  };
 
-  const getIconForFeature = (layer) => {
-    return new L.Icon({
-      iconUrl: buttonIcons[layer],
-      iconSize: [32, 32],
-      iconAnchor: [16, 16],
-      popupAnchor: [0, -16],
+    setActiveLayers((prev) => [...prev, { category, layer, features }]);
+  }
+};
+const getIconForFeature = (layer) => {
+  // Liste des couches qui doivent avoir des cercles
+  const circleLayers = [
+    "الزياتين",
+    "الخضر",
+    "الكروم",
+    "القوارص",
+    "النخيل",
+    "الغابات",
+    "زراعة الحبوب ذات مردود مرتفع وأنشطة متنوعة",
+    "زراعة الحبوب ذات مردود متوسط وغراسات متنوعة",
+    "زراعة الحبوب ذات مردود غير منتظمة و ذات مردود ضعيف",
+  ];
+
+  if (circleLayers.includes(layer)) {
+    // Taille différente pour les céréales
+    const size = layer.includes("زراعة الحبوب") ? 80 : 40;
+
+    return L.divIcon({
+      html: `<div style="background-color: ${buttonColors[layer]}; 
+                        width: ${size}px; 
+                        height: ${size}px; 
+                        border-radius: 50%; 
+                        border: 2px solid white"></div>`,
+      className: "custom-div-icon",
+      iconSize: [size, size],
+      iconAnchor: [size / 2, size / 2],
     });
-  };
+  }
+
+  // Pour les autres couches, utiliser les icônes normales
+  return new L.Icon({
+    iconUrl: buttonIcons[layer],
+    iconSize: [32, 32],
+    iconAnchor: [16, 16],
+    popupAnchor: [0, -16],
+  });
+};
 
   return (
-    <div className="map-container">
-      <style>{styles}</style>
+    <div>
+      {" "}
+      <div className="app-container">
+        <style>{styles}</style>
 
-      <div className="sidebar" style={{ direction: "rtl" }}>
-        <h1
-          style={{
-            textAlign: "center",
-            marginBottom: "20px",
-            color: "#2c3e50",
-            fontSize: "20px",
-            paddingBottom: "10px",
-            borderBottom: "2px solid #eee",
-          }}
-        >
-          توزع الإنتاج الفلاحي في المجال التونسي
-        </h1>
-        <div className="category">
+        <div className="header">توزع الإنتاج الفلاحي في المجال التونسي</div>
+
+        <div className="map-wrapper">
+          <div className="map-container">
+            <MapContainer
+              center={[34.0, 9.5]}
+              zoom={7}
+              minZoom={6}
+              maxBounds={[
+                [29.0, 7.0],
+                [38.0, 12.0],
+              ]}
+              style={{ height: "100%", width: "100%" }}
+            >
+              {/* Image en haut à droite */}
+              <div
+                style={{
+                  position: "absolute",
+                  top: "10px",
+                  right: "10px",
+                  zIndex: 1000,
+                }}
+              >
+                <img
+                  src="/assets/fourthCourse/chamel.png"
+                  alt="Logo Chameau"
+                  style={{
+                    width: "50px",
+                    height: "auto",
+                    display: "block",
+                  }}
+                />
+              </div>
+
+              {/* Image en bas à gauche */}
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "10px",
+                  left: "10px",
+                  zIndex: 1000,
+                }}
+              >
+                <img
+                  src="/assets/EighthCourse/ligne.jpg"
+                  alt="Ligne"
+                  style={{
+                    width: "200px",
+                    height: "auto",
+                    display: "block",
+                  }}
+                />
+              </div>
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              />
+              {activeLayers.map(({ layer, features }) =>
+                features.map((feature) => (
+                  <Marker
+                    key={`${layer}-${feature.id}`}
+                    position={[feature.lat, feature.lng]}
+                    icon={getIconForFeature(layer)}
+                  >
+                    <Popup>
+                      <div className="popup-content">
+                        <h3>{feature.name}</h3>
+                        <div className="popup-category">{layer}</div>
+                      </div>
+                    </Popup>
+                  </Marker>
+                ))
+              )}
+            </MapContainer>
+          </div>
+        </div>
+      </div>
+      <div className="controls-container">
+        <div className="category-column">
           <div className="category-title">1) الزراعات المتعددة</div>
           <div className="button-container">
             {Object.keys(agricultureData).map((item) => (
               <button
                 key={item}
                 className={`map-button ${
-                  activeLayer === item && activeCategory === "الزراعات المتعددة"
+                  activeLayers === item &&
+                  activeCategory === "الزراعات المتعددة"
                     ? "active"
                     : ""
                 }`}
@@ -606,14 +771,14 @@ const MapTunisie = () => {
           </div>
         </div>
 
-        <div className="category">
+        <div className="category-column">
           <div className="category-title">2) زراعة الحبوب و مردوديتها</div>
           <div className="button-container">
             {Object.keys(cerealesData).map((item) => (
               <button
                 key={item}
                 className={`map-button ${
-                  activeLayer === item &&
+                  activeLayers === item &&
                   activeCategory === "زراعة الحبوب و مردوديتها"
                     ? "active"
                     : ""
@@ -633,14 +798,14 @@ const MapTunisie = () => {
           </div>
         </div>
 
-        <div className="category">
+        <div className="category-column">
           <div className="category-title">3) المظاهر الهيدروغرافي</div>
           <div className="button-container">
             {Object.keys(hydroData).map((item) => (
               <button
                 key={item}
                 className={`map-button ${
-                  activeLayer === item &&
+                  activeLayers === item &&
                   activeCategory === "المظاهر الهيدروغرافي"
                     ? "active"
                     : ""
@@ -657,78 +822,45 @@ const MapTunisie = () => {
             ))}
           </div>
         </div>
+        <div className="category-column">
+          <div className="category-title">4) تربية الماشية</div>
+          <div className="button-container">
+            {Object.keys(elevageData).map((item) => (
+              <button
+                key={item}
+                className={`map-button ${
+                  activeLayers === item && activeCategory === "تربية الماشية"
+                    ? "active"
+                    : ""
+                }`}
+                onClick={() => handleButtonClick("تربية الماشية", item)}
+                style={{
+                  backgroundColor: buttonColors[item],
+                  color: "white",
+                }}
+              >
+                <img src={buttonIcons[item]} alt="" className="button-icon" />
+                {item}
+              </button>
+            ))}
+          </div>
+        </div>
+        <div className="category-column">
+          <div className="category-title">التحكم</div>
+          <div className="button-container">
+            <button
+              className="map-button"
+              onClick={showAllMarkers}
+              style={{
+                backgroundColor: "#CDDC39",
+                color: "white",
+              }}
+            >
+              عرض الكل
+            </button>
+          </div>
+        </div>
       </div>
-
-      <MapContainer
-        center={[34.0, 9.5]}
-        zoom={7}
-        minZoom={6}
-        maxBounds={[
-          [29.0, 7.0],
-          [38.0, 12.0],
-        ]}
-        style={{ height: "100%", width: "100%" }}
-      >
-        {/* Image en haut à droite */}
-        <div
-          style={{
-            position: "absolute",
-            top: "10px",
-            right: "10px",
-            zIndex: 1000,
-          }}
-        >
-          <img
-            src="/assets/fourthCourse/chamel.png"
-            alt="Logo Chameau"
-            style={{
-              width: "50px",
-              height: "auto",
-              display: "block",
-            }}
-          />
-        </div>
-
-        {/* Image en bas à gauche */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "10px",
-            left: "10px",
-            zIndex: 1000,
-          }}
-        >
-          <img
-            src="/assets/EighthCourse/ligne.jpg"
-            alt="Ligne"
-            style={{
-              width: "200px",
-              height: "auto",
-              display: "block",
-            }}
-          />
-        </div>
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-
-        {activeFeatures.map((feature) => (
-          <Marker
-            key={feature.id}
-            position={[feature.lat, feature.lng]}
-            icon={getIconForFeature(activeLayer)}
-          >
-            <Popup>
-              <div className="popup-content">
-                <h3>{feature.name}</h3>
-
-                <div className="popup-category">{activeLayer}</div>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
     </div>
   );
 };

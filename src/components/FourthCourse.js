@@ -188,8 +188,10 @@ const Course = () => {
     setSelectedAnswers(newAnswers);
   };
 
-  const [showAnswers, setShowAnswers] = useState({});
+  const [showAnswers, setShowAnswers] = useState(false);
   const [showArrows, setShowArrows] = useState(false);
+    const [showArrows1, setShowArrows1] = useState(false);
+
   const [showAnswersImage1, setShowAnswersImage1] = useState(false);
   const [showAnswersImage2, setShowAnswersImage2] = useState(false);
   const [showAnswersImage3, setShowAnswersImage3] = useState(false);
@@ -1966,7 +1968,7 @@ const Course = () => {
           </div>
 
           <AnimatePresence>
-            {showArrows && (
+            {showArrows1 && (
               <div
                 style={{
                   position: "absolute",
@@ -2058,7 +2060,7 @@ const Course = () => {
               fontWeight: "bold",
             }}
             variant="contained"
-            onClick={() => setShowArrows(false)}
+            onClick={() => setShowArrows1(false)}
           >
             إعادة المحاولة
           </Button>
@@ -2071,7 +2073,7 @@ const Course = () => {
               fontWeight: "bold",
             }}
             variant="contained"
-            onClick={() => setShowArrows(true)}
+            onClick={() => setShowArrows1(true)}
           >
             الإصلاح
           </Button>
