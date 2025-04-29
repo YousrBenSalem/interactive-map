@@ -12,6 +12,7 @@
     "@deck.gl/widgets": "^9.1.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@lottiefiles/dotlottie-react": "^0.13.4",
     "@luma.gl/engine": "^9.1.0",
     "@mui/icons-material": "^6.4.2",
     "@react-leaflet/core": "^3.0.0",
