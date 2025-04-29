@@ -367,7 +367,13 @@ const Dashboard = () => {
       {isLoading && <LoadingScreen />}
 
       {/* Image d'en-tête pleine largeur */}
-      <div style={{ width: "100%", overflow: "hidden", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }}>
+      <div
+        style={{
+          width: "100%",
+          overflow: "hidden",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+        }}
+      >
         <img
           src="/assets/titre.gif"
           alt="En-tête Géographie Interactive"
@@ -382,7 +388,8 @@ const Dashboard = () => {
       </div>
 
       {/* Contenu principal */}
-      <div style={{
+      <div
+        style={{
           background: "white",
           boxShadow: "0 5px 15px rgba(0, 0, 0, 0.1)",
           transform: "rotate(-1deg)",
@@ -393,25 +400,29 @@ const Dashboard = () => {
           position: "relative",
           zIndex: 1,
           borderRadius: "15px",
-        }}>
-        <div style={{ 
-          minHeight: "100vh",
-          background: "linear-gradient(to bottom right, #EFF6FF, #ECFDF5)",
-          padding: "24px" 
-        }}>
+        }}
+      >
+        <div
+          style={{
+            minHeight: "100vh",
+            background: "linear-gradient(to bottom right, #EFF6FF, #ECFDF5)",
+            padding: "24px",
+          }}
+        >
           <div style={{ maxWidth: "56rem", margin: "0 auto" }}>
-
             {/* En-tête avec animation */}
-            <div style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "40px",
-              "@media (min-width: 768px)": {
-                flexDirection: "row",
-              },
-            }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "40px",
+                "@media (min-width: 768px)": {
+                  flexDirection: "row",
+                },
+              }}
+            >
               <DotLottieReact
                 src="/assets/Hello.lottie"
                 autoplay
@@ -419,36 +430,41 @@ const Dashboard = () => {
                 style={{ height: 150, marginRight: "20px" }}
               />
               <div>
-                <h1 style={{
-                  fontSize: "2.25rem",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                  color: "#065F46",
-                  marginBottom: "16px",
-                  textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
-                  direction: "rtl",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}>
-                  يحتوى هذا الموقع على مجموعة من دروس الجغرافيا للسّنة الخامسة والسّنة السّادسة من التعليم الإبتدائي بتونس بطريقة تفاعليّة
+                <h1
+                  style={{
+                    fontSize: "2.25rem",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    color: "#065F46",
+                    marginBottom: "16px",
+                    textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
+                    direction: "rtl",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  يحتوى هذا الموقع على مجموعة من دروس الجغرافيا للسّنة الخامسة
+                  والسّنة السّادسة من التعليم الإبتدائي بتونس بطريقة تفاعليّة
                   <MicroButton text="يحتوى هذا الموقع على مجموعة من دروس الجغرافيا للسّنة الخامسة والسّنة السّادسة من التعليم الإبتدائي بتونس بطريقة تفاعليّة" />
                 </h1>
               </div>
             </div>
 
             {/* Section d'introduction */}
-            <div style={{
-              backgroundColor: "white",
-              borderRadius: "20px",
-              padding: "24px",
-              boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-              border: "3px dashed #4CAF50",
-              fontFamily: "'Comic Sans MS', cursive",
-              animation: "pulse 2s infinite",
-              minHeight: "300px",
-              margin: "40px 0",
-            }}>
+            <div
+              style={{
+                backgroundColor: "white",
+                borderRadius: "20px",
+                padding: "24px",
+                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+                border: "3px dashed #4CAF50",
+                fontFamily: "'Comic Sans MS', cursive",
+                animation: "pulse 2s infinite",
+                minHeight: "300px",
+                margin: "40px 0",
+              }}
+            >
               <div style={{ position: "relative", zIndex: 10 }}>
                 <img
                   src="/assets/groupe.gif"
@@ -465,29 +481,33 @@ const Dashboard = () => {
             </div>
 
             {/* Section sélection par année */}
-            <div style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "40px",
-              "@media (min-width: 768px)": {
-                flexDirection: "row",
-              },
-            }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "40px",
+                "@media (min-width: 768px)": {
+                  flexDirection: "row",
+                },
+              }}
+            >
               <div>
-                <h1 style={{
-                  fontSize: "3rem",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                  color: "#064E3B",
-                  marginBottom: "16px",
-                  textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
-                  direction: "rtl",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}>
+                <h1
+                  style={{
+                    fontSize: "3rem",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    color: "#064E3B",
+                    marginBottom: "16px",
+                    textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
+                    direction: "rtl",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
                   جاهز للإنطلاق ؟
                   <MicroButton text="جاهز للإنطلاق ؟" />
                 </h1>
@@ -499,18 +519,20 @@ const Dashboard = () => {
                 style={{ height: 150, marginRight: "20px" }}
               />
               <div>
-                <h1 style={{
-                  fontSize: "3rem",
-                  fontWeight: "bold",
-                  textAlign: "center",
-                  color: "#064E3B",
-                  marginBottom: "16px",
-                  textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
-                  direction: "rtl",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}>
+                <h1
+                  style={{
+                    fontSize: "3rem",
+                    fontWeight: "bold",
+                    textAlign: "center",
+                    color: "#064E3B",
+                    marginBottom: "16px",
+                    textShadow: "2px 2px 4px rgba(0,0,0,0.1)",
+                    direction: "rtl",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
                   اختر المستوى الدّراسي وابدأ رحلة التّعلّم والإستكشاف
                   <MicroButton text="اختر المستوى الدّراسي وابدأ رحلة التّعلّم والإستكشاف" />
                 </h1>
@@ -518,16 +540,18 @@ const Dashboard = () => {
             </div>
 
             {/* Sélection des années */}
-            <div style={{
-              display: "grid",
-              gridTemplateColumns: "1fr",
-              gap: "32px",
-              textAlign: "center",
-              marginBottom: "48px",
-              "@media (min-width: 768px)": {
-                gridTemplateColumns: "1fr 1fr",
-              },
-            }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr",
+                gap: "32px",
+                textAlign: "center",
+                marginBottom: "48px",
+                "@media (min-width: 768px)": {
+                  gridTemplateColumns: "1fr 1fr",
+                },
+              }}
+            >
               {/* Année 5 */}
               <div
                 style={{
@@ -544,64 +568,96 @@ const Dashboard = () => {
                 }}
                 onClick={() => toggleYear(5)}
               >
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <h3 style={{
-                    fontSize: "40px",
-                    fontWeight: "bold",
-                    color: "#FF9800",
-                    margin: 0,
-                    textAlign: "center",
+                <div
+                  style={{
                     display: "flex",
-                    alignItems: "center"
-                  }}>
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontSize: "40px",
+                      fontWeight: "bold",
+                      color: "#FF9800",
+                      margin: 0,
+                      textAlign: "center",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
                     السّنة الخامسة
                     <MicroButton text="السّنة الخامسة" />
                   </h3>
                 </div>
 
                 {activeYear === 5 && (
-                  <ul style={{
-                    marginTop: "24px",
-                    paddingLeft: "0px",
-                    animation: "fadeIn 0.5s",
-                    listStyle: "none",
-                    textAlign: "center",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    direction: "rtl",
-                  }}>
-                    <li style={{
+                  <ul
+                    style={{
+                      marginTop: "24px",
+                      paddingLeft: "0px",
+                      animation: "fadeIn 0.5s",
+                      listStyle: "none",
+                      textAlign: "center",
                       display: "flex",
+                      flexDirection: "column",
                       alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "24px",
-                      marginBottom: "16px",
-                      transition: "color 0.3s ease",
-                      width: "100%",
-                      ":hover": { color: "#FF9800" },
-                    }} onClick={(e) => {
-                      e.stopPropagation();
-                      window.location.href = "/courses/4";
-                    }}>
-                      <span style={{ color: "#10B981", marginRight: "12px", fontSize: "24px" }}>✦</span>
+                      direction: "rtl",
+                    }}
+                  >
+                    <li
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "24px",
+                        marginBottom: "16px",
+                        transition: "color 0.3s ease",
+                        width: "100%",
+                        ":hover": { color: "#FF9800" },
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.href = "/courses/4";
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#10B981",
+                          marginRight: "12px",
+                          fontSize: "24px",
+                        }}
+                      >
+                        ✦
+                      </span>
                       درس القارات والمحيطات والوحدات التّضاريسيّة الكبرى
                       <MicroButton text="درس القارات والمحيطات والوحدات التّضاريسيّة الكبرى" />
                     </li>
-                    <li style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "24px",
-                      marginBottom: "16px",
-                      transition: "color 0.3s ease",
-                      width: "100%",
-                      ":hover": { color: "#FF9800" },
-                    }} onClick={(e) => {
-                      e.stopPropagation();
-                      window.location.href = "/courses/7";
-                    }}>
-                      <span style={{ color: "#10B981", marginRight: "12px", fontSize: "24px" }}>✦</span>
+                    <li
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "24px",
+                        marginBottom: "16px",
+                        transition: "color 0.3s ease",
+                        width: "100%",
+                        ":hover": { color: "#FF9800" },
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.href = "/courses/7";
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#10B981",
+                          marginRight: "12px",
+                          fontSize: "24px",
+                        }}
+                      >
+                        ✦
+                      </span>
                       درس تصميم المدينة
                       <MicroButton text="درس تصميم المدينة" />
                     </li>
@@ -625,110 +681,288 @@ const Dashboard = () => {
                 }}
                 onClick={() => toggleYear(6)}
               >
-                <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                  <h3 style={{
-                    fontSize: "40px",
-                    fontWeight: "bold",
-                    color: "#4CAF50",
-                    margin: 0,
-                    textAlign: "center",
+                <div
+                  style={{
                     display: "flex",
-                    alignItems: "center"
-                  }}>
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <h3
+                    style={{
+                      fontSize: "40px",
+                      fontWeight: "bold",
+                      color: "#4CAF50",
+                      margin: 0,
+                      textAlign: "center",
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
                     السّنة السّادسة
                     <MicroButton text="السّنة السّادسة" />
                   </h3>
                 </div>
 
                 {activeYear === 6 && (
-                  <ul style={{
-                    marginTop: "24px",
-                    paddingLeft: "0px",
-                    animation: "fadeIn 0.5s",
-                    listStyle: "none",
-                    textAlign: "center",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    direction: "rtl",
-                  }}>
-                    <li style={{
+                  <ul
+                    style={{
+                      marginTop: "24px",
+                      paddingLeft: "0px",
+                      animation: "fadeIn 0.5s",
+                      listStyle: "none",
+                      textAlign: "center",
                       display: "flex",
+                      flexDirection: "column",
                       alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "24px",
-                      marginBottom: "16px",
-                      transition: "color 0.3s ease",
-                      width: "100%",
-                      ":hover": { color: "#2563EB" },
-                    }} onClick={(e) => {
-                      e.stopPropagation();
-                      window.location.href = "/courses/1";
-                    }}>
-                      <span style={{ color: "#3B82F6", marginRight: "12px", fontSize: "24px" }}>✦</span>
+                      direction: "rtl",
+                    }}
+                  >
+                    <li
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "24px",
+                        marginBottom: "16px",
+                        transition: "color 0.3s ease",
+                        width: "100%",
+                        ":hover": { color: "#2563EB" },
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.href = "/courses/1";
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#3B82F6",
+                          marginRight: "12px",
+                          fontSize: "24px",
+                        }}
+                      >
+                        ✦
+                      </span>
                       درس الموارد الطّاقيّة والمنجميّة بالمغرب العربي
                       <MicroButton text="درس الموارد الطّاقيّة والمنجميّة بالمغرب العربي" />
                     </li>
-                    {/* Autres éléments de liste avec micros... */}
+                    <li
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "24px",
+                        marginBottom: "16px",
+                        transition: "color 0.3s ease",
+                        width: "100%",
+                        ":hover": {
+                          color: "#2563EB",
+                        },
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.href = "/courses/2";
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#3B82F6",
+                          marginRight: "12px",
+                          fontSize: "24px",
+                        }}
+                      >
+                        ✦
+                      </span>
+                      درس التّوزّع الجغرافي للسّكان والأدفاق الهجريّة في البلاد
+                      التونسيّة
+                      <MicroButton
+                        text="
+                      درس التّوزّع الجغرافي للسّكان والأدفاق الهجريّة في البلاد
+                      التونسيّة"
+                      />
+                    </li>
+                    <li
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "24px",
+                        marginBottom: "16px",
+                        transition: "color 0.3s ease",
+                        width: "100%",
+                        ":hover": {
+                          color: "#2563EB",
+                        },
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.href = "/courses/3";
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#3B82F6",
+                          marginRight: "12px",
+                          fontSize: "24px",
+                        }}
+                      >
+                        ✦
+                      </span>
+                      درس التّوزّع الجغرافي للسّكان والأدفاق الهجريّة في البلاد
+                      التونسيّة ( الجزء 2)
+                      <MicroButton
+                        text="
+                      درس التّوزّع الجغرافي للسّكان والأدفاق الهجريّة في البلاد
+                      التونسيّة ( الجزء 2)"
+                      />
+                    </li>
+                    <li
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "24px",
+                        marginBottom: "16px",
+                        transition: "color 0.3s ease",
+                        width: "100%",
+                        ":hover": {
+                          color: "#2563EB",
+                        },
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.href = "/courses/5";
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#3B82F6",
+                          marginRight: "12px",
+                          fontSize: "24px",
+                        }}
+                      >
+                        ✦
+                      </span>
+                      درس خصائص المغرب العربي الطّبيعيّة
+                      <MicroButton text="                      درس خصائص المغرب العربي الطّبيعيّة" />
+                    </li>
+                    <li
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: "24px",
+                        marginBottom: "16px",
+                        transition: "color 0.3s ease",
+                        width: "100%",
+                        ":hover": {
+                          color: "#2563EB",
+                        },
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        window.location.href = "/courses/8";
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: "#3B82F6",
+                          marginRight: "12px",
+                          fontSize: "24px",
+                        }}
+                      >
+                        ✦
+                      </span>
+                      درس الإنتاج الفلاحي في المجال التونسي وتطوّره
+                      <MicroButton text="                       درس الإنتاج الفلاحي في المجال التونسي وتطوّره
+" />
+                    </li>
                   </ul>
                 )}
               </div>
             </div>
 
             {/* Section contact */}
-            <div style={{
-              backgroundColor: "#faf5ff",
-              borderRadius: "20px",
-              padding: "24px",
-              boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-              marginBottom: "40px",
-              border: "3px dotted #9C27B0",
-              animation: "pulse 2s infinite",
-            }}>
-              <h3 style={{
-                fontSize: "1.5rem",
-                fontWeight: "700",
-                color: "#7e22ce",
-                marginBottom: "16px",
-                textAlign: "center",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}>
+            <div
+              style={{
+                backgroundColor: "#faf5ff",
+                borderRadius: "20px",
+                padding: "24px",
+                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+                marginBottom: "40px",
+                border: "3px dotted #9C27B0",
+                animation: "pulse 2s infinite",
+              }}
+            >
+              <h3
+                style={{
+                  fontSize: "1.5rem",
+                  fontWeight: "700",
+                  color: "#7e22ce",
+                  marginBottom: "16px",
+                  textAlign: "center",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 تواصل معنا
                 <MicroButton text="تواصل معنا" />
               </h3>
 
-              <h3 style={{
-                fontSize: "1.5rem",
-                fontWeight: "700",
-                color: "#7e22ce",
-                marginBottom: "16px",
-                textAlign: "center",
-                direction: "rtl",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}>
-                لأي استفسار أو ملاحظة أو تساؤل عبر البريد الإلكترونى التالــــي :
+              <h3
+                style={{
+                  fontSize: "1.5rem",
+                  fontWeight: "700",
+                  color: "#7e22ce",
+                  marginBottom: "16px",
+                  textAlign: "center",
+                  direction: "rtl",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                لأي استفسار أو ملاحظة أو تساؤل عبر البريد الإلكترونى التالــــي
+                :
                 <MicroButton text="لأي استفسار أو ملاحظة أو تساؤل عبر البريد الإلكترونى التالــــي" />
               </h3>
 
-              <div style={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "24px",
-                flexWrap: "wrap"
-              }}>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "24px",
+                  flexWrap: "wrap",
+                }}
+              >
                 <div style={{ display: "flex", alignItems: "center" }}>
-                  <div style={{ marginLeft: "12px", textAlign: "right", direction: "rtl" }}>
-                    <p style={{ fontWeight: "800", display: "flex", alignItems: "center" }}>
+                  <div
+                    style={{
+                      marginLeft: "12px",
+                      textAlign: "right",
+                      direction: "rtl",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontWeight: "800",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
                       آيـــــــة الغزواني
                       <MicroButton text="آيـــــــة الغزواني" />
                     </p>
-                    <p style={{ fontSize: "0.875rem", display: "flex", alignItems: "center" }}>
+                    <p
+                      style={{
+                        fontSize: "0.875rem",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
                       ghazouanieya812@gmail.com
                     </p>
                   </div>
@@ -742,43 +976,65 @@ const Dashboard = () => {
                   />
                 </div>
                 <div style={{ display: "flex", alignItems: "center" }}>
-                  <div style={{ marginLeft: "12px", textAlign: "right", direction: "rtl" }}>
-                    <p style={{ fontWeight: "800", display: "flex", alignItems: "center" }}>
+                  <div
+                    style={{
+                      marginLeft: "12px",
+                      textAlign: "right",
+                      direction: "rtl",
+                    }}
+                  >
+                    <p
+                      style={{
+                        fontWeight: "800",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
                       أمـــــــل الصغير
                       <MicroButton text="أمـــــــل الصغير" />
                     </p>
-                    <p style={{ fontSize: "0.875rem", display: "flex", alignItems: "center" }}>
+                    <p
+                      style={{
+                        fontSize: "0.875rem",
+                        display: "flex",
+                        alignItems: "center",
+                      }}
+                    >
                       sghaireamal355@gmail.com
                     </p>
                   </div>
                 </div>
               </div>
 
-              <h3 style={{
-                textAlign: "center",
-                marginTop: "24px",
-                color: "#374151",
-                direction: "rtl",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}>
+              <h3
+                style={{
+                  textAlign: "center",
+                  marginTop: "24px",
+                  color: "#374151",
+                  direction: "rtl",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 فريقنا في خدمتكم دائما قصد تطوير تعلّماتك الجغرافيّة
                 <MicroButton text="فريقنا في خدمتكم دائما قصد تطوير تعلّماتك الجغرافيّة" />
               </h3>
             </div>
 
             {/* Section appel à l'action */}
-            <div style={{
-              textAlign: "center",
-              backgroundColor: "#fefce8",
-              borderRadius: "20px",
-              padding: "24px",
-              boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
-              border: "3px solid #FFC107",
-              animation: "pulse 2s infinite",
-              margin: "20px 0",
-            }}>
+            <div
+              style={{
+                textAlign: "center",
+                backgroundColor: "#fefce8",
+                borderRadius: "20px",
+                padding: "24px",
+                boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)",
+                border: "3px solid #FFC107",
+                animation: "pulse 2s infinite",
+                margin: "20px 0",
+              }}
+            >
               <DotLottieReact
                 src="/assets/adventure.lottie"
                 autoplay
@@ -786,52 +1042,61 @@ const Dashboard = () => {
                 style={{ height: 160, width: 160, margin: "0 auto" }}
               />
 
-              <h3 style={{
-                fontSize: "1.75rem",
-                fontWeight: "bold",
-                color: "#ef4444",
-                marginBottom: "16px",
-                marginTop: "16px",
-                direction: "rtl",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}>
+              <h3
+                style={{
+                  fontSize: "1.75rem",
+                  fontWeight: "bold",
+                  color: "#ef4444",
+                  marginBottom: "16px",
+                  marginTop: "16px",
+                  direction: "rtl",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 لا تفوّت الفرصة !
                 <MicroButton text="لا تفوّت الفرصة !" />
               </h3>
 
-              <p style={{
-                fontSize: "1.5rem",
-                marginBottom: "16px",
-                lineHeight: "1.6",
-                direction: "rtl",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}>
-                تصفّح الموسوعة التّفاعليّة واكتشف محتوى الحقيبة التّفاعليّة للإنطلاق في رحلة تعلّم حقيقيّة حول العالم.
+              <p
+                style={{
+                  fontSize: "1.5rem",
+                  marginBottom: "16px",
+                  lineHeight: "1.6",
+                  direction: "rtl",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                تصفّح الموسوعة التّفاعليّة واكتشف محتوى الحقيبة التّفاعليّة
+                للإنطلاق في رحلة تعلّم حقيقيّة حول العالم.
                 <MicroButton text="تصفّح الموسوعة التّفاعليّة واكتشف محتوى الحقيبة التّفاعليّة للإنطلاق في رحلة تعلّم حقيقيّة حول العالم." />
               </p>
 
               {/* Section pour les deux images en ligne */}
-              <div style={{
-                display: "flex",
-                justifyContent: "space-around",
-                gap: "40px",
-                marginTop: "30px",
-                flexWrap: "wrap",
-              }}>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-around",
+                  gap: "40px",
+                  marginTop: "30px",
+                  flexWrap: "wrap",
+                }}
+              >
                 <div style={{ textAlign: "center" }}>
-                  <h4 style={{
-                    marginTop: "12px",
-                    fontSize: "1.5rem",
-                    fontWeight: "600",
-                    color: "#3b82f6",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}>
+                  <h4
+                    style={{
+                      marginTop: "12px",
+                      fontSize: "1.5rem",
+                      fontWeight: "600",
+                      color: "#3b82f6",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
                     الموسوعة التفاعلية
                     <MicroButton text="الموسوعة التفاعلية" />
                   </h4>
@@ -849,15 +1114,17 @@ const Dashboard = () => {
                 </div>
 
                 <div style={{ textAlign: "center" }}>
-                  <h4 style={{
-                    marginTop: "12px",
-                    fontSize: "1.5rem",
-                    fontWeight: "600",
-                    color: "#10b981",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                  }}>
+                  <h4
+                    style={{
+                      marginTop: "12px",
+                      fontSize: "1.5rem",
+                      fontWeight: "600",
+                      color: "#10b981",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
                     الحقيبة التفاعلية
                     <MicroButton text="الحقيبة التفاعلية" />
                   </h4>
@@ -882,22 +1149,45 @@ const Dashboard = () => {
       {/* Styles globaux */}
       <style jsx global>{`
         @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
         }
         @keyframes bounceIn {
-          0% { transform: scale(0.8); opacity: 0; }
-          50% { transform: scale(1.05); opacity: 1; }
-          100% { transform: scale(1); }
+          0% {
+            transform: scale(0.8);
+            opacity: 0;
+          }
+          50% {
+            transform: scale(1.05);
+            opacity: 1;
+          }
+          100% {
+            transform: scale(1);
+          }
         }
         @keyframes pulse {
-          0% { transform: scale(1); }
-          50% { transform: scale(1.02); }
-          100% { transform: scale(1); }
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.02);
+          }
+          100% {
+            transform: scale(1);
+          }
         }
         @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
         }
         .animate-bounce-in {
           animation: bounceIn 0.8s;
