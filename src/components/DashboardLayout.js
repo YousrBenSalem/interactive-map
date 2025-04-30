@@ -274,15 +274,15 @@ const courseLinkStyle = {
 
 
 const Dashboard = () => {
-  const [isLoading, setIsLoading] = useState(true);
+//  const [isLoading, setIsLoading] = useState(true);
   const [activeYear, setActiveYear] = useState(null);
   const [voices, setVoices] = useState([]);
 
   // Initialiser la synthèse vocale
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2100);
+    // const timer = setTimeout(() => {
+    //  setIsLoading(false);
+    // }, 2100);
 
     const loadVoices = () => {
       const availableVoices = window.speechSynthesis.getVoices();
@@ -295,7 +295,7 @@ const Dashboard = () => {
     }
 
     return () => {
-      clearTimeout(timer);
+    //  clearTimeout(timer);
       if ('speechSynthesis' in window) {
         window.speechSynthesis.onvoiceschanged = null;
       }
@@ -364,8 +364,7 @@ const Dashboard = () => {
 
   return (
     <>
-      {isLoading && <LoadingScreen />}
-
+    
       {/* Image d'en-tête pleine largeur */}
       <div
         style={{
