@@ -175,18 +175,18 @@ const Course = () => {
   const toggleAnswers = () => {
     setShowAnswers(!showAnswers);
   };
-    const toggleAnswers3 = () => {
-      setShowAnswers3(!showAnswers3);
-    };
+  const toggleAnswers3 = () => {
+    setShowAnswers3(!showAnswers3);
+  };
 
   const resetAll1 = () => {
     setShowAnswers(false);
     setUserAnswers(["", "", ""]);
   };
-    const resetAll3 = () => {
-      setShowAnswers3(false);
-      setUserAnswers(["", "", ""]);
-    };
+  const resetAll3 = () => {
+    setShowAnswers3(false);
+    setUserAnswers(["", "", ""]);
+  };
 
   const handleAnswerChange = (index, value) => {
     const newAnswers = [...userAnswers];
@@ -246,9 +246,9 @@ const Course = () => {
   };
 
   const [showAnswers, setShowAnswers] = useState(false);
-      const [showAnswers2, setShowAnswers2] = useState(false);
-    const [showAnswers3, setShowAnswers3] = useState(false);
-        const [showAnswers4, setShowAnswers4] = useState(false);
+  const [showAnswers2, setShowAnswers2] = useState(false);
+  const [showAnswers3, setShowAnswers3] = useState(false);
+  const [showAnswers4, setShowAnswers4] = useState(false);
   const [showArrows, setShowArrows] = useState(false);
   // État pour suivre quelles réponses sont visibles
   const [visibleAnswers, setVisibleAnswers] = useState({});
@@ -431,44 +431,44 @@ const Course = () => {
     });
     setShowAnswers(false);
   };
-    const resetAllInputs2 = () => {
-      setStudentAnswers({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setStudentAnswers1({
-        reason1: "",
-        reason2: "",
-        reason3: "",
-        reason4: "",
-        reason5: "",
-        reason6: "",
-      });
-      setShowAnswers2(false);
-    };
-        const resetAllInputs4 = () => {
-          setStudentAnswers({
-            reason1: "",
-            reason2: "",
-            reason3: "",
-            reason4: "",
-            reason5: "",
-            reason6: "",
-          });
-          setStudentAnswers1({
-            reason1: "",
-            reason2: "",
-            reason3: "",
-            reason4: "",
-            reason5: "",
-            reason6: "",
-          });
-          setShowAnswers4(false);
-        };
+  const resetAllInputs2 = () => {
+    setStudentAnswers({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setStudentAnswers1({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setShowAnswers2(false);
+  };
+  const resetAllInputs4 = () => {
+    setStudentAnswers({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setStudentAnswers1({
+      reason1: "",
+      reason2: "",
+      reason3: "",
+      reason4: "",
+      reason5: "",
+      reason6: "",
+    });
+    setShowAnswers4(false);
+  };
 
   const toggleAnswer = (questionName) => {
     setShowAnswers((prev) => ({
@@ -1117,7 +1117,7 @@ const Course = () => {
         }}
       >
         <img
-          src="/assets/fifthcourse/image1.jpg"
+          src="/assets/fifthcourse/map.jpg"
           alt="المغرب العربي"
           style={{ width: "100%", height: "auto" }}
         />
